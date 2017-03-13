@@ -39,7 +39,7 @@ Module gestion proposition
 
 Module proposition automatique
 -------------------------------
-	- Voir liste des propositions automatiqueq
+	- Voir liste des propositions automatique
 	- Ajouter proposition automatique dans liste dans la liste des propositions Effectives
 
 Module general
