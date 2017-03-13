@@ -1,0 +1,48 @@
+Repartition des modules
+====================================================================
+
+Module gestion templates et formulaires
+--------------------------------
+	- Creer template
+	- Editer template
+	- Supprimer template
+	- Creer formulaire
+	- soumettre au versionning
+	
+Module configuration bot
+------------------------
+	- Définir compte à suivre
+	- Spécifier mot clé
+
+Module publication
+------------------
+	- Publier sur canal facebook
+	- Publier sur canal Twitter
+	- Publiber sur mailing list
+	- Construire la newsletter
+	- Publier sur un canal
+	- Publier sur plusieurs canaux
+	- Publier
+
+Module gestion proposition
+--------------------------
+	- Rediger contenu de la proposition
+	- Soumettre une proposition sujet
+	- Proposer un canal
+	- proposer redacteur
+	- Editer proposition
+	- Supprimer proposition
+	- Solliciter redacteur
+	- Ajouter date butoir
+	- Ajouter un canal
+	- Ajouter plusieurs canaux
+
+Module proposition automatique
+-------------------------------
+	- Voir liste des propositions automatiqueq
+	- Ajouter proposition automatique dans liste dans la liste des propositions Effectives
+
+Module general
+--------------
+	- Notifier membre
+	- Assigner Role
