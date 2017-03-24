@@ -1,0 +1,13 @@
+Suite au précédent mail pour validation vous avez mentionné que le domaine d'application que j'avais réalisé représentait
+ne représentais pas le système tel qu'existant mais plutôt tel quattentu.
+J'ai donc retravailler le domaine d'application. Et en le faisant, certaines questions ont emergées.
+En fait, dans l'interview des intervenants on parle de différents termes tel que:
+	- contenu
+	- post
+	- information
+	- news
+Et pour moi je suis un peu confus face à tous cela.
+En fait je me pose la question de savoir quelle est la différence entre tous ces termes?
+
+J'ai une autre question qui est de savoir, si pendant la soumission d'une proposition un membre facultaire propose un 
+rédacteur et qu'après le président veut assigner un autre rédacteur comment devons nous gérer ce cas?
