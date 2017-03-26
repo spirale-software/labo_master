@@ -1,0 +1,19 @@
+package controllers;
+
+import play.mvc.*;
+
+public class ConnexionController extends Controller {
+	
+	public Result connexionAction() {
+		Form<MembreFacultaire> formMembre = formFactory.form(MembreFacultaire.class);
+		
+		return ok(formulaireDeConnexion.render(formMembre));
+		
+	}
+	
+	public Result verifierAction() {
+		
+		return ok();
+	}
+
+}

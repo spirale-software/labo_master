@@ -1,0 +1,42 @@
+package controllers;
+
+import javax.inject.Inject;
+
+import models.MembreFacultaire;
+import play.data.FormFactory;
+import play.data.Form;
+import play.mvc.*;
+import views.html.*;
+
+public class ConnexionController extends Controller {
+	
+	private FormFactory formFactory;
+	
+	@Inject
+	public ConnexionController(FormFactory formFactory) {
+		
+		this.formFactory = formFactory;
+	}
+	
+	public Result indexAction() {
+		
+		Form<MembreFacultaire> formMembre = formFactory.form(MembreFacultaire.class);
+		
+		return ok(index.render(formMembre));		
+	}
+	
+	public Result connexionAction() {
+		
+		Form<MembreFacultaire> formMembre = formFactory.form(MembreFacultaire.class);
+		
+		return ok(formulaireDeConnexion.render(formMembre));		
+	}
+	
+	
+	
+	public Result verifierAction() {
+		
+		return ok();
+	}
+
+}

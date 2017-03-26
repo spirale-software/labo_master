@@ -1,0 +1,6 @@
+@(user: User)
+
+@dashboardLayout("Tableau de bord"){
+	
+
+}

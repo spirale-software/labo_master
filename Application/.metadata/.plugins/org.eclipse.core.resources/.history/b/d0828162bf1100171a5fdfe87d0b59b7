@@ -1,0 +1,6 @@
+@()
+
+@dashboardLayout("Nouvelle Proposition") {
+
+
+}

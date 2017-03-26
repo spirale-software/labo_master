@@ -1,0 +1,55 @@
+package controllers;
+
+import javax.inject.Inject;
+
+import dao.IPropositionDAO;
+import dao.IUserDAO;
+import daoImpl.UserDAO;
+import models.Proposition;
+import models.User;
+import play.data.Form;
+import play.data.FormFactory;
+import play.mvc.Controller;
+import play.mvc.Result;
+
+public class PropositionController extends Controller {
+	
+	private FormFactory formFactory;
+	private IPropositionDAO propositionDAO;
+
+	@Inject
+	public PropositionController(FormFactory formFactory) {
+
+		this.formFactory = formFactory;
+	}
+
+	public Result addPropositionAction() {
+
+		Form<Proposition> propositionForm = formFactory.form(Proposition.class);
+
+		return ok(newProposition.render(propositionForm));
+	}
+
+	public Result getAllPropositionAction() {
+
+
+		return ok(propositions.render());
+	}
+
+	public Result detailPropositionAction() {
+
+
+		return ok(detailProposition.render());
+	}
+	
+	public Result editPropositionAction() {
+
+		return ok(editProposition.render());
+	}
+	
+	public Result deletePropositionAction() {
+
+		return ok();
+	}
+
+}

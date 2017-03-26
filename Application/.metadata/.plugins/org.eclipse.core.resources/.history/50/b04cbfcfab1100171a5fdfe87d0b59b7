@@ -1,0 +1,8 @@
+package dao.daoInterface;
+
+public interface UserDAO {
+	
+	public Long addNewUser(User newUser);
+	public User getUserById(Long idUser);
+	public User getUserByCredentials(String email, String pwd);
+}

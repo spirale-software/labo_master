@@ -1,0 +1,14 @@
+package controllers;
+
+import play.mvc.*;
+
+public class ConnexionController extends Controller {
+	
+	public Result connexionAction() {
+		
+		
+		return ok(formulaireDeConnexion.render())
+		
+	}
+
+}

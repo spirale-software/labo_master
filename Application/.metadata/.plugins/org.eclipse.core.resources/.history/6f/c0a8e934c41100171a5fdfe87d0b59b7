@@ -1,0 +1,37 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home and Registration routes
+#--------------------------------------------------------------------------------------------------
+GET     /                 			controllers.HomeController.indexAction
+
+POST	/connection/newUser			controllers.HomeController.connectNewUserAction
+
+POST	/connection/registeredUser	controllers.HomeController.connectRegisteredUserAction
+
+# Routes related to propositions
+# -------------------------------------------------------------------------------------------------
+GET     /proposition/form          	controllers.PropositionController.propositionAction
+
+POST    /proposition/add            controllers.PropositionController.addPropositionAction
+
+GET     /proposition/detail         controllers.PropositionController.detailPropositionAction
+
+GET     /proposition/edit           controllers.PropositionController.editPropositionAction
+
+GET     /proposition/delete         controllers.PropositionController.deletePropositionAction
+
+GET     /proposition/all         	controllers.PropositionController.getAllPropositionsAction
+
+
+# An example controller showing how to use dependency injection
+GET     /count                      controllers.CountController.count
+# An example controller showing how to write asynchronous code
+GET     /message                    controllers.AsyncController.message
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+
+

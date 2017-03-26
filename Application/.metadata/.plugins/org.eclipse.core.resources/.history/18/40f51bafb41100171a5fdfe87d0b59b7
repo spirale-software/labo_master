@@ -1,0 +1,6 @@
+@(user: Form[User])
+
+@main("Tableau de bord") {
+	
+
+}

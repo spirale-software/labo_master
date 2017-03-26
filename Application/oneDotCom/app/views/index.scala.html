@@ -1,4 +1,4 @@
-@(formMembre: Form[MembreFacultaire])
+@(userForm: Form[User])
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,16 +37,16 @@
 
 
         <form class="form-inline navbar-text navbar-right nouveau-membre" method="post" 
-        	action="@routes.ConnexionController.connexionAction">  
+        	action="@routes.HomeController.connectRegisteredUserAction">  
             <div class="form-group">
-                <label class="sr-only" for="exampleInputEmail3">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                <label class="sr-only" for="exampleInputEmail3">Adresse Email</label>
+                <input type="email" class="form-control" name="@userForm("email").name" id="exampleInputEmail3" placeholder="Email">
             </div>
             <div class="form-group">
-                <label class="sr-only" for="exampleInputPassword3">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
+                <label class="sr-only" for="exampleInputPassword3">Mot de passe</label>
+                <input type="password" class="form-control" name="@userForm("password").name" id="exampleInputPassword3" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary">Se Connecter</button>
         </form>
 
 
@@ -55,16 +55,16 @@
 
 <div class="container form-connection" >
 
-    <form class="form-signin" method="post" action="@routes.ConnexionController.connexionAction">
+    <form class="form-signin" method="post" action="@routes.HomeController.connectNewUserAction">
         <h2 class="form-signin-heading">Inscription</h2>
         <p>Inscription pour nouveau membre</p>
         <label for="inputPrenom" class="sr-only">Prenom</label>
-        <input type="text" name="@formMembre("prenom").name" id="inputEmail" class="form-control" placeholder="Prenom" required autofocus> <br>
+        <input type="text" name="@userForm("prenom").name" id="inputEmail" class="form-control" placeholder="Prenom" required autofocus> <br>
         <label for="inputEmail" class="sr-only">Adresse Email</label>
-        <input type="email" name="@formMembre("email").name" id="inputEmail" class="form-control" placeholder="Adresse Email" required autofocus> <br>
+        <input type="email" name="@userForm("email").name" id="inputEmail" class="form-control" placeholder="Adresse Email" required autofocus> <br>
         <label for="inputPassword" class="sr-only">Mot de Passe</label>
-        <input type="password" name="@formMembre("pwd").name" id="inputPassword" class="form-control" placeholder="Mot de Passe" required><br>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Enregistrer</button>
+        <input type="password" name="@userForm("pwd").name" id="inputPassword" class="form-control" placeholder="Mot de Passe" required><br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">S'Enregistrer</button>
     </form>
 
 </div> <!-- /container -->
