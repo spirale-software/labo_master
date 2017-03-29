@@ -1,0 +1,8 @@
+@(user: User)
+
+@dashboardLayout("Tableau de bord")(user.getPrenom()){
+
+	 <h1 class="page-header">Tableau de bord</h1>
+	
+
+}

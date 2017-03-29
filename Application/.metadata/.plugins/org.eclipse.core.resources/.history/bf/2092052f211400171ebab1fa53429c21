@@ -1,0 +1,29 @@
+package models;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.*;
+
+@Entity
+public class Proposal {
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	private Long idProposal;
+	private String ProposalName;
+	@Enumerated(EnumType.STRING)
+	private ProposalState propositionState;
+	private Date creationDate;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="AUTHOR_ID")
+	private User authorOfProposal;
+	@OneToMany(mappedBy = "Proposition_id")
+	private List<Proposal_Writer> Propositions;
+	
+	
+	public void setProposalState(ProposalState propositionState) {
+		this.propositionState = propositionState;
+	}
+	
+	
+}

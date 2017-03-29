@@ -1,0 +1,13 @@
+package services.proposition;
+
+import models.Proposition;
+
+public class AssignedState implements PropositionState {
+
+	@Override
+	public void doAction(Proposition proposition) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

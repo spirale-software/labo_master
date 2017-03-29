@@ -175,3 +175,2454 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.jface.text 2 0 2017-03-26 00:40:18.574
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+!SESSION 2017-03-26 21:49:39.703 -----------------------------------------------
+eclipse.buildId=4.6.1.M20160907-1200
+java.version=1.8.0_121
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_BE
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.osgi 2 0 2017-03-26 21:50:55.870
+!MESSAGE While loading class "org.eclipse.egit.ui.internal.ConfigurationChecker$1$1", thread "Thread[Worker-1,5,main]" timed out waiting (5015ms) for thread "Thread[main,6,main]" to finish starting bundle "org.eclipse.egit.ui_4.4.1.201607150455-r [277]". To avoid deadlock, thread "Thread[Worker-1,5,main]" is proceeding but "org.eclipse.egit.ui.internal.ConfigurationChecker$1$1" may not be fully initialized.
+!STACK 0
+org.osgi.framework.BundleException: Unable to acquire the state change lock for the module: osgi.identity; type="osgi.bundle"; version:Version="4.4.1.201607150455-r"; osgi.identity="org.eclipse.egit.ui"; singleton:="true" [id=277] STARTED [STARTED]
+	at org.eclipse.osgi.container.Module.lockStateChange(Module.java:337)
+	at org.eclipse.osgi.container.Module.start(Module.java:401)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:470)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:529)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:325)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:345)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:423)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:372)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:364)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:161)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.egit.ui.internal.ConfigurationChecker$1.run(ConfigurationChecker.java:45)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.util.concurrent.TimeoutException: Timeout after waiting 5 seconds to acquire the lock.
+	at org.eclipse.osgi.container.Module.lockStateChange(Module.java:334)
+	... 13 more
+Root exception:
+java.util.concurrent.TimeoutException: Timeout after waiting 5 seconds to acquire the lock.
+	at org.eclipse.osgi.container.Module.lockStateChange(Module.java:334)
+	at org.eclipse.osgi.container.Module.start(Module.java:401)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:470)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:529)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:325)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:345)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:423)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:372)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:364)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:161)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.egit.ui.internal.ConfigurationChecker$1.run(ConfigurationChecker.java:45)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-03-26 21:51:09.722
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Lapi Emo'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2017-03-26 21:54:56.950
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.eclipse.org/tools/mylyn/update/.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:117)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.fail(CachingRepositoryManager.java:333)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:236)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:456)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:117)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:389)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:196)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:456)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.epp.internal.mpc.ui.catalog.MarketplaceCatalog$13.run(MarketplaceCatalog.java:279)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2017-03-26 21:54:56.950
+!MESSAGE No repository found at http://download.eclipse.org/tools/mylyn/update/.
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:02.201
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.googlecode.usc\jdbcdslog\jars\jdbcdslog-1.0.6.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:02.217
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.fasterxml.jackson.datatype\jackson-datatype-jdk8\bundles\jackson-datatype-jdk8-2.7.8.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:02.232
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\oauth.signpost\signpost-commonshttp4\jars\signpost-commonshttp4-1.2.1.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:02.232
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\javax.transaction\jta\jars\jta-1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:02.248
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\mysql\mysql-connector-java\jars\mysql-connector-java-5.1.36.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:02.248
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.h2database\h2\jars\h2-1.4.192.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:02.263
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.scala-sbt\test-interface\jars\test-interface-1.0.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:02.263
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:02.279
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.joda\joda-convert\jars\joda-convert-1.8.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:02.279
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-api\jars\selenium-api-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.399
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\mysql\mysql-connector-java\jars\mysql-connector-java-5.1.36.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.415
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.415
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\xerces\xercesImpl\jars\xercesImpl-2.11.0.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.431
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.apache.tomcat\tomcat-servlet-api\jars\tomcat-servlet-api-8.0.33.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.431
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\commons-codec\commons-codec\jars\commons-codec-1.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.446
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.slf4j\jcl-over-slf4j\jars\jcl-over-slf4j-1.7.21.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.462
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\io.netty\netty-common\jars\netty-common-4.0.41.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.493
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-java_2.11\jars\play-java_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.493
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\io.netty\netty-handler\jars\netty-handler-4.0.41.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.509
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.hamcrest\hamcrest-core\jars\hamcrest-core-1.3.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.524
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.542
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.561
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-cache_2.11\jars\play-cache_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.577
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.592
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.608
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\net.sourceforge.nekohtml\nekohtml\jars\nekohtml-1.9.22.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.623
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.asynchttpclient\netty-resolver-dns\jars\netty-resolver-dns-2.0.11.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.655
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.670
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.702
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.717
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\io.netty\netty-transport\jars\netty-transport-4.0.41.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.748
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.773
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-java-ws_2.11\jars\play-java-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.793
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.809
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\net.jodah\typetools\bundles\typetools-0.4.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.818
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.834
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.849
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.865
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.881
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.jolbox\bonecp\bundles\bonecp-0.8.0.RELEASE.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.896
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.912
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\junit\junit\jars\junit-4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.943
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\io.netty\netty-transport-native-epoll\jars\netty-transport-native-epoll-4.0.41.Final-linux-x86_64.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:03.990
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-streams_2.11\jars\play-streams_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:04.021
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:04.049
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:04.298
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\selenium-api-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:04.733
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\selenium-api-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:04.764
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\signpost-commonshttp4-1.2.1.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:05.076
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\signpost-commonshttp4-1.2.1.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:05.162
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\jackson-datatype-jdk8-2.7.8-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:06.247
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.apache.org/index.html C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:06.820
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.apache.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:06.930
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.apache.org/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:07.070
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\jackson-datatype-jdk8-2.7.8-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:07.149
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.apache.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:07.195
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\jdbcdslog-1.0.6.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:07.258
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.apache.org/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:07.336
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.apache.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:07.477
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\jdbcdslog-1.0.6.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:07.680
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\h2-1.4.192-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:07.945
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.apache.org/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:07.977
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\h2-1.4.192-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:08.070
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\test-interface-1.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:08.133
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.apache.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:08.227
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.jboss.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:08.258
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.jboss.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:08.336
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.jboss.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:08.508
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.jboss.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:08.696
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.jboss.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:08.758
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.jboss.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:08.961
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\test-interface-1.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:09.024
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.jboss.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:09.050
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.jboss.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:09.123
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\transaction-api-1.1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:09.248
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder FOUND: SourceFileResult[source = C:\Users\LAPIEM~1\AppData\Local\Temp\ssourceattacher3059724309348903307.tmp ; suggestedSourceFileName = mysql-connector-java-5.1.36-sources.jar ; accuracy = 100 ; binFile = C:\Users\Lapi Emo\.ivy2\cache\mysql\mysql-connector-java\jars\mysql-connector-java-5.1.36.jar ]
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:09.279
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.eclipse.jetty.websocket\websocket-client\jars\websocket-client-9.2.15.v20160210.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:09.362
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.apache.org/index.html C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:09.393
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.slf4j\jul-to-slf4j\jars\jul-to-slf4j-1.7.21.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:09.565
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\transaction-api-1.1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:09.706
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-enhancer\jars\play-enhancer-1.1.0.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:09.722
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\joda-convert-1.8.1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:09.784
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.jboss.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:09.814
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-firefox-driver\jars\selenium-firefox-driver-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:09.941
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.springframework\spring-context\jars\spring-context-4.2.7.RELEASE.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:10.081
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:10.144
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\joda-convert-1.8.1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:10.160
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\tomcat-servlet-api-8.0.33-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:10.175
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:10.222
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://oss.sonatype.org/index.html C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:10.360
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\tomcat-servlet-api-8.0.33-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:10.391
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\xercesImpl-2.11.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:10.579
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://oss.sonatype.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:10.657
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\xercesImpl-2.11.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:10.796
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\commons-codec-1.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:10.922
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.apache.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:10.985
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\commons-codec-1.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:11.047
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\jcl-over-slf4j-1.7.21-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:11.139
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://oss.sonatype.org/index.html C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:11.186
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\jcl-over-slf4j-1.7.21-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:11.218
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\netty-common-4.0.41.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:11.392
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://oss.sonatype.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:11.424
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\netty-common-4.0.41.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:11.439
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\play-java_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:11.562
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\play-java_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:11.631
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.jboss.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:11.647
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://oss.sonatype.org/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:11.662
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://oss.sonatype.org/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:11.678
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\hamcrest-core-1.3-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:11.826
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\hamcrest-core-1.3-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:11.848
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\netty-handler-4.0.41.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:12.005
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://oss.sonatype.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:12.081
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\netty-handler-4.0.41.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:12.169
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\play-cache_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:12.427
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\play-cache_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:12.442
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\nekohtml-1.9.22-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:12.489
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://oss.sonatype.org/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:12.646
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\nekohtml-1.9.22-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:12.692
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://oss.sonatype.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:12.708
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\netty-resolver-dns-2.0.11-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:12.807
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://oss.sonatype.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:12.868
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\netty-resolver-dns-2.0.11-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:12.915
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\netty-transport-4.0.41.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:13.064
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\netty-transport-4.0.41.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:13.095
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\play-java-ws_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:13.220
+!MESSAGE class org.freejava.tools.handlers.WebBasedArtifactorySourceCodeFinder; serviceUrl=http://repo.springsource.org/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:13.470
+!MESSAGE class org.freejava.tools.handlers.WebBasedArtifactorySourceCodeFinder; serviceUrl=http://repo.springsource.org/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:13.486
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\play-java-ws_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:13.531
+!MESSAGE class org.freejava.tools.handlers.WebBasedArtifactorySourceCodeFinder; serviceUrl=http://repo.springsource.org/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:13.563
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\typetools-0.4.4-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:13.732
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\typetools-0.4.4-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:13.748
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\bonecp-0.8.0.RELEASE-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:13.889
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\bonecp-0.8.0.RELEASE-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:13.904
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\junit-4.12-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:14.029
+!MESSAGE class org.freejava.tools.handlers.WebBasedArtifactorySourceCodeFinder; serviceUrl=http://repo.springsource.org/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:14.090
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\junit-4.12-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:14.153
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\netty-transport-native-epoll-4.0.41.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:14.351
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\netty-transport-native-epoll-4.0.41.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:14.399
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\play-streams_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:14.711
+!MESSAGE class org.freejava.tools.handlers.WebBasedArtifactorySourceCodeFinder; serviceUrl=http://repo.springsource.org/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:14.805
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\play-streams_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:14.977
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\mysql-connector-java-5.1.36-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:15.365
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\mysql-connector-java-5.1.36-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:15.568
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\websocket-client-9.2.15.v20160210-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:15.631
+!MESSAGE class org.freejava.tools.handlers.WebBasedArtifactorySourceCodeFinder; serviceUrl=http://repo.springsource.org/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:15.693
+!MESSAGE class org.freejava.tools.handlers.WebBasedArtifactorySourceCodeFinder; serviceUrl=http://repo.springsource.org/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:15.756
+!MESSAGE class org.freejava.tools.handlers.WebBasedArtifactorySourceCodeFinder; serviceUrl=http://repo.springsource.org/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:15.832
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\websocket-client-9.2.15.v20160210-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:15.863
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\jul-to-slf4j-1.7.21-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:15.988
+!MESSAGE class org.freejava.tools.handlers.WebBasedArtifactorySourceCodeFinder; serviceUrl=http://repo.springsource.org/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:16.035
+!MESSAGE class org.freejava.tools.handlers.WebBasedArtifactorySourceCodeFinder; serviceUrl=http://repo.springsource.org/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:16.084
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\jul-to-slf4j-1.7.21-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:16.090
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\play-enhancer-1.1.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:16.278
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\play-enhancer-1.1.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:16.328
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\selenium-firefox-driver-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:16.585
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\selenium-firefox-driver-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:16.618
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\spring-context-4.2.7.RELEASE-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:16.807
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\spring-context-4.2.7.RELEASE-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.390
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://repository.ow2.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.421
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://repository.ow2.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.452
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://repository.ow2.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.483
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://repository.ow2.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.566
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://repository.ow2.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.713
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://nexus.codehaus.org/index.html C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.760
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://nexus.codehaus.org/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.795
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://nexus.codehaus.org/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.803
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://nexus.codehaus.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.812
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://nexus.codehaus.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.827
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://repository.ow2.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.843
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://repository.ow2.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.859
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://repository.ow2.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.921
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://repository.ow2.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.952
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.java.net/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.952
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.java.net/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.968
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.java.net/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.984
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://nexus.codehaus.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:19.999
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.java.net/index.html C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:20.015
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://nexus.codehaus.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:20.077
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://repository.ow2.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:20.077
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.java.net/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:20.093
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.java.net/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:20.124
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://nexus.codehaus.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:20.140
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://nexus.codehaus.org/index.html C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:20.171
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.java.net/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:20.187
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://nexus.codehaus.org/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:20.202
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.java.net/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:20.234
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.java.net/index.html C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:20.301
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.java.net/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:20.718
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven2.exoplatform.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:20.856
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven2.exoplatform.org/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.090
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven2.exoplatform.org/index.html C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.153
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.nuxeo.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.169
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven2.exoplatform.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.184
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.nuxeo.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.200
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven2.exoplatform.org/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.215
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven2.exoplatform.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.231
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven2.exoplatform.org/index.html C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.308
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.nuxeo.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.361
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.nuxeo.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.408
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.nuxeo.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.408
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.nuxeo.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.423
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven2.exoplatform.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.455
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven2.exoplatform.org/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.470
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.nuxeo.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.666
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.nuxeo.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.744
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.nuxeo.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:21.938
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven2.exoplatform.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:22.142
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.nuxeo.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:24.109
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.alfresco.com/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:24.140
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.alfresco.com/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:24.640
+!MESSAGE class org.freejava.tools.handlers.ArtifactorySourceCodeFinder; serviceUrl=https://repository.cloudera.com/artifactory/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:24.671
+!MESSAGE class org.freejava.tools.handlers.ArtifactorySourceCodeFinder; serviceUrl=https://repository.cloudera.com/artifactory/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:25.607
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.alfresco.com/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:25.669
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://nexus.xwiki.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:25.701
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.alfresco.com/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:25.748
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.alfresco.com/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:25.779
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.alfresco.com/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:25.888
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.alfresco.com/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:25.904
+!MESSAGE class org.freejava.tools.handlers.ArtifactorySourceCodeFinder; serviceUrl=https://repository.cloudera.com/artifactory/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:25.935
+!MESSAGE class org.freejava.tools.handlers.ArtifactorySourceCodeFinder; serviceUrl=https://repository.cloudera.com/artifactory/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:25.951
+!MESSAGE class org.freejava.tools.handlers.ArtifactorySourceCodeFinder; serviceUrl=https://repository.cloudera.com/artifactory/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:25.982
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.alfresco.com/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.013
+!MESSAGE class org.freejava.tools.handlers.ArtifactorySourceCodeFinder; serviceUrl=https://repository.cloudera.com/artifactory/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.037
+!MESSAGE class org.freejava.tools.handlers.ArtifactorySourceCodeFinder; serviceUrl=https://repository.cloudera.com/artifactory/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.092
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.alfresco.com/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.139
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.alfresco.com/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.155
+!MESSAGE class org.freejava.tools.handlers.ArtifactorySourceCodeFinder; serviceUrl=https://repository.cloudera.com/artifactory/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.186
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://nexus.xwiki.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.233
+!MESSAGE class org.freejava.tools.handlers.ArtifactorySourceCodeFinder; serviceUrl=https://repository.cloudera.com/artifactory/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.249
+!MESSAGE class org.freejava.tools.handlers.ArtifactorySourceCodeFinder; serviceUrl=https://repository.cloudera.com/artifactory/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.485
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByFTPSearchv3Finder; urlPattern=http://www.search-ftp.com/lsftp.ashx?s={0} C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.517
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.mmnt.ru/int/get?st={0} C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.529
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByFTPSearchv3Finder; urlPattern=http://www.search-ftp.com/lsftp.ashx?s={0} C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.537
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.filewatcher.com/_/?q={0} C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.545
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.mmnt.ru/int/get?st={0} C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.549
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByGoogleCSESourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.557
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.filewatcher.com/_/?q={0} C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.561
+!MESSAGE class org.freejava.tools.handlers.SourceAttacherServiceSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.561
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByGoogleCSESourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.576
+!MESSAGE class org.freejava.tools.handlers.SourceAttacherServiceSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.686
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://nexus.xwiki.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.733
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://nexus.xwiki.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.733
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://nexus.xwiki.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.748
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://nexus.xwiki.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.748
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://nexus.xwiki.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:26.860
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://nexus.xwiki.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:27.094
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://nexus.xwiki.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:27.125
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://nexus.xwiki.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:27.482
+!MESSAGE org.freejava.tools.handlers.JreSourceCodeFinder@5ef55005 C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:27.482
+!MESSAGE org.freejava.tools.handlers.GrepCodeSourceCodeFinder@31e48941 C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:27.608
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByFTPSearchv3Finder; urlPattern=http://www.search-ftp.com/lsftp.ashx?s={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:27.773
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByFTPSearchv3Finder; urlPattern=http://www.search-ftp.com/lsftp.ashx?s={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:27.828
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByFTPSearchv3Finder; urlPattern=http://www.search-ftp.com/lsftp.ashx?s={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:27.875
+!MESSAGE org.freejava.tools.handlers.EclipseSourceReferencesSourceCodeFinder@521a5a09 C:\Users\Lapi Emo\.ivy2\cache\tyrex\tyrex\jars\tyrex-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:27.875
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:27.891
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByFTPSearchv3Finder; urlPattern=http://www.search-ftp.com/lsftp.ashx?s={0} C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:27.922
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByFTPSearchv3Finder; urlPattern=http://www.search-ftp.com/lsftp.ashx?s={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:27.922
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:27.938
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByFTPSearchv3Finder; urlPattern=http://www.search-ftp.com/lsftp.ashx?s={0} C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:28.092
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByFTPSearchv3Finder; urlPattern=http://www.search-ftp.com/lsftp.ashx?s={0} C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:28.138
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByFTPSearchv3Finder; urlPattern=http://www.search-ftp.com/lsftp.ashx?s={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:28.356
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.mmnt.ru/int/get?st={0} C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:28.671
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.apache.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:28.922
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.mmnt.ru/int/get?st={0} C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:29.091
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.jboss.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:29.169
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.mmnt.ru/int/get?st={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:29.232
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.mmnt.ru/int/get?st={0} C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:29.247
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.mmnt.ru/int/get?st={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:29.267
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.mmnt.ru/int/get?st={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:29.271
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.mmnt.ru/int/get?st={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:29.283
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.mmnt.ru/int/get?st={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:29.688
+!MESSAGE class org.freejava.tools.handlers.SourceAttacherServiceSourceCodeFinder FOUND: SourceFileResult[source = C:\Users\LAPIEM~1\AppData\Local\Temp\ssourceattacher5011239997536437174.tmp ; suggestedSourceFileName = com.springsource.antlr-sources-2.7.7.jar ; accuracy = 90 ; binFile = C:\Users\Lapi Emo\.ivy2\cache\antlr\antlr\jars\antlr-2.7.7.jar ]
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:29.703
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.hibernate\hibernate-entitymanager\jars\hibernate-entitymanager-5.1.0.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:29.774
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.hibernate\hibernate-entitymanager\jars\hibernate-entitymanager-5.1.0.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:29.951
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\com.springsource.antlr-sources-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:30.202
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\com.springsource.antlr-sources-2.7.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:30.702
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.filewatcher.com/_/?q={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:30.717
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.filewatcher.com/_/?q={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:30.857
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder FOUND: SourceFileResult[source = C:\Users\LAPIEM~1\AppData\Local\Temp\ssourceattacher7726936594901507059.tmp ; suggestedSourceFileName = hibernate-entitymanager-5.1.0.Final-sources.jar ; accuracy = 100 ; binFile = C:\Users\Lapi Emo\.ivy2\cache\org.hibernate\hibernate-entitymanager\jars\hibernate-entitymanager-5.1.0.Final.jar ]
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:30.857
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\io.netty\netty-codec\jars\netty-codec-4.0.41.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:30.903
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\ch.qos.logback\logback-classic\jars\logback-classic-1.1.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:30.919
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.filewatcher.com/_/?q={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:30.935
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:30.966
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:30.982
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.filewatcher.com/_/?q={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:31.235
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\hibernate-entitymanager-5.1.0.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:31.358
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\hibernate-entitymanager-5.1.0.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:31.421
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\netty-codec-4.0.41.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:31.531
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\netty-codec-4.0.41.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:31.560
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\logback-classic-1.1.7-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:31.654
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.apache.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:31.685
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\logback-classic-1.1.7-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:31.732
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://oss.sonatype.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:32.124
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.jboss.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:33.015
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.filewatcher.com/_/?q={0} C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:33.035
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.filewatcher.com/_/?q={0} C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:33.047
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.filewatcher.com/_/?q={0} C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:33.263
+!MESSAGE class org.freejava.tools.handlers.WebBasedArtifactorySourceCodeFinder; serviceUrl=http://repo.springsource.org/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:33.655
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByGoogleCSESourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:33.686
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByGoogleCSESourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:33.749
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByGoogleCSESourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:33.765
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByGoogleCSESourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:33.860
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://oss.sonatype.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:34.172
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://repository.ow2.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:34.362
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://nexus.codehaus.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:34.409
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.java.net/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:34.669
+!MESSAGE class org.freejava.tools.handlers.WebBasedArtifactorySourceCodeFinder; serviceUrl=http://repo.springsource.org/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:34.844
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven2.exoplatform.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:34.969
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.nuxeo.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:35.342
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://repository.ow2.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:35.499
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByGoogleCSESourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:35.587
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://nexus.codehaus.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:35.603
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.java.net/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:35.787
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven2.exoplatform.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:35.842
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByGoogleCSESourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:36.095
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.nuxeo.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:36.251
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByGoogleCSESourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:36.702
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.alfresco.com/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:37.017
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.alfresco.com/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:37.045
+!MESSAGE class org.freejava.tools.handlers.ArtifactorySourceCodeFinder; serviceUrl=https://repository.cloudera.com/artifactory/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:37.139
+!MESSAGE class org.freejava.tools.handlers.ArtifactorySourceCodeFinder; serviceUrl=https://repository.cloudera.com/artifactory/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:37.734
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://nexus.xwiki.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:38.044
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://nexus.xwiki.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:38.375
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByFTPSearchv3Finder; urlPattern=http://www.search-ftp.com/lsftp.ashx?s={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:38.672
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByFTPSearchv3Finder; urlPattern=http://www.search-ftp.com/lsftp.ashx?s={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:39.341
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.mmnt.ru/int/get?st={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:39.372
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.mmnt.ru/int/get?st={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:39.388
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.filewatcher.com/_/?q={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:39.534
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.filewatcher.com/_/?q={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:40.482
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByGoogleCSESourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:40.887
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByGoogleCSESourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:43.826
+!MESSAGE class org.freejava.tools.handlers.SourceAttacherServiceSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:43.858
+!MESSAGE class org.freejava.tools.handlers.SourceAttacherServiceSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:43.858
+!MESSAGE class org.freejava.tools.handlers.SourceAttacherServiceSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:43.873
+!MESSAGE class org.freejava.tools.handlers.SourceAttacherServiceSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:44.485
+!MESSAGE org.freejava.tools.handlers.JreSourceCodeFinder@7ceb9065 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:44.500
+!MESSAGE org.freejava.tools.handlers.GrepCodeSourceCodeFinder@7f1e7e51 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:44.577
+!MESSAGE org.freejava.tools.handlers.JreSourceCodeFinder@6d1d1a9d C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:44.593
+!MESSAGE org.freejava.tools.handlers.GrepCodeSourceCodeFinder@4e1a12f2 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:44.789
+!MESSAGE org.freejava.tools.handlers.JreSourceCodeFinder@7d41dbd5 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:44.809
+!MESSAGE org.freejava.tools.handlers.GrepCodeSourceCodeFinder@39b5d7f9 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:44.825
+!MESSAGE org.freejava.tools.handlers.EclipseSourceReferencesSourceCodeFinder@31080274 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:44.856
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-edge-driver\jars\selenium-edge-driver-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:44.919
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-chrome-driver\jars\selenium-chrome-driver-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:44.934
+!MESSAGE org.freejava.tools.handlers.JreSourceCodeFinder@3dca2019 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:44.950
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-support\jars\selenium-support-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:44.950
+!MESSAGE org.freejava.tools.handlers.GrepCodeSourceCodeFinder@5dde401a C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:44.966
+!MESSAGE org.freejava.tools.handlers.EclipseSourceReferencesSourceCodeFinder@3729d4c C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-logback_2.11\jars\play-logback_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:44.966
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\net.java.dev.jna\jna\jars\jna-4.1.0.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:44.981
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\io.netty\netty-codec-http\jars\netty-codec-http-4.0.41.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.013
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.hibernate\hibernate-core\jars\hibernate-core-5.1.0.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.021
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc-api_2.11\jars\play-jdbc-api_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.061
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\io.netty\netty-buffer\jars\netty-buffer-4.0.41.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.061
+!MESSAGE org.freejava.tools.handlers.EclipseSourceReferencesSourceCodeFinder@481a6fdf C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-server_2.11\jars\play-netty-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.077
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.springframework\spring-beans\jars\spring-beans-4.2.7.RELEASE.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.092
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\net.sourceforge.cssparser\cssparser\jars\cssparser-0.9.18.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.108
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.hibernate\hibernate-core\jars\hibernate-core-5.1.0.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.108
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.eclipse.jetty\jetty-util\jars\jetty-util-9.2.15.v20160210.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.139
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.155
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.170
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.186
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.304
+!MESSAGE org.freejava.tools.handlers.EclipseSourceReferencesSourceCodeFinder@7c9592a0 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.313
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.webbitserver\webbit\jars\webbit-0.4.14.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.391
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-java-jpa_2.11\jars\play-java-jpa_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.438
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-java-jpa_2.11\jars\play-java-jpa_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.607
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.apache.org/index.html C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.654
+!MESSAGE class org.freejava.tools.handlers.SourceAttacherServiceSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.784
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\selenium-edge-driver-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.921
+!MESSAGE class org.freejava.tools.handlers.SourceAttacherServiceSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.999
+!MESSAGE org.freejava.tools.handlers.JreSourceCodeFinder@43a6dbf0 C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:45.999
+!MESSAGE org.freejava.tools.handlers.GrepCodeSourceCodeFinder@68e765ac C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.040
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\selenium-edge-driver-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.052
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\selenium-chrome-driver-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.185
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\selenium-chrome-driver-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.247
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\selenium-support-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.279
+!MESSAGE org.freejava.tools.handlers.JreSourceCodeFinder@57d0a913 C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.310
+!MESSAGE org.freejava.tools.handlers.GrepCodeSourceCodeFinder@51424f78 C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.372
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\selenium-support-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.435
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.apache.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.466
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\jna-4.1.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.497
+!MESSAGE class org.freejava.tools.handlers.SourceAttacherServiceSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.519
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder FOUND: SourceFileResult[source = C:\Users\LAPIEM~1\AppData\Local\Temp\ssourceattacher4866027158781037913.tmp ; suggestedSourceFileName = play-java-jpa_2.11-2.5.10-sources.jar ; accuracy = 100 ; binFile = C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-java-jpa_2.11\jars\play-java-jpa_2.11-2.5.10.jar ]
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.531
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.hibernate\hibernate-validator\jars\hibernate-validator-5.2.4.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.568
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\oauth.signpost\signpost-core\jars\signpost-core-1.2.1.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.584
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\jna-4.1.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.600
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\netty-codec-http-4.0.41.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.615
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-server_2.11\jars\play-server_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.693
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.asynchttpclient\netty-resolver\jars\netty-resolver-2.0.11.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.725
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\javax.validation\validation-api\jars\validation-api-1.1.0.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.780
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.w3c.css\sac\jars\sac-1.3.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.792
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.jboss.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.832
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-exceptions\jars\play-exceptions-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.869
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.eclipse.jetty.websocket\websocket-common\jars\websocket-common-9.2.15.v20160210.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.884
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\netty-codec-http-4.0.41.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.900
+!MESSAGE org.freejava.tools.handlers.JreSourceCodeFinder@78707bc1 C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.916
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\play-jdbc-api_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.916
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.fasterxml.jackson.core\jackson-databind\bundles\jackson-databind-2.7.8.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.931
+!MESSAGE org.freejava.tools.handlers.GrepCodeSourceCodeFinder@7ce6f925 C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.947
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.filewatcher.com/_/?q={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:46.978
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.google.code.findbugs\jsr305\jars\jsr305-3.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.025
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\cglib\cglib-nodep\jars\cglib-nodep-2.1_3.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.045
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\play-jdbc-api_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.057
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\netty-buffer-4.0.41.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.062
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.fasterxml.jackson.core\jackson-core\bundles\jackson-core-2.7.8.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.093
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\javax.el\javax.el-api\jars\javax.el-api-3.0.0.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.124
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.apache.httpcomponents\httpmime\jars\httpmime-4.5.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.155
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\netty-buffer-4.0.41.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.171
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.fluentlenium\fluentlenium-core\jars\fluentlenium-core-0.10.9.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.187
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\spring-beans-4.2.7.RELEASE-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.218
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\net.sf.ehcache\ehcache-core\jars\ehcache-core-2.6.11.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.269
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-netty-utils\jars\play-netty-utils-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.301
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.jboss.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.333
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-json_2.11\jars\play-json_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.349
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\spring-beans-4.2.7.RELEASE-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.396
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\cssparser-0.9.18-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.427
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.slf4j\slf4j-api\jars\slf4j-api-1.7.21.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.474
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\net.sourceforge.htmlunit\htmlunit-core-js\jars\htmlunit-core-js-2.17.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.521
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.fasterxml.jackson.datatype\jackson-datatype-jsr310\bundles\jackson-datatype-jsr310-2.7.8.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.551
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\cssparser-0.9.18-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.567
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\jetty-util-9.2.15.v20160210-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.569
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.apache.commons\commons-exec\jars\commons-exec-1.3.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.600
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.asynchttpclient\netty-codec-dns\jars\netty-codec-dns-2.0.11.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.632
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.google.code.gson\gson\jars\gson-2.3.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.678
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play_2.11\jars\play_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.710
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\jetty-util-9.2.15.v20160210-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.725
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\webbit-0.4.14-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.776
+!MESSAGE org.freejava.tools.handlers.EclipseSourceReferencesSourceCodeFinder@37ed5055 C:\Users\Lapi Emo\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.784
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\build-link\jars\build-link-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.792
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-ie-driver\jars\selenium-ie-driver-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.816
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\commons-io\commons-io\jars\commons-io-2.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.832
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.apache.geronimo.specs\geronimo-jta_1.1_spec\jars\geronimo-jta_1.1_spec-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.847
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\webbit-0.4.14-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.863
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.fasterxml.jackson.core\jackson-annotations\bundles\jackson-annotations-2.7.8.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.879
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.apache.geronimo.specs\geronimo-jta_1.1_spec\jars\geronimo-jta_1.1_spec-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.910
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.netty\netty-reactive-streams\jars\netty-reactive-streams-1.0.8.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:47.988
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-safari-driver\jars\selenium-safari-driver-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.044
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\aopalliance\aopalliance\jars\aopalliance-1.0.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.076
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.google.guava\guava\bundles\guava-19.0.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.092
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByGoogleCSESourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.092
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\play-java-jpa_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.139
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.reactivestreams\reactive-streams\jars\reactive-streams-1.0.0.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.170
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\xalan\xalan\jars\xalan-2.7.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.248
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\play-java-jpa_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.295
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.apache.httpcomponents\httpclient\jars\httpclient-4.5.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.326
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\hibernate-validator-5.2.4.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.358
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\dom4j\dom4j\jars\dom4j-1.6.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.420
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\dom4j\dom4j\jars\dom4j-1.6.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.436
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://oss.sonatype.org/index.html C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.525
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\hibernate-validator-5.2.4.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.553
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\signpost-core-1.2.1.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.702
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\signpost-core-1.2.1.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.733
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\play-server_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.733
+!MESSAGE org.freejava.tools.handlers.EclipseSourceReferencesSourceCodeFinder@5b4dbe02 C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.749
+!MESSAGE org.freejava.tools.handlers.EclipseSourceReferencesSourceCodeFinder@40d34e8c C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.768
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.novocode\junit-interface\jars\junit-interface-0.11.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.776
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.apache.httpcomponents\httpcore\jars\httpcore-4.4.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.812
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.eclipse.jetty.websocket\websocket-api\jars\websocket-api-9.2.15.v20160210.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.827
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe\ssl-config-core_2.11\bundles\ssl-config-core_2.11-0.2.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.859
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.jboss\jandex\bundles\jandex-2.0.0.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.874
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\play-server_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.905
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\joda-time\joda-time\jars\joda-time-2.9.6.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.905
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\netty-resolver-2.0.11-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.921
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.jboss\jandex\bundles\jandex-2.0.0.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.952
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-htmlunit-driver\jars\selenium-htmlunit-driver-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:48.999
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.yaml\snakeyaml\bundles\snakeyaml-1.16.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.047
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-test_2.11\jars\play-test_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.055
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\netty-resolver-2.0.11-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.085
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\validation-api-1.1.0.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.132
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-leg-rc\jars\selenium-leg-rc-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.210
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-stream_2.11\jars\akka-stream_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.272
+!MESSAGE class org.freejava.tools.handlers.WebBasedArtifactorySourceCodeFinder; serviceUrl=http://repo.springsource.org/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.317
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\validation-api-1.1.0.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.345
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\sac-1.3-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.377
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.hibernate.common\hibernate-commons-annotations\jars\hibernate-commons-annotations-5.0.1.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.439
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.hibernate.common\hibernate-commons-annotations\jars\hibernate-commons-annotations-5.0.1.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.502
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder FOUND: SourceFileResult[source = C:\Users\LAPIEM~1\AppData\Local\Temp\ssourceattacher5235917392402760166.tmp ; suggestedSourceFileName = geronimo-jta_1.1_spec-1.1.1-sources.jar ; accuracy = 100 ; binFile = C:\Users\Lapi Emo\.ivy2\cache\org.apache.geronimo.specs\geronimo-jta_1.1_spec\jars\geronimo-jta_1.1_spec-1.1.1.jar ]
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.502
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\sac-1.3-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.526
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe\config\bundles\config-1.3.0.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.538
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\play-exceptions-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.576
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\io.netty\netty\bundles\netty-3.5.2.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.639
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.google.inject\guice\jars\guice-4.0.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.701
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\javax.inject\javax.inject\jars\javax.inject-1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.779
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\net.sourceforge.htmlunit\htmlunit\jars\htmlunit-2.20.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.811
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\play-exceptions-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.842
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\websocket-common-9.2.15.v20160210-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.889
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-java-jdbc_2.11\jars\play-java-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.967
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://oss.sonatype.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:49.982
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\ch.qos.logback\logback-core\jars\logback-core-1.1.7.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.014
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder FOUND: SourceFileResult[source = C:\Users\LAPIEM~1\AppData\Local\Temp\ssourceattacher6107614752592237043.tmp ; suggestedSourceFileName = dom4j-1.6.1-sources.jar ; accuracy = 100 ; binFile = C:\Users\Lapi Emo\.ivy2\cache\dom4j\dom4j\jars\dom4j-1.6.1.jar ]
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.037
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.netty\netty-reactive-streams-http\jars\netty-reactive-streams-http-1.0.8.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.062
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\websocket-common-9.2.15.v20160210-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.062
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\commons-logging\commons-logging\jars\commons-logging-1.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.093
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\xml-apis\xml-apis\jars\xml-apis-1.4.01.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.093
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder FOUND: SourceFileResult[source = C:\Users\LAPIEM~1\AppData\Local\Temp\ssourceattacher4811065834282239494.tmp ; suggestedSourceFileName = hibernate-core-5.1.0.Final-sources.jar ; accuracy = 100 ; binFile = C:\Users\Lapi Emo\.ivy2\cache\org.hibernate\hibernate-core\jars\hibernate-core-5.1.0.Final.jar ]
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.109
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\jackson-databind-2.7.8-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.125
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder FOUND: SourceFileResult[source = C:\Users\LAPIEM~1\AppData\Local\Temp\ssourceattacher2702784404571669822.tmp ; suggestedSourceFileName = jandex-2.0.0.Final-sources.jar ; accuracy = 100 ; binFile = C:\Users\Lapi Emo\.ivy2\cache\org.jboss\jandex\bundles\jandex-2.0.0.Final.jar ]
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.125
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-remote-driver\jars\selenium-remote-driver-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.140
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.apache.commons\commons-lang3\jars\commons-lang3-3.4.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.172
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.hibernate.javax.persistence\hibernate-jpa-2.1-api\jars\hibernate-jpa-2.1-api-1.0.0.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.203
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.218
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.jboss.logging\jboss-logging\jars\jboss-logging-3.3.0.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.234
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.fasterxml\classmate\bundles\classmate-1.3.0.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.273
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\jackson-databind-2.7.8-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.285
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.297
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.hibernate.javax.persistence\hibernate-jpa-2.1-api\jars\hibernate-jpa-2.1-api-1.0.0.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.311
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.fasterxml\classmate\bundles\classmate-1.3.0.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.311
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder FOUND: SourceFileResult[source = C:\Users\LAPIEM~1\AppData\Local\Temp\ssourceattacher616607470470166087.tmp ; suggestedSourceFileName = hibernate-commons-annotations-5.0.1.Final-sources.jar ; accuracy = 100 ; binFile = C:\Users\Lapi Emo\.ivy2\cache\org.hibernate.common\hibernate-commons-annotations\jars\hibernate-commons-annotations-5.0.1.Final.jar ]
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.327
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\jsr305-3.0.1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.343
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.jboss.logging\jboss-logging\jars\jboss-logging-3.3.0.Final.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.343
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\net.java.dev.jna\jna-platform\jars\jna-platform-4.1.0.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.421
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.javassist\javassist\bundles\javassist-3.20.0-GA.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.452
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\jsr305-3.0.1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.483
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.reflections\reflections\jars\reflections-0.9.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.499
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\cglib-nodep-2.1_3-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.515
+!MESSAGE class org.freejava.tools.handlers.SourceAttacherServiceSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.531
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.asynchttpclient\async-http-client\jars\async-http-client-2.0.11.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.551
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://repository.ow2.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.591
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.google.inject.extensions\guice-assistedinject\jars\guice-assistedinject-4.0.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.643
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\xalan\serializer\jars\serializer-2.7.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.690
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.zaxxer\HikariCP\bundles\HikariCP-2.5.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.768
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\cglib-nodep-2.1_3-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.796
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.akka\akka-actor_2.11\jars\akka-actor_2.11-2.4.12.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.812
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://nexus.codehaus.org/index.html C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.812
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\jackson-core-2.7.8-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.906
+!MESSAGE org.freejava.tools.handlers.JreSourceCodeFinder@51d494bb C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.937
+!MESSAGE org.freejava.tools.handlers.GrepCodeSourceCodeFinder@1579e43f C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.969
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.java.net/index.html C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.969
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.eclipse.jetty\jetty-io\jars\jetty-io-9.2.15.v20160210.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:50.984
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\jackson-core-2.7.8-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.000
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\javax.el-api-3.0.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.025
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder FOUND: SourceFileResult[source = C:\Users\LAPIEM~1\AppData\Local\Temp\ssourceattacher6830529999725451822.tmp ; suggestedSourceFileName = jboss-logging-3.3.0.Final-sources.jar ; accuracy = 100 ; binFile = C:\Users\Lapi Emo\.ivy2\cache\org.jboss.logging\jboss-logging\jars\jboss-logging-3.3.0.Final.jar ]
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.033
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.scala-lang.modules\scala-java8-compat_2.11\bundles\scala-java8-compat_2.11-0.7.0.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.049
+!MESSAGE class org.freejava.tools.handlers.SourceAttacherServiceSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.077
+!MESSAGE class org.freejava.tools.handlers.SourceRepositoryFinder C:\Users\Lapi Emo\.ivy2\cache\org.springframework\spring-core\jars\spring-core-4.2.7.RELEASE.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.124
+!MESSAGE org.freejava.tools.handlers.EclipseSourceReferencesSourceCodeFinder@4941a4fe C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.124
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder FOUND: SourceFileResult[source = C:\Users\LAPIEM~1\AppData\Local\Temp\ssourceattacher2484495640374352160.tmp ; suggestedSourceFileName = hibernate-jpa-2.1-api-1.0.0.Final-sources.jar ; accuracy = 100 ; binFile = C:\Users\Lapi Emo\.ivy2\cache\org.hibernate.javax.persistence\hibernate-jpa-2.1-api\jars\hibernate-jpa-2.1-api-1.0.0.Final.jar ]
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.171
+!MESSAGE class org.freejava.tools.handlers.WebBasedArtifactorySourceCodeFinder; serviceUrl=http://repo.springsource.org/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.186
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.apache.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.279
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\javax.el-api-3.0.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.315
+!MESSAGE org.freejava.tools.handlers.JreSourceCodeFinder@5ef55005 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.334
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\httpmime-4.5.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.350
+!MESSAGE org.freejava.tools.handlers.GrepCodeSourceCodeFinder@31e48941 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.475
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\httpmime-4.5.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.490
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\fluentlenium-core-0.10.9-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.531
+!MESSAGE org.freejava.tools.handlers.EclipseSourceReferencesSourceCodeFinder@521a5a09 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-ws_2.11\jars\play-ws_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.559
+!MESSAGE class org.freejava.tools.handlers.MavenRepoSourceCodeFinder FOUND: SourceFileResult[source = C:\Users\LAPIEM~1\AppData\Local\Temp\ssourceattacher1242853623190457054.tmp ; suggestedSourceFileName = classmate-1.3.0-sources.jar ; accuracy = 100 ; binFile = C:\Users\Lapi Emo\.ivy2\cache\com.fasterxml\classmate\bundles\classmate-1.3.0.jar ]
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.575
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://repository.jboss.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.747
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\fluentlenium-core-0.10.9-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.779
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\ehcache-core-2.6.11-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.909
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\ehcache-core-2.6.11-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:51.925
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\play-netty-utils-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:52.003
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://repository.ow2.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:52.069
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://nexus.codehaus.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:52.100
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.java.net/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:52.178
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\play-netty-utils-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:52.194
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\play-json_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:52.328
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\play-json_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:52.344
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\slf4j-api-1.7.21-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:52.453
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\slf4j-api-1.7.21-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:52.469
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\htmlunit-core-js-2.17-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:52.552
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven2.exoplatform.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:52.591
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\htmlunit-core-js-2.17-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:52.623
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\jackson-datatype-jsr310-2.7.8-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:52.669
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.nuxeo.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:52.796
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\jackson-datatype-jsr310-2.7.8-sources.jar
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-26 22:00:52.817
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:52.817
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\commons-exec-1.3-sources.jar
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-26 22:00:52.832
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:52.988
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://oss.sonatype.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:53.185
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\commons-exec-1.3-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:53.247
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\netty-codec-dns-2.0.11-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:53.670
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\netty-codec-dns-2.0.11-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:53.733
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\gson-2.3.1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:53.748
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.alfresco.com/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:53.837
+!MESSAGE class org.freejava.tools.handlers.WebBasedArtifactorySourceCodeFinder; serviceUrl=http://repo.springsource.org/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:53.915
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\gson-2.3.1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:53.993
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\play_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:54.109
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\play_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:54.124
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\build-link-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:54.140
+!MESSAGE class org.freejava.tools.handlers.ArtifactorySourceCodeFinder; serviceUrl=https://repository.cloudera.com/artifactory/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:54.234
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\build-link-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:54.249
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\selenium-ie-driver-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:54.462
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\selenium-ie-driver-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:54.509
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\commons-io-2.4-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:54.587
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://repository.ow2.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:54.665
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://nexus.codehaus.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:54.712
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.java.net/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:54.813
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\commons-io-2.4-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:54.828
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\jackson-annotations-2.7.8-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:54.875
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://nexus.xwiki.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:54.891
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven2.exoplatform.org/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.016
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.nuxeo.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.036
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\jackson-annotations-2.7.8-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.044
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\netty-reactive-streams-1.0.8-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.061
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven2.exoplatform.org/index.html C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.170
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\netty-reactive-streams-1.0.8-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.186
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\selenium-safari-driver-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.295
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\selenium-safari-driver-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.311
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\aopalliance-1.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.373
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.nuxeo.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.563
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\aopalliance-1.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.671
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByFTPSearchv3Finder; urlPattern=http://www.search-ftp.com/lsftp.ashx?s={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.702
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\guava-19.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.718
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.alfresco.com/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.805
+!MESSAGE class org.freejava.tools.handlers.ArtifactorySourceCodeFinder; serviceUrl=https://repository.cloudera.com/artifactory/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.809
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\guava-19.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.825
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\reactive-streams-1.0.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.981
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\reactive-streams-1.0.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:55.997
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=https://maven.alfresco.com/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:56.030
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\xalan-2.7.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:56.157
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\xalan-2.7.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:56.204
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\httpclient-4.5.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:56.294
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\httpclient-4.5.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:56.302
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\junit-interface-0.11-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:56.373
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://nexus.xwiki.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:56.420
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\junit-interface-0.11-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:56.435
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\httpcore-4.4.4-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:56.609
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\httpcore-4.4.4-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:56.671
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.mmnt.ru/int/get?st={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:56.687
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\websocket-api-9.2.15.v20160210-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:56.718
+!MESSAGE class org.freejava.tools.handlers.ArtifactorySourceCodeFinder; serviceUrl=https://repository.cloudera.com/artifactory/webapp/home.html C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:56.887
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\websocket-api-9.2.15.v20160210-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:56.903
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\ssl-config-core_2.11-0.2.1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:56.981
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.filewatcher.com/_/?q={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.044
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\ssl-config-core_2.11-0.2.1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.122
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\joda-time-2.9.6-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.216
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByFTPSearchv3Finder; urlPattern=http://www.search-ftp.com/lsftp.ashx?s={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.341
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\joda-time-2.9.6-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.356
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\selenium-htmlunit-driver-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.434
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.mmnt.ru/int/get?st={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.519
+!MESSAGE class org.freejava.tools.handlers.NexusSourceCodeFinder; serviceUrl=http://nexus.xwiki.org/nexus/index.html C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.551
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\selenium-htmlunit-driver-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.559
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\snakeyaml-1.16-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.747
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.filewatcher.com/_/?q={0} C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.810
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByGoogleCSESourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.826
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByFTPSearchv3Finder; urlPattern=http://www.search-ftp.com/lsftp.ashx?s={0} C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.841
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.mmnt.ru/int/get?st={0} C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.857
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\snakeyaml-1.16-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.857
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByUrlPatternFinder; urlPattern=http://www.filewatcher.com/_/?q={0} C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.872
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\play-test_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.872
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByGoogleCSESourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.888
+!MESSAGE class org.freejava.tools.handlers.SourceAttacherServiceSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.982
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\play-test_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:57.998
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\selenium-leg-rc-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:58.109
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\selenium-leg-rc-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:58.156
+!MESSAGE class org.freejava.tools.handlers.SourceAttacherServiceSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:58.219
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\akka-stream_2.11-2.4.12-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:58.282
+!MESSAGE org.freejava.tools.handlers.JreSourceCodeFinder@7d41dbd5 C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:58.290
+!MESSAGE org.freejava.tools.handlers.GrepCodeSourceCodeFinder@39b5d7f9 C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:58.433
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\akka-stream_2.11-2.4.12-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:58.606
+!MESSAGE org.freejava.tools.handlers.JreSourceCodeFinder@1bbf6756 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:58.606
+!MESSAGE org.freejava.tools.handlers.GrepCodeSourceCodeFinder@6d34337a C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:58.653
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\geronimo-jta_1.1_spec-1.1.1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:58.716
+!MESSAGE org.freejava.tools.handlers.EclipseSourceReferencesSourceCodeFinder@481a6fdf C:\Users\Lapi Emo\.ivy2\cache\org.seleniumhq.selenium\selenium-java\jars\selenium-java-2.48.2.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:58.827
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\geronimo-jta_1.1_spec-1.1.1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:58.827
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\config-1.3.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:58.874
+!MESSAGE org.freejava.tools.handlers.EclipseSourceReferencesSourceCodeFinder@3bbb3c17 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:58.999
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\config-1.3.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:59.022
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\netty-3.5.2.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:59.141
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\netty-3.5.2.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:59.141
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\guice-4.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:59.250
+!MESSAGE class org.freejava.tools.handlers.EclipsePluginSourceByGoogleCSESourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:59.275
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\guice-4.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:59.283
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\javax.inject-1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:59.686
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\javax.inject-1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:00:59.733
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\htmlunit-2.20-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:00.175
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\htmlunit-2.20-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:00.410
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\play-java-jdbc_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:00.549
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\play-java-jdbc_2.11-2.5.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:00.576
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\dom4j-1.6.1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:00.686
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\dom4j-1.6.1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:00.701
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\logback-core-1.1.7-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:00.811
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\logback-core-1.1.7-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:00.811
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\netty-reactive-streams-http-1.0.8-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:00.920
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\netty-reactive-streams-http-1.0.8-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:01.019
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\hibernate-core-5.1.0.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:01.125
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\hibernate-core-5.1.0.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:01.141
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\commons-logging-1.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:01.286
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\commons-logging-1.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:01.342
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\jandex-2.0.0.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:01.467
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\jandex-2.0.0.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:01.545
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\xml-apis-1.4.01-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:01.820
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\xml-apis-1.4.01-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:01.852
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\selenium-remote-driver-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:01.961
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\selenium-remote-driver-2.48.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:01.977
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\commons-lang3-3.4-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.075
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\commons-lang3-3.4-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.091
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\hibernate-commons-annotations-5.0.1.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.169
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\hibernate-commons-annotations-5.0.1.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.200
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\jna-platform-4.1.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.287
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\jna-platform-4.1.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.311
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\javassist-3.20.0-GA-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.423
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\javassist-3.20.0-GA-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.454
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\reflections-0.9.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.557
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\reflections-0.9.10-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.563
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\async-http-client-2.0.11-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.672
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\async-http-client-2.0.11-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.672
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\guice-assistedinject-4.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.792
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\guice-assistedinject-4.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.800
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\serializer-2.7.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.891
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\serializer-2.7.2-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.906
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\HikariCP-2.5.1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:02.985
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\HikariCP-2.5.1-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:03.028
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\akka-actor_2.11-2.4.12-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:03.154
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\akka-actor_2.11-2.4.12-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:03.170
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\jetty-io-9.2.15.v20160210-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:03.248
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\jetty-io-9.2.15.v20160210-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:03.295
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\jboss-logging-3.3.0.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:03.436
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\jboss-logging-3.3.0.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:03.451
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\scala-java8-compat_2.11-0.7.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:03.530
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\scala-java8-compat_2.11-0.7.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:03.545
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\hibernate-jpa-2.1-api-1.0.0.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:03.639
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\hibernate-jpa-2.1-api-1.0.0.Final-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:03.670
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\spring-core-4.2.7.RELEASE-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:03.811
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\spring-core-4.2.7.RELEASE-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:04.238
+!MESSAGE Trying (using InternalBasedSourceAttacherImpl36):  C:\Users\Lapi Emo\.sourceattacher\classmate-1.3.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:04.379
+!MESSAGE Attached C:\Users\Lapi Emo\.sourceattacher\classmate-1.3.0-sources.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:07.875
+!MESSAGE class org.freejava.tools.handlers.SourceAttacherServiceSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:08.328
+!MESSAGE org.freejava.tools.handlers.JreSourceCodeFinder@7ceb9065 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:08.359
+!MESSAGE org.freejava.tools.handlers.GrepCodeSourceCodeFinder@7f1e7e51 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:08.750
+!MESSAGE org.freejava.tools.handlers.EclipseSourceReferencesSourceCodeFinder@31080274 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\play-jdbc_2.11\jars\play-jdbc_2.11-2.5.10.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:09.304
+!MESSAGE class org.freejava.tools.handlers.SourceAttacherServiceSourceCodeFinder C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:10.287
+!MESSAGE org.freejava.tools.handlers.JreSourceCodeFinder@43a6dbf0 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:10.303
+!MESSAGE org.freejava.tools.handlers.GrepCodeSourceCodeFinder@68e765ac C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2017-03-26 22:01:11.154
+!MESSAGE org.freejava.tools.handlers.EclipseSourceReferencesSourceCodeFinder@37ed5055 C:\Users\Lapi Emo\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-26 22:19:08.860
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-26 22:19:08.876
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+!SESSION 2017-03-27 14:25:35.355 -----------------------------------------------
+eclipse.buildId=4.6.1.M20160907-1200
+java.version=1.8.0_121
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_BE
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-03-27 14:30:08.519
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Lapi Emo'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-27 14:48:36.146
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-27 14:48:36.156
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-27 15:46:27.997
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-27 15:46:28.006
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-27 16:55:48.211
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-27 16:55:48.222
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2017-03-28 07:29:55.607
+!MESSAGE Connection to http://dist.springsource.com/release/STS/doc/updates.xml failed on dist.springsource.com. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: dist.springsource.com
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(Unknown Source)
+	at java.net.InetAddress.getAddressesFromNameService(Unknown Source)
+	at java.net.InetAddress.getAllByName0(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1084)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1075)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1071)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:74)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2017-03-29 00:42:37.095 -----------------------------------------------
+eclipse.buildId=4.6.1.M20160907-1200
+java.version=1.8.0_121
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_BE
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.osgi 2 0 2017-03-29 00:43:28.698
+!MESSAGE While loading class "org.eclipse.egit.ui.internal.ConfigurationChecker$1$1", thread "Thread[Worker-1,5,main]" timed out waiting (5017ms) for thread "Thread[main,6,main]" to finish starting bundle "org.eclipse.egit.ui_4.4.1.201607150455-r [277]". To avoid deadlock, thread "Thread[Worker-1,5,main]" is proceeding but "org.eclipse.egit.ui.internal.ConfigurationChecker$1$1" may not be fully initialized.
+!STACK 0
+org.osgi.framework.BundleException: Unable to acquire the state change lock for the module: osgi.identity; type="osgi.bundle"; version:Version="4.4.1.201607150455-r"; osgi.identity="org.eclipse.egit.ui"; singleton:="true" [id=277] STARTED [STARTED]
+	at org.eclipse.osgi.container.Module.lockStateChange(Module.java:337)
+	at org.eclipse.osgi.container.Module.start(Module.java:401)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:470)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:529)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:325)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:345)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:423)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:372)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:364)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:161)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.egit.ui.internal.ConfigurationChecker$1.run(ConfigurationChecker.java:45)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.util.concurrent.TimeoutException: Timeout after waiting 5 seconds to acquire the lock.
+	at org.eclipse.osgi.container.Module.lockStateChange(Module.java:334)
+	... 13 more
+Root exception:
+java.util.concurrent.TimeoutException: Timeout after waiting 5 seconds to acquire the lock.
+	at org.eclipse.osgi.container.Module.lockStateChange(Module.java:334)
+	at org.eclipse.osgi.container.Module.start(Module.java:401)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:470)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:529)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:325)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:345)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:423)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:372)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:364)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:161)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.egit.ui.internal.ConfigurationChecker$1.run(ConfigurationChecker.java:45)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-03-29 00:43:48.853
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Lapi Emo'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-29 02:19:30.587
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-29 02:19:30.602
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-29 04:11:06.541
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-03-29 04:11:06.549
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.wst.json.core 4 4 2017-03-29 04:45:52.862
+!MESSAGE error loading catalog: system_catalog file:C:/Users/Lapi Emo/Desktop/Projet_Laboratoire/Application/.metadata/.plugins/org.eclipse.wst.json.core/system_catalog.xml
+!STACK 0
+org.eclipse.json.provisonnal.com.eclipsesource.json.ParseException: Expected value at 1:0
+	at org.eclipse.json.provisonnal.com.eclipsesource.json.JsonParser.error(JsonParser.java:376)
+	at org.eclipse.json.provisonnal.com.eclipsesource.json.JsonParser.expected(JsonParser.java:369)
+	at org.eclipse.json.provisonnal.com.eclipsesource.json.JsonParser.readValue(JsonParser.java:99)
+	at org.eclipse.json.provisonnal.com.eclipsesource.json.JsonParser.parse(JsonParser.java:64)
+	at org.eclipse.json.provisonnal.com.eclipsesource.json.JsonValue.readFrom(JsonValue.java:91)
+	at org.eclipse.json.provisonnal.com.eclipsesource.json.JsonObject.readFrom(JsonObject.java:122)
+	at org.eclipse.wst.json.core.internal.schema.catalog.CatalogSchemastoreReader.readSchemastore(CatalogSchemastoreReader.java:52)
+	at org.eclipse.wst.json.core.internal.schema.catalog.Catalog$SystemCatalogLS.load(Catalog.java:289)
+	at org.eclipse.wst.json.core.internal.schema.catalog.Catalog.load(Catalog.java:487)
+	at org.eclipse.wst.json.core.internal.schema.catalog.CatalogSet.lookupOrCreateCatalog(CatalogSet.java:43)
+	at org.eclipse.wst.json.core.internal.schema.catalog.NextCatalog.getReferencedCatalog(NextCatalog.java:43)
+	at org.eclipse.wst.json.core.internal.schema.catalog.Catalog.resolveSubordinateCatalogs(Catalog.java:540)
+	at org.eclipse.wst.json.core.internal.schema.catalog.Catalog$InternalResolver.resolveSchema(Catalog.java:278)
+	at org.eclipse.wst.json.core.internal.schema.catalog.Catalog.resolveSchema(Catalog.java:585)
+	at org.eclipse.wst.json.core.internal.schema.catalog.JSONCatalogURIResolverExtension.resolve(JSONCatalogURIResolverExtension.java:48)
+	at org.eclipse.wst.common.uriresolver.internal.ExtensibleURIResolver.resolve(ExtensibleURIResolver.java:85)
+	at org.eclipse.wst.xml.ui.internal.hyperlink.XMLHyperlinkDetector.resolveURI(XMLHyperlinkDetector.java:596)
+	at org.eclipse.wst.xml.ui.internal.hyperlink.XMLHyperlinkDetector.getURIString(XMLHyperlinkDetector.java:479)
+	at org.eclipse.wst.xml.ui.internal.hyperlink.XMLHyperlinkDetector.detectHyperlinks(XMLHyperlinkDetector.java:117)
+	at org.eclipse.ui.texteditor.HyperlinkDetectorRegistry$HyperlinkDetectorDelegate.detectHyperlinks(HyperlinkDetectorRegistry.java:78)
+	at org.eclipse.jface.text.hyperlink.HyperlinkManager.findHyperlinks(HyperlinkManager.java:287)
+	at org.eclipse.jface.text.hyperlink.HyperlinkManager.findHyperlinks(HyperlinkManager.java:259)
+	at org.eclipse.jface.text.hyperlink.HyperlinkManager.mouseMove(HyperlinkManager.java:455)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:213)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4410)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4228)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3816)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)

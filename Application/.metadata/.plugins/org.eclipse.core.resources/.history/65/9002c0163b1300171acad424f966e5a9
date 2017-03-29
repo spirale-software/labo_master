@@ -1,0 +1,14 @@
+package dao;
+
+import com.google.inject.ImplementedBy;
+
+import daoImpl.UserDAO;
+import models.User;
+
+@ImplementedBy(UserDAO.class)
+public interface IUserDAO {
+	
+	public Long addNewUser(User newUser);
+	public User getUserById(Long idUser);
+	public User getUserByCredentials(String email, String pwd);
+}

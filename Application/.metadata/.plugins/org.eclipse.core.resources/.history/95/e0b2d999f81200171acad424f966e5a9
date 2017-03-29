@@ -1,0 +1,5 @@
+package services.publication;
+
+public class FacebookPublication implements Publish {
+
+}

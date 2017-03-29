@@ -1,0 +1,91 @@
+package controllers;
+
+import play.db.jpa.JPAApi;
+import play.mvc.Security.Authenticated;
+import javax.inject.Inject;
+
+import services.data.dao.IUserDAO;
+import services.data.jpaDao.UserDAO;
+import services.general.*;
+import viewModel.UserVM;
+import models.RoleType;
+import models.User;
+import play.data.Form;
+import play.data.FormFactory;
+import play.db.jpa.Transactional;
+import play.mvc.Controller;
+import play.mvc.Result;
+import play.mvc.With;
+import views.html.*;
+
+public class HomeController extends Controller {
+
+	private final FormFactory formFactory;
+	private final IUserDAO userDAO;
+	private JPAApi jpaApi;
+
+	@Inject
+	public HomeController(FormFactory formFactory, IUserDAO userDAO, JPAApi jpaApi) {
+		this.formFactory = formFactory;
+		this.userDAO = userDAO;
+		this.jpaApi = jpaApi;
+	}
+
+	public Result indexAction() {
+		Form<UserVM> userVM = formFactory.form(UserVM.class);
+			
+		return ok(index.render(userVM));
+	}
+
+	public Result connectRegisteredUserAction() {
+		User user = formFactory.form(User.class).bindFromRequest().get();
+		
+		createUserSession(user);
+		
+		user = userDAO.getUserByCredentials(user.getEmail(), user.getPassword());
+
+		return ok(dashboard.render(user));
+	}
+
+	@Transactional
+	public Result connectNewUserAction() {
+		UserVM userVM = formFactory.form(UserVM.class).bindFromRequest().get();
+
+		createUserSession(userVM);
+		
+		userVM.setRole(RoleType.MEMBRE_FACULTAIRE);
+
+		return ok(dashboard.render(userVM));
+	}
+	
+	@Authenticated(CustomAuthenticator.class)
+	public Result logOutAction() {
+		destroyUserSession();
+		
+		return redirect("/");
+	}
+	
+	private void createUserSession(UserVM userVM) {
+		session("username", userVM.getUsername());
+		session("email", userVM.getEmail());
+		session("role", userVM.getRole().toString());		
+	}
+	
+	private void destroyUserSession() {
+		session().remove("username");
+		session().remove("email");
+		session().remove("role");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+

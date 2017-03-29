@@ -1,0 +1,6 @@
+package services.proposition;
+
+public interface PropositionState {
+
+	public void handle();
+}

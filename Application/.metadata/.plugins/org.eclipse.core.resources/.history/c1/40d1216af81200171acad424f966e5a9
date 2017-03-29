@@ -1,0 +1,5 @@
+package services.publication;
+
+public interface Publish {
+
+}

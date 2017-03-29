@@ -1,0 +1,8 @@
+package services.data;
+
+public class Snippet {
+	public static void main(String[] args) {
+		pass.getBytes()
+	}
+}
+

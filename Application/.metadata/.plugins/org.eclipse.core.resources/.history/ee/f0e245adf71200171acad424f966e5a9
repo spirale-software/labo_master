@@ -1,0 +1,5 @@
+package services.proposition;
+
+public class AssignedState {
+
+}

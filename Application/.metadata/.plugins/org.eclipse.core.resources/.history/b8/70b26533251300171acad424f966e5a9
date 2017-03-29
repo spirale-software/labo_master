@@ -1,0 +1,11 @@
+package services.proposition;
+
+public class AssignedState implements PropositionState {
+
+	@Override
+	public void handle() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

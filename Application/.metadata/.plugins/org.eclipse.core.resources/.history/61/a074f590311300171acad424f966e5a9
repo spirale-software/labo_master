@@ -1,0 +1,5 @@
+package services.general;
+
+public class Authenticator {
+
+}

@@ -1,0 +1,75 @@
+package controllers;
+
+import javax.inject.Inject;
+
+import models.Proposal;
+import models.User;
+import play.data.DynamicForm;
+import play.data.Form;
+import play.data.FormFactory;
+import play.mvc.Controller;
+import play.mvc.Result;
+import services.data.dao.IPropositionDAO;
+import services.data.dao.IUserDAO;
+import services.data.jpaDao.UserDAO;
+import views.html.*;
+
+public class PropositionController extends Controller {
+
+	private FormFactory formFactory;
+	private IPropositionDAO propositionDAO;
+
+	@Inject
+	public PropositionController(FormFactory formFactory) {
+
+		this.formFactory = formFactory;
+	}
+
+	public Result propositionAction() {
+
+		Form<Proposal> newPropositionForm = formFactory.form(Proposal.class);
+		String lastName = session("prenom");
+		
+		boolean isAlert = false;
+		
+		return ok(propositionForm.render(newPropositionForm, lastName, isAlert));
+	}
+
+	public Result addPropositionAction() {
+		
+		DynamicForm requestData = formFactory.form().bindFromRequest();
+	    String assignedWriter = requestData.get("assignedWriter");
+	    String propositionName = requestData.get("propositionName");
+	    String propososedCanal = requestData.get("propososedCanal");
+	    
+	    String lastName = session("prenom");
+	    
+	    Form<Proposal> newPropositionForm = formFactory.form(Proposal.class);
+	    
+	    boolean isAlert = true;
+		return ok(propositionForm.render(newPropositionForm, lastName, isAlert));
+	}
+
+	public Result getAllPropositionsAction() {
+
+		String lastName = session("prenom");
+		
+		return ok(propositions.render(lastName));
+	}
+
+	public Result detailPropositionAction() {
+
+		return ok();
+	}
+
+	public Result editPropositionAction() {
+
+		return ok();
+	}
+
+	public Result deletePropositionAction() {
+
+		return ok();
+	}
+
+}

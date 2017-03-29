@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="play.mvc.Controller"/>
 <fullyQualifiedTypeName name="models.MembreFacultaire"/>
 <fullyQualifiedTypeName name="play.data.Form"/>
+<fullyQualifiedTypeName name="dao.IUserDAO"/>
+<fullyQualifiedTypeName name="play.mvc.Controller"/>
+<fullyQualifiedTypeName name="dao.IPropositionDAO"/>
 <fullyQualifiedTypeName name="javax.inject.Inject"/>
+<fullyQualifiedTypeName name="com.google.inject.ImplementedBy"/>
+<fullyQualifiedTypeName name="daoImpl.UserDAO"/>
+<fullyQualifiedTypeName name="play.db.jpa.JPAApi"/>
+<fullyQualifiedTypeName name="models.Role"/>
+<fullyQualifiedTypeName name="javax.persistence.Enumerated"/>
+<fullyQualifiedTypeName name="javax.persistence.EnumType"/>
+<fullyQualifiedTypeName name="services.proposition.PropositionState"/>
+<fullyQualifiedTypeName name="models.User"/>
+<fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="play.data.DynamicForm"/>
+<fullyQualifiedTypeName name="models.Proposition"/>
+<fullyQualifiedTypeName name="play.mvc.With"/>
+<fullyQualifiedTypeName name="play.mvc.Http.Session"/>
+<fullyQualifiedTypeName name="play.mvc.Security"/>
+<fullyQualifiedTypeName name="play.mvc.Http"/>
+<fullyQualifiedTypeName name="play.mvc.Result"/>
+<fullyQualifiedTypeName name="services.general.CustomAuthenticator"/>
+<fullyQualifiedTypeName name="java.security.MessageDigest"/>
+<fullyQualifiedTypeName name="java.security.NoSuchAlgorithmException"/>
+<fullyQualifiedTypeName name="java.util.logging.Level"/>
 </qualifiedTypeNameHistroy>

@@ -1,0 +1,10 @@
+package models;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Role {
+	
+	private Long idRole;
+	private String name;
+}

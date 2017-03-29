@@ -1,0 +1,15 @@
+package models;
+
+import javax.persistence.*;
+
+@Entity
+public class Proposition {
+	private Long idProposition;
+	private String name;
+	private User assignedWriter;
+	private PropositionState propositionState;
+	
+	
+	 
+
+}

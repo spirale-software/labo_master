@@ -1,0 +1,8 @@
+package services.proposition;
+
+import models.Proposition;
+
+public interface PropositionState {
+
+	public void doActione(Proposition proposition);
+}
