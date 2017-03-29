@@ -1,38 +1,38 @@
-package daoImpl;
+package services.data.jpaDao;
 
 import java.util.List;
 
-import dao.IPropositionDAO;
-import models.Proposition;
+import models.Proposal;
+import services.data.dao.IPropositionDAO;
 
 public class PropositionDAO implements IPropositionDAO {
 
 	@Override
-	public Proposition insertNewProposition(Proposition newProposition) {
+	public Proposal insertNewProposition(Proposal newProposition) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Proposition> getAllPropositions() {
+	public List<Proposal> getAllPropositions() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Proposition getPropositionById(Long id) {
+	public Proposal getPropositionById(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Proposition updateProposition(Proposition propositionUpdated) {
+	public Proposal updateProposition(Proposal propositionUpdated) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Proposition> get10NewestPropositions() {
+	public List<Proposal> get10NewestPropositions() {
 		// TODO Auto-generated method stub
 		return null;
 	}

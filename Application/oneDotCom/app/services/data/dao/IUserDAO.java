@@ -1,7 +1,11 @@
-package dao;
+package services.data.dao;
+
+import com.google.inject.ImplementedBy;
 
 import models.User;
+import services.data.jpaDao.UserDAO;
 
+@ImplementedBy(UserDAO.class)
 public interface IUserDAO {
 	
 	public Long addNewUser(User newUser);

@@ -1,4 +1,4 @@
-@(userForm: Form[User])
+@(userVM: Form[UserVM])
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,13 +40,16 @@
         	action="@routes.HomeController.connectRegisteredUserAction">  
             <div class="form-group">
                 <label class="sr-only" for="exampleInputEmail3">Adresse Email</label>
-                <input type="email" class="form-control" name="@userForm("email").name" id="exampleInputEmail3" placeholder="Email">
+                <input type="email" class="form-control" name="@userVM("email").name" id="exampleInputEmail3" placeholder="Email">
             </div>
             <div class="form-group">
                 <label class="sr-only" for="exampleInputPassword3">Mot de passe</label>
-                <input type="password" class="form-control" name="@userForm("password").name" id="exampleInputPassword3" placeholder="Password">
+                <input type="password" class="form-control" name="@userVM("password").name" id="exampleInputPassword3" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-primary">Se Connecter</button>
+            <button type="submit" class="btn btn-primary">
+            	<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+            	Se Connecter
+            </button>
         </form>
 
 
@@ -59,12 +62,12 @@
         <h2 class="form-signin-heading">Inscription</h2>
         <p>Inscription pour nouveau membre</p>
         <label for="inputPrenom" class="sr-only">Prenom</label>
-        <input type="text" name="@userForm("prenom").name" id="inputEmail" class="form-control" placeholder="Prenom" required autofocus> <br>
+        <input type="text" name="@userVM("prenom").name" id="inputEmail" class="form-control" placeholder="Prenom" required autofocus> <br>
         <label for="inputEmail" class="sr-only">Adresse Email</label>
-        <input type="email" name="@userForm("email").name" id="inputEmail" class="form-control" placeholder="Adresse Email" required autofocus> <br>
+        <input type="email" name="@userVM("email").name" id="inputEmail" class="form-control" placeholder="Adresse Email" required autofocus> <br>
         <label for="inputPassword" class="sr-only">Mot de Passe</label>
-        <input type="password" name="@userForm("pwd").name" id="inputPassword" class="form-control" placeholder="Mot de Passe" required><br>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">S'Enregistrer</button>
+        <input type="password" name="@userVM("password").name" id="inputPassword" class="form-control" placeholder="Mot de Passe" required><br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">S'enregistrer</button>
     </form>
 
 </div> <!-- /container -->

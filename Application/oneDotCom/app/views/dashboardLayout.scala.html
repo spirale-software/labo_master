@@ -1,4 +1,4 @@
-@(title: String)(content: Html)
+@(title: String)(lastName: String)(content: Html)
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -35,15 +35,20 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">OneDotCom</a>
-
-		<div class="navbar-text navbar-right">
-			<p>Bienvenu </p>	
+        </div>
+        
+        <div class="navbar-text navbar-right" style="margin-right:20px">
+			<p>
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				 @lastName
+				 <a href="@routes.HomeController.logOutAction">
+				<button type="button" class="btn btn-primary" style="margin-left:30px">Se déconnecter
+					<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+				</button>
+				</a>
+			</p>			
 		</div>
 		
-
-
-        </div>
-
     </div><!-- /.container-fluid -->
 </nav>
 
@@ -64,8 +69,8 @@
 
             <p>Proposition</p>
             <ul class="nav nav-sidebar">
-                <li><a href="@routes.PropositionController.getAllPropositionsAction">Propositions</a></li>
-                <li><a href="@routes.PropositionController.propositionAction">Nouvelle Proposition</a></li>
+                <li><a href="@routes.ProposalController.getAllProposalsAction">Propositions</a></li>
+                <li><a href="@routes.ProposalController.proposalAction">Nouvelle Proposition</a></li>
             </ul>
 
             <p>Proposition Automatique</p>

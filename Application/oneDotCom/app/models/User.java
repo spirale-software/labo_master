@@ -1,12 +1,24 @@
 package models;
 
+import java.util.List;
+
+import javax.persistence.*;
+
+@Entity
 public class User {
 	
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long idUser;
-	private String prenom;
+	private String username;
 	private String email;
 	private String password;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="ROLE_ID")
 	private Role role;
+	@OneToMany(mappedBy = "authorOfProposal")
+	@Basic(optional=true)
+	private List<Proposal> madeProposals;
 	
 	public Long getIdUser() {
 		return idUser;
@@ -14,11 +26,11 @@ public class User {
 	public void setIdUser(Long idUser) {
 		this.idUser = idUser;
 	}
-	public String getPrenom() {
-		return prenom;
+	public String getUsername() {
+		return username;
 	}
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getEmail() {
 		return email;
@@ -39,3 +51,15 @@ public class User {
 		this.role = role;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
