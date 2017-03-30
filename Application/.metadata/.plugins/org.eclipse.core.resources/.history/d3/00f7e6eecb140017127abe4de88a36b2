@@ -1,0 +1,91 @@
+@(userVM: Form[UserVM])
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Index</title>
+
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.min.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/nouveauMembre.css")">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<nav class="navbar navbar-inverse main-navbar" style="border-radius: 0px; height: 75px">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">OneDotCom</a>
+        </div>
+
+
+        <form class="form-inline navbar-text navbar-right nouveau-membre" method="post" 
+        	action="@routes.HomeController.connectRegisteredUserAction">  
+            <div class="form-group">
+                <label class="sr-only" for="exampleInputEmail3">Adresse Email</label>
+                <input type="email" class="form-control" name="@userVM("email").name" id="exampleInputEmail3" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="exampleInputPassword3">Mot de passe</label>
+                <input type="password" class="form-control" name="@userVM("password").name" id="exampleInputPassword3" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">
+            	<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+            	Se Connecter
+            </button>
+        </form>
+
+
+    </div><!-- /.container-fluid -->
+</nav>
+@if(true) {
+	<div class="alert alert-danger" role="alert" style="margin-top:0px">
+		<p style="margin-left:50px">Votre email ou mot de passe est incorrect !!! </p>
+	</div>
+}
+
+
+<div class="container form-connection" >
+
+    <form class="form-signin" method="post" action="@routes.HomeController.connectNewUserAction">
+        <h2 class="form-signin-heading">Inscription</h2>
+        <p>Inscription pour nouveau membre</p>
+        <label for="inputPrenom" class="sr-only">Prenom</label>
+        <input type="text" name="@userVM("username").name" id="inputEmail" class="form-control" placeholder="Prenom" required autofocus> <br>
+        <label for="inputEmail" class="sr-only">Adresse Email</label>
+        <input type="email" name="@userVM("email").name" id="inputEmail" class="form-control" placeholder="Adresse Email" required autofocus> <br>
+        <label for="inputPassword" class="sr-only">Mot de Passe</label>
+        <input type="password" name="@userVM("password").name" id="inputPassword" class="form-control" placeholder="Mot de Passe" required><br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">S'enregistrer</button>
+    </form>
+
+</div> <!-- /container -->
+
+
+	<footer class="footer">
+	    <div class="container">
+	        <p class="text-muted">A Propos</p>
+	    </div>
+	</footer>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="@routes.Assets.versioned("javascripts/bootstrap.min.js")" type="text/javascript"></script>
+</body>
+</html>

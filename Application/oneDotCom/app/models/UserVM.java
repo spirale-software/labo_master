@@ -1,33 +1,27 @@
 package models;
 
-import javax.inject.Inject;
 
-import services.data.dao.IUserDAO;
 import services.general.CryptWithMD5;
 
 public class UserVM {
-	
 	private long idUser;
 	private String username;
 	private String email;
 	private String password;
-	private RoleType role;
-	
+	private String role;
 	private User user;
-	private IUserDAO userDAO;
+		
+	public UserVM(){}
 	
-	@Inject
-	public UserVM(User user, IUserDAO userDAO) {
-		this.user = user;
-		this.userDAO = userDAO;
-	}
-	
-	public void createAndSaveUser() {
+	public User createUser() {
+		user = new User();
+		
 		user.setUsername(username);
 		user.setEmail(email);
+		user.setPassword(password);
 		user.setPassword(CryptWithMD5.cryptWithMD5(user.getPassword()));
 		
-		this.userDAO.addNewUser(user);
+		return user;
 	}
 	
 	public long getIdUser() {
@@ -54,10 +48,10 @@ public class UserVM {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public RoleType getRole() {
+	public String getRole() {
 		return role;
 	}
-	public void setRole(RoleType role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 

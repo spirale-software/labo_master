@@ -1,0 +1,19 @@
+package services.data.dao;
+
+import java.util.List;
+
+import com.google.inject.ImplementedBy;
+
+import models.Proposal;
+import services.data.jpaDao.PropositionDAO;
+
+@ImplementedBy(PropositionDAO.class)
+public interface IPropositionDAO {
+	
+	public Proposal insertProposal(Proposal newProposal);
+	public List<Proposal> getAllProposals();
+	public Proposal getProposalById(Long id);
+	public Proposal getProposalByName(String name);
+	public Proposal updateProposal(Proposal proposalUpdated);
+	public List<Proposal> get10NewestProposals();
+}

@@ -1,4 +1,4 @@
-@(userVM: Form[UserVM])
+@(userVM: Form[UserVM], isFail: Boolean)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,6 +55,12 @@
 
     </div><!-- /.container-fluid -->
 </nav>
+@if(isFail) {
+	<div class="alert alert-danger" role="alert" style="margin-top:0px">
+		<p style="margin-left:100px">Votre email et(ou) mot de passe sont incorrects !!! </p>
+	</div>
+}
+
 
 <div class="container form-connection" >
 
@@ -62,7 +68,7 @@
         <h2 class="form-signin-heading">Inscription</h2>
         <p>Inscription pour nouveau membre</p>
         <label for="inputPrenom" class="sr-only">Prenom</label>
-        <input type="text" name="@userVM("prenom").name" id="inputEmail" class="form-control" placeholder="Prenom" required autofocus> <br>
+        <input type="text" name="@userVM("username").name" id="inputEmail" class="form-control" placeholder="Prenom" required autofocus> <br>
         <label for="inputEmail" class="sr-only">Adresse Email</label>
         <input type="email" name="@userVM("email").name" id="inputEmail" class="form-control" placeholder="Adresse Email" required autofocus> <br>
         <label for="inputPassword" class="sr-only">Mot de Passe</label>

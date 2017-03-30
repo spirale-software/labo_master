@@ -1,6 +1,9 @@
 package services.data.jpaDao;
 
 import javax.inject.Inject;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
+
 import play.db.jpa.Transactional;
 import services.data.dao.IUserDAO;
 import models.User;
@@ -9,8 +12,7 @@ import play.db.jpa.JPAApi;
 
 public class UserDAO implements IUserDAO {
 	
-	
-	private JPAApi jpaApi;
+	private final JPAApi jpaApi;
 	
 	@Inject
 	public UserDAO(JPAApi jpaApi) {
@@ -23,7 +25,7 @@ public class UserDAO implements IUserDAO {
 		
 		jpaApi.em().persist(newUser);
 		
-		return Long.parseLong("2");
+		return newUser.getIdUser();
 	}
 
 	@Override
@@ -33,8 +35,16 @@ public class UserDAO implements IUserDAO {
 	}
 
 	@Override
-	public User getUserByCredentials(String email, String pwd) {
-		// TODO Auto-generated method stub
+	public User getUserByCredentials(String email, String password) {
+		
+		try {
+			Query query = jpaApi.em().createQuery("SELECT user FROM User user WHERE user.email=:email AND user.password=:password");
+			query.setParameter("email", email);
+			query.setParameter("password", password);
+			
+			return (User) query.getSingleResult();
+		} catch (NoResultException e) { }
+		
 		return null;
 	}
 }

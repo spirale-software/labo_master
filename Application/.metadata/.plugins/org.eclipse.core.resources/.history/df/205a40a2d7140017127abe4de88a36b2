@@ -1,0 +1,54 @@
+package services.data.jpaDao;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import models.Proposal;
+import play.db.jpa.JPAApi;
+import services.data.dao.IProposalDAO;
+
+public class ProposalDAO implements IProposalDAO {
+	private final JPAApi jpaApi;
+
+	@Inject
+	public ProposalDAO(JPAApi jpaApi) {
+		this.jpaApi = jpaApi;
+	}
+
+	@Override
+	public Proposal insertProposal(Proposal newProposal) {
+		jpaApi.em().persist(newProposal);
+		return newProposal;
+	}
+
+	@Override
+	public List<Proposal> getAllProposals() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Proposal getProposalById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Proposal getProposalByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Proposal updateProposal(Proposal proposalUpdated) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Proposal> get10NewestProposals() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

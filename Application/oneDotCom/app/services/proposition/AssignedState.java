@@ -2,7 +2,7 @@ package services.proposition;
 
 import models.Proposal;
 
-public class AssignedState implements PropositionState {
+public class AssignedState implements ProposalState {
 
 	@Override
 	public void doActione(Proposal proposition) {
