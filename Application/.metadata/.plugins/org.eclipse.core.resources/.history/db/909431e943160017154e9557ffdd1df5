@@ -1,0 +1,45 @@
+@(listProposals: List[Proposal], lastName: String)
+
+@dashboardLayout("Toutes les propositions")(lastName) {
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	<div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading"><h3>Liste des propositions</h3></div>
+
+                <!-- Table -->
+                <table class="table table-striped">
+                    <tr>
+                        <th>Propositions</th>
+                        <th>Actions</th>
+                    </tr>
+                    
+                    @for(proposal <- listProposals) {
+                    
+                    	<tr>
+	                        <td>
+	                            <p><a href="@controllers.ProposalController.detailProposalAction(proposal.getIdProposal())">@proposal.getProposalName()</a></p>
+	                        </td>
+	                        <td>
+	                            <!-- Split button -->
+	                            <div class="btn-group">
+	                                <button type="button" class="btn btn-default">
+	                                	<a href="@controllers.ProposalController.detailProposalAction(proposal.getIdProposal())">détail</a>
+	                                </button>
+	                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                                    <span class="caret"></span>
+	                                    <span class="sr-only">Toggle Dropdown</span>
+	                                </button>
+	                                <ul class="dropdown-menu">
+	                                    <li><a href="@routes.ProposalController.editProposalAction(proposal.getIdProposal())">Modifier</a></li>
+	                                     <li><a href="#">Supprimer</a></li>
+	                                    <li role="separator" class="divider"></li>	                   
+	                                    <li><a href="@routes.ProposalController.writeProposalContentAction(proposal.getIdProposal())">Rediger Contenu</a></li>
+	                                </ul>
+	                            </div>
+	                        </td>
+                    	</tr>
+                    }
+                </table>
+            </div>
+	
+}

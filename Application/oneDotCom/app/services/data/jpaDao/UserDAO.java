@@ -21,7 +21,7 @@ public class UserDAO implements IUserDAO {
 
 	@Override
 	@Transactional
-	public Long addNewUser(User newUser) {
+	public Long insertUser(User newUser) {
 		
 		jpaApi.em().persist(newUser);
 		
@@ -29,12 +29,13 @@ public class UserDAO implements IUserDAO {
 	}
 
 	@Override
+	@Transactional
 	public User getUserById(Long idUser) {
-		// TODO Auto-generated method stub
-		return null;
+		return jpaApi.em().find(User.class, idUser);
 	}
 
 	@Override
+	@Transactional
 	public User getUserByCredentials(String email, String password) {
 		
 		try {
@@ -48,3 +49,8 @@ public class UserDAO implements IUserDAO {
 		return null;
 	}
 }
+
+
+
+
+

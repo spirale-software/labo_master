@@ -21,3 +21,11 @@
 1490829970365	Rename type 'PropositionDAO'
 1490829996873	Rename type 'IPropositionDAO'
 1490837547298	Rename type 'PropositionState'
+1490881655947	Rename method 'doActione'
+1490881693186	Rename package 'services.proposition'
+1490885096810	Rename method 'buildAuthorOfProposal'
+1490896169085	Infer generic type arguments
+1490948278201	Rename resource 'propositions.scala.html'
+1490968914332	Rename method 'buildProposalVMFormProposal'
+1490970764455	Rename field 'ProposalName'
+1490991680232	Rename resource 'editProposition.scala.html'

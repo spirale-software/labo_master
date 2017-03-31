@@ -19,10 +19,10 @@ import play.mvc.With;
 import views.html.*;
 
 public class HomeController extends Controller {
-
 	private final FormFactory formFactory;
 	private final IUserDAO userDAO;
 	private boolean isFail = false;
+	private UserVM userVM;
 
 	@Inject
 	public HomeController(FormFactory formFactory, IUserDAO userDAO) {
@@ -31,43 +31,38 @@ public class HomeController extends Controller {
 	}
 
 	public Result indexAction() {
-		Form<UserVM> userVM = formFactory.form(UserVM.class);
+		Form<UserVM> userVMForm = formFactory.form(UserVM.class);
 		
-		return ok(index.render(userVM, isFail));
+		return ok(index.render(userVMForm, isFail));
 	}
 
 	@Transactional
 	public Result connectRegisteredUserAction() {
-		UserVM userVM = formFactory.form(UserVM.class).bindFromRequest().get();
+		userVM = formFactory.form(UserVM.class).bindFromRequest().get();
 
 		User user = userDAO.getUserByCredentials(userVM.getEmail(), CryptWithMD5.cryptWithMD5(userVM.getPassword()));
-
-		if (user != null) {
-			userVM.setRole(user.getUserRole().getRoleName());
-			userVM.setUsername(user.getUsername());
-			userVM.setIdUser(user.getIdUser());
-			createUserSession(userVM);
-			
-			return ok(dashboard.render(userVM));
-		} else {
-			isFail = true;
-			return redirect("/");
-		}
 		
+		return (user != null ? this.setUserVMAttributes(user) : redirect("/"));
+	}
+	
+	public Result showDashboardAction() {
+		this.initialiseUserVM();
+		
+		return ok(dashboard.render(userVM));
 	}
 
 	@Transactional
 	public Result connectNewUserAction() {
-		UserVM userVM = formFactory.form(UserVM.class).bindFromRequest().get();
+		userVM = formFactory.form(UserVM.class).bindFromRequest().get();
 
 		userVM.setRole(RoleType.MEMBRE_FACULTAIRE.toString());
 		User user = userVM.createUser();
 		Role role = new Role();
 		role.setRoleName(RoleType.MEMBRE_FACULTAIRE.toString());
 		user.setUserRole(role);
-		long idUser = userDAO.addNewUser(user);
+		long idUser = userDAO.insertUser(user);
 		userVM.setIdUser(idUser);
-		createUserSession(userVM);
+		createUserSession();
 
 		return ok(dashboard.render(userVM));
 	}
@@ -79,11 +74,20 @@ public class HomeController extends Controller {
 		return redirect("/");
 	}
 
-	private void createUserSession(UserVM userVM) {
+	private void createUserSession() {
 		session("idUser", Long.toString(userVM.getIdUser()));
 		session("username", userVM.getUsername());
 		session("email", userVM.getEmail());
 		session("role", userVM.getRole());
+	}
+	
+	private void initialiseUserVM() {
+		userVM = new UserVM();
+		
+		this.userVM.setIdUser(Long.parseLong(session("idUser")));
+		this.userVM.setUsername(session("username"));
+		this.userVM.setEmail(session("username"));
+		this.userVM.setRole(session("username"));	
 	}
 
 	private void destroyUserSession() {
@@ -92,4 +96,22 @@ public class HomeController extends Controller {
 		session().remove("email");
 		session().remove("role");
 	}
+	
+	private Result setUserVMAttributes(User user) {
+		userVM.setRole(user.getUserRole().getRoleName());
+		userVM.setUsername(user.getUsername());
+		userVM.setIdUser(user.getIdUser());
+		createUserSession();
+		
+		return ok(dashboard.render(userVM));	
+	}
 }
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+package services.proposal;
+
+public class ProposalBuilder {
+	private ProposalVM proposalVM;
+	
+	public Proposal getProposal();
+	
+	public ProposalBuilder(ProposalVM proposalVM) {
+		this.proposalVM = proposalVM;
+	}
+
+}

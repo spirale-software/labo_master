@@ -6,12 +6,13 @@
 }
 
 .form-group {
-    
     border-radius: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
     
 }
+
+
 
 .form-group > p {
     margin-left: 150px;
@@ -98,6 +99,17 @@
 
 .main-navbar {
 	border-radius: 0px; height: 75px
+}
+
+.detail-proposal-style .panel-body {
+	padding-top: 3px;
+	padding-bottom: 0px
+}
+
+.proposal-collapse .input-group {
+	width:300px; 
+	margin-left:20px; 
+	margin-bottom: 15px
 }
 
 

@@ -8,7 +8,7 @@ import services.data.jpaDao.UserDAO;
 @ImplementedBy(UserDAO.class)
 public interface IUserDAO {
 	
-	public Long addNewUser(User newUser);
+	public Long insertUser(User newUser);
 	public User getUserById(Long idUser);
 	public User getUserByCredentials(String email, String pwd);
 }

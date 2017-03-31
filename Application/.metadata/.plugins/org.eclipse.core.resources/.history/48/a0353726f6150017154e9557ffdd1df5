@@ -1,0 +1,93 @@
+package services.data.jpaDao;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.inject.Inject;
+import javax.persistence.Query;
+
+import models.Proposal;
+import play.db.jpa.JPAApi;
+import play.db.jpa.Transactional;
+import services.data.dao.IProposalDAO;
+
+public class ProposalDAO implements IProposalDAO {
+	private final JPAApi jpaApi;
+
+	@Inject
+	public ProposalDAO(JPAApi jpaApi) {
+		this.jpaApi = jpaApi;
+	}
+	
+	@Override
+	@Transactional
+	public Proposal insertProposal(Proposal proposal) {
+		jpaApi.em().persist(proposal);
+		
+		return proposal;
+	}
+
+	@Override
+	public List<Proposal> getAllProposals() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Proposal getProposalById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Proposal getProposalByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Proposal updateProposal(Proposal proposalUpdated) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	@Transactional
+	public List<Proposal> get10NewestProposals() {
+		
+		Query query = jpaApi.em().createQuery("SELECT p FROM Proposal p");
+		List<Proposal> list = new ArrayList<Proposal>();
+		
+		for(Object obj : query.getResultList()) {
+           list.add((Proposal) obj); 
+        }
+		
+		//List<Proposal> proposals = typeList(query.getResultList(), Proposal.class);
+		
+		
+		
+		return  query.getResultList()
+	}
+	
+	
+	private  <T> List<T> typeList(List<?> l, Class<T> klass) {
+        List<T> list = new ArrayList<T>();
+        for(Object obj : l) {
+            if (klass.isAssignableFrom(obj.getClass())) {
+                list.add((T) obj);
+            }
+        }
+        return list;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

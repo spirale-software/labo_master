@@ -8,23 +8,27 @@ GET     /                 			controllers.HomeController.indexAction
 
 GET     /logout           			controllers.HomeController.logOutAction
 
+GET     /dashboard         			controllers.HomeController.showDashboardAction
+
 POST	/connection/newUser			controllers.HomeController.connectNewUserAction
 
 POST	/connection/registeredUser	controllers.HomeController.connectRegisteredUserAction
 
 # Routes related to propositions
 # -------------------------------------------------------------------------------------------------
-GET     /proposition/form          	controllers.ProposalController.proposalAction
+GET     /proposition/form          		controllers.ProposalController.proposalAction
 
-POST    /proposition/add            controllers.ProposalController.addProposalAction
+POST    /proposition/add            	controllers.ProposalController.addProposalAction
 
-GET     /proposition/detail         controllers.ProposalController.detailProposalAction
+GET     /proposition/edit/:idProposal	controllers.ProposalController.editProposalAction(idProposal: Long)
 
-GET     /proposition/edit           controllers.ProposalController.editProposalAction
+GET     /proposition/delete         	controllers.ProposalController.deleteProposalAction
 
-GET     /proposition/delete         controllers.ProposalController.deleteProposalAction
+GET     /proposition/all         		controllers.ProposalController.getAllProposalsAction
 
-GET     /proposition/all         	controllers.ProposalController.getAllProposalsAction
+GET     /proposition/contenu/:idProposal	controllers.ProposalController.writeProposalContentAction(idProposal: Long)
+
+GET     /proposition/detail/:idProposal		controllers.ProposalController.detailProposalAction(idProposal: Long)
 
 
 # An example controller showing how to use dependency injection

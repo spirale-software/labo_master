@@ -1,0 +1,61 @@
+package services.data.jpaDao;
+
+import java.util.List;
+import javax.inject.Inject;
+import javax.persistence.Query;
+
+import models.Proposal;
+import play.db.jpa.JPAApi;
+import play.db.jpa.Transactional;
+import services.data.dao.IProposalDAO;
+
+public class ProposalDAO implements IProposalDAO {
+	private final JPAApi jpaApi;
+
+	@Inject
+	public ProposalDAO(JPAApi jpaApi) {
+		this.jpaApi = jpaApi;
+	}
+	
+	@Override
+	@Transactional
+	public Proposal insertProposal(Proposal proposal) {
+		jpaApi.em().persist(proposal);
+		
+		return proposal;
+	}
+
+	@Override
+	public List<Proposal> getAllProposals() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Proposal getProposalById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Proposal getProposalByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Proposal updateProposal(Proposal proposalUpdated) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	@Transactional
+	public List<Proposal> get10NewestProposals() {
+		
+		Query query = jpaApi.em().createNativeQuery("SELECT * FROM proposal p LIMIT 10 ORDER BY p.creationDate DESC");
+		List<Proposal> proposals = query.getResultList();
+		
+		return proposals;
+	}
+}

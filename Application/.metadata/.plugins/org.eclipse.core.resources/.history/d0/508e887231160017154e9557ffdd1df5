@@ -1,0 +1,16 @@
+.form-contenu {
+    border-left: solid 1px #eee;
+    padding-left: 30px;
+}
+
+.form-group {
+    border: solid 1px #eee;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 750px;
+}
+
+.form-group > p {
+    margin-left: 150px;
+}

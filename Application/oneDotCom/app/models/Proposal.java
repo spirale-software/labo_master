@@ -10,7 +10,7 @@ public class Proposal {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long idProposal;
-	private String ProposalName;
+	private String proposalName;
 	@Enumerated(EnumType.STRING)
 	private ProposalState proposalState;
 	private Date creationDate;
@@ -27,11 +27,11 @@ public class Proposal {
 	}
 
 	public String getProposalName() {
-		return ProposalName;
+		return proposalName;
 	}
 
 	public void setProposalName(String proposalName) {
-		ProposalName = proposalName;
+		this.proposalName = proposalName;
 	}
 
 	public Date getCreationDate() {
