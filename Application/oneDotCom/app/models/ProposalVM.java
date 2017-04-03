@@ -1,32 +1,11 @@
 package models;
 
-import java.util.Date;
-
 public class ProposalVM {
+	private Long idProposal;
 	private long proposalAuthorId;
 	private String proposalName;
 	private String proposedWriter;
 	private String proposedChannel;
-		
-	public ProposalVM() {
-		
-	}
-	
-	public Proposal createProposal() {
-		Proposal newProposal = new Proposal();
-		
-		newProposal.setCreationDate(new Date());
-		newProposal.setProposalName(this.proposalName);
-		
-		if(!this.proposedWriter.isEmpty()) {
-			newProposal.setProposalState(ProposalState.Assigned);
-			
-		} else {
-			newProposal.setProposalState(ProposalState.Created);
-		}
-		
-		return newProposal;
-	}
 	
 	public long getProposalAuthorId() {
 		return proposalAuthorId;
@@ -46,10 +25,18 @@ public class ProposalVM {
 	public void setProposedWriter(String proposedWriter) {
 		this.proposedWriter = proposedWriter;
 	}
-	public String getProposedChannels() {
+	public String getProposedChannel() {
 		return proposedChannel;
 	}
-	public void setProposedChannels(String proposedChannel) {
+	public void setProposedChannel(String proposedChannel) {
 		this.proposedChannel = proposedChannel;
 	}
+	public Long getIdProposal() {
+		return idProposal;
+	}
+	public void setIdProposal(Long idProposal) {
+		this.idProposal = idProposal;
+	}
+	
+	
 }

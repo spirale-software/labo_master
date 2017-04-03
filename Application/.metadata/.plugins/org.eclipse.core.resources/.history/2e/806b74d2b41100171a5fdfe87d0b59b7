@@ -1,6 +1,0 @@
-@(userForm: Form[User])
-
-@main("Tableau de bord")(userForm) {
-	
-
-}

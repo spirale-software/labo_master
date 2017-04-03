@@ -1,0 +1,27 @@
+package models;
+
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+public class Publication {
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="CONTENT_ID")
+	private ProposalContent content;
+	
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="CHANNEL_ID")
+	private Channel concernedChannel;
+	
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="PUBLISHER_ID")
+	private User publisher;
+
+}

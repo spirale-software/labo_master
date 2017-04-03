@@ -112,6 +112,18 @@
 	margin-bottom: 15px
 }
 
+.proposal-content .checkbox {
+	margin-bottom: 25px;
+}
+
+.proposal-content .checkbox label {
+	margin-left: 20px;
+}
+
+.proposal-content .col-md-4 p {
+	padding-left: 10px;
+}
+
 
 
 

@@ -1,0 +1,45 @@
+package models;
+
+import java.util.List;
+
+import javax.persistence.*;
+
+@Entity
+public class User {
+	
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	private Long idUser;
+	private String username;
+	private String email;
+	private String password;
+	
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
+	@JoinColumn(name="ROLE_ID")
+	private Role userRole;
+	
+	@OneToMany(mappedBy = "authorOfProposal")
+	@Basic(optional=true)
+	private List<Proposal> listOfProposals;
+	
+	@OneToMany(mappedBy = "proposalMaker")
+	private List<PropositionOfChannel> listOfpropositionsOfChannel;
+	
+	@OneToMany(mappedBy = "proposalMaker")
+	private List<PropositionOfWriter> listOfpropositionsOfWriter;
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+

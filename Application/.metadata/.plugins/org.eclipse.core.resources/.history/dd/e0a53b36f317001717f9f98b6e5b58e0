@@ -1,0 +1,22 @@
+package models;
+
+import java.io.File;
+import java.util.Date;
+
+public class ProposalContentVM {
+	private String title;
+	private String content;
+	private String link;
+	private String image;
+	private Date date;
+	private String place;
+	private String media;
+	private File mediaFile;
+	private File imageFile;
+	private boolean isFacebookSelected;
+	private boolean isTwitterSelected;
+	private boolean isMailingListSelected;
+	
+	
+	
+}

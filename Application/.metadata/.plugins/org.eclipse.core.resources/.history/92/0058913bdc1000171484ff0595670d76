@@ -1,9 +1,0 @@
-package controllers;
-
-import play.mvc.Controller;
-
-public class ConnexionController extends Controller {
-	
-	
-
-}

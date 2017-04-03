@@ -1,4 +1,4 @@
-@(username: String)
+@(proposal: Proposal, username: String)
 
 @dashboardLayout("détail Proposition")(username) {
 	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
@@ -52,8 +52,14 @@
                     </div>
 
                     <div style="margin-bottom: 30px">
-                        <button type="button" class="btn btn-primary">Modifier</button>
-                        <button type="button" class="btn btn-primary">Rediger Contenu</button>
+                    	<a href="@routes.ProposalController.editProposalAction(proposal.getIdProposal())">
+                        	<button type="button" class="btn btn-primary">Modifier</button>
+                        </a>
+                        
+                        <a href="@routes.ProposalController.writeProposalContentAction(proposal.getIdProposal())">
+                        	<button type="button" class="btn btn-primary"> Rediger Contenu </button>
+                        </a>
+                       
                     </div>
 
                 </div>

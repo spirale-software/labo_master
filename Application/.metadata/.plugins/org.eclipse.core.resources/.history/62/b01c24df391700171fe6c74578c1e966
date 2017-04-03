@@ -1,0 +1,18 @@
+package models;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Field {
+	
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	private Long idField;
+	private String fieldName;
+	private String fieldContent;
+	private ProposalContent container;
+
+}

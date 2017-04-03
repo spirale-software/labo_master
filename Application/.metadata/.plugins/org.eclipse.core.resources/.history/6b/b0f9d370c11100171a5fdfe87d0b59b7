@@ -1,7 +1,0 @@
-package dao;
-
-public interface IPropositionDAO {
-	
-	public Proposition insertNewProposition(Proposition newProposition);
-
-}

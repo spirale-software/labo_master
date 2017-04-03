@@ -1,6 +1,0 @@
-@(userForm: Form[User])
-
-@dashboardLayout("Tableau de bord")(userForm) {
-	
-
-}

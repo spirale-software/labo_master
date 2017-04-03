@@ -1,0 +1,34 @@
+package models;
+
+import java.util.Date;
+
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.*;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class PropositionOfWriter {
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
+	
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="PROPOSAL_ID")
+	private Proposal concernedProposal;
+	
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="ASSIGNEE_ID")
+	private User assignee;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="ASSIGNATOR_ID")
+	private User assignator;
+	
+	@Basic(optional=true)
+	private Date deadLine;
+	
+}

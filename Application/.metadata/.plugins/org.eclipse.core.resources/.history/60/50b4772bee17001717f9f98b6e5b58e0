@@ -1,0 +1,23 @@
+package models;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class PublicationChannel {
+	
+	@Id
+	private Long id;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="PUBLICATION_ID")
+	private Publication publication;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="CHANNEL_ID")
+	private Channel channel;
+
+}

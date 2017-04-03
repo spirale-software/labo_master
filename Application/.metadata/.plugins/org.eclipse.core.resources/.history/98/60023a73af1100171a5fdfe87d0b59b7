@@ -1,8 +1,0 @@
-package dao;
-
-public interface IUserDAO {
-	
-	public Long addNewUser(User newUser);
-	public User getUserById(Long idUser);
-	public User getUserByCredentials(String email, String pwd);
-}

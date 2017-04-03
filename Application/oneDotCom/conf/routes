@@ -31,6 +31,10 @@ GET     /proposition/contenu/:idProposal	controllers.ProposalController.writePro
 GET     /proposition/detail/:idProposal		controllers.ProposalController.detailProposalAction(idProposal: Long)
 
 
+
+GET     /proposition/suggestion/:text         		controllers.ProposalController.writerSuggestionAction(text: String)
+
+
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
 # An example controller showing how to write asynchronous code

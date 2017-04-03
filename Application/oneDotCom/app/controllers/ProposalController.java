@@ -89,9 +89,16 @@ public class ProposalController extends Controller {
 		return ok(proposalContent.render(proposalContentForm, proposalVM, session("username")));
 	}
 	
+	@Transactional
 	public Result detailProposalAction(Long idProposal) {
+		Proposal proposal = this.proposalDAO.getProposalById(idProposal);
 		
-		return ok(proposalDetail.render(session("username")));
+		return ok(proposalDetail.render(proposal, session("username")));
+	}
+	
+	public Result writerSuggestionAction(String text) {
+		
+		return ok("Yesssssss!!!");
 	}
 	
 	private Result getDefaultProposal(boolean isAlert) {
@@ -104,6 +111,7 @@ public class ProposalController extends Controller {
 		
 		proposalVM.setProposalName(proposal.getProposalName());
 		proposalVM.setProposedWriter("jules");
+		proposalVM.setIdProposal(proposal.getIdProposal());
 		
 		return proposalVM;
 	}

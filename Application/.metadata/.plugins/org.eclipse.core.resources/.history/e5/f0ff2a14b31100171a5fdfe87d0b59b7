@@ -1,5 +1,0 @@
-@(user: Form[User])
-
-@main("Formulaire de Connexion") {
-
-}

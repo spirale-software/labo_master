@@ -1,0 +1,30 @@
+package models;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class ProposalChannel {
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="proposedChannel")
+	private Channel proposedChannel;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="concernedProposal")
+	private Proposal concernedProposal;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="proposalMaker")
+	private User proposalMaker;
+	
+
+}

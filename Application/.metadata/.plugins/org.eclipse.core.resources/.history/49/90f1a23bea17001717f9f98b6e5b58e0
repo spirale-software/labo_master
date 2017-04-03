@@ -1,0 +1,34 @@
+package models;
+
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Channel {
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	private long idCanal;
+	
+	private String channelName;
+	
+	@OneToMany(mappedBy = "proposedChannel")
+	private List<PropositionOfChannel> listOfpropositionsOfChannel;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="MANAGER_ID")
+	private User channelManager;
+	
+	@OneToMany(mappedBy = "concernedChannel")
+	private List<FieldChannel> listOfFieldChannels;
+	
+	private List<Publication> list
+	
+}

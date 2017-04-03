@@ -1,0 +1,25 @@
+package models;
+
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Channel {
+	private long idCanal;
+	private String canalName;
+	@OneToMany(mappedBy = "proposedChannel")
+	private List<ProposalChannel> proposalsChannels;
+	
+	public long getIdCanal() {
+		return idCanal;
+	}
+	public void setIdCanal(long idCanal) {
+		this.idCanal = idCanal;
+	}
+	public String getCanalName() {
+		return canalName;
+	}
+	public void setCanalName(String canalName) {
+		this.canalName = canalName;
+	}
+}

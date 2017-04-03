@@ -16,7 +16,6 @@ public class Role {
 	private String roleName;
 	@OneToMany(mappedBy = "userRole")
 	private List<User> usersWithThisRole;
-	
 	public long getIdRole() {
 		return idRole;
 	}
@@ -29,4 +28,10 @@ public class Role {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
+	public List<User> getUsersWithThisRole() {
+		return usersWithThisRole;
+	}
+	public void setUsersWithThisRole(List<User> usersWithThisRole) {
+		this.usersWithThisRole = usersWithThisRole;
+	}	
 }
