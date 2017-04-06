@@ -1,0 +1,11 @@
+package services.data.dao;
+
+import com.google.inject.ImplementedBy;
+
+import models.FieldChannel;
+import services.data.jpaDao.PublicationDaoJPA;
+
+@ImplementedBy(FieldChannelDaoJPA.class)
+public interface FieldChannelDAO {
+	FieldChannel insertFieldChannel(FieldChannel fieldChannel);
+}

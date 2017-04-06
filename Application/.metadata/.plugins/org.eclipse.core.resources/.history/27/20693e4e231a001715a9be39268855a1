@@ -1,0 +1,18 @@
+package services.proposal;
+
+public class ContentBuilder {
+	
+	private ProposalContentVM proposalContentVM;
+	private Field field;
+	
+	private WritingContentDAO writingContentDAO;
+	private ProposalDAO proposalDAO;
+	private UserDAO userDAO;
+	private FieldDAO fieldDAO;
+	private ChannelDAO channelDAO;
+	private FieldChannelDAO fieldChannel;
+	
+	
+	
+
+}

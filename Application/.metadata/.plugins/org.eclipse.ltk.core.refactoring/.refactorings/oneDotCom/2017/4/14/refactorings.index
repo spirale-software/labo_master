@@ -1,0 +1,12 @@
+1491391092118	Delete element
+1491404198246	Rename type 'WritingContentJPA'
+1491404456696	Rename type 'IProposalDAO'
+1491404477312	Rename type 'IUserDAO'
+1491413647223	Rename type 'UserDAO'
+1491413759077	Rename type 'ProposalDAO'
+1491413936627	Rename type 'ChannelJPA'
+1491423732154	Rename type 'ContentBuilder'
+1491423903362	Rename type 'TextField'
+1491427151521	Rename type 'ContentManager'
+1491428917116	Rename type 'ProposalContentJPA'
+1491429334457	Rename type 'BuildBDDefaultValue'

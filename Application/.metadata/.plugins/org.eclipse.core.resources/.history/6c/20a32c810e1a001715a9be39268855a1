@@ -1,0 +1,22 @@
+package services.data.jpaDao;
+
+import javax.inject.Inject;
+
+import models.ProposalContent;
+import play.db.jpa.JPAApi;
+import services.data.dao.ProposalContentDAO;
+
+public class ProposalContentJPA implements ProposalContentDAO {
+	private final JPAApi jpaApi;
+	
+	@Inject
+	public ProposalContentJPA(JPAApi jpaApi) {
+		this.jpaApi = jpaApi;
+	}
+
+	@Override
+	public ProposalContent insertproposalContent(ProposalContent content) {
+		return jpaApi.em().persist(content);
+	}
+
+}

@@ -1,0 +1,10 @@
+package services.data.dao;
+
+import com.google.inject.ImplementedBy;
+
+import models.PropositionOfWriter;
+
+@ImplementedBy(PropositionOfWriterDaoJPA.class)
+public interface PropositionOfWriterDAO {
+	public PropositionOfWriter insert(PropositionOfWriter propositionOfWriter);
+}

@@ -1,0 +1,7 @@
+package services.data.dao;
+
+import models.Channel;
+
+public interface ChannelDAO {
+	Channel insertChannel(Channel channel);
+}

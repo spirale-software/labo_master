@@ -21,10 +21,12 @@
                     <div class="form-group">
                         <label for="assignedWriter">Proposer Redacteur</label>
                         <input type="text" class="form-control" name="@proposalForm("proposedWriter").name" id="writer" list="suggestions"
-                        	value="@proposalForm("proposedWriter").value" placeholder="Redacteur" onkeyup="showHint(this.value)">
+                        	value="@proposalForm("proposedWriter").value" placeholder="Redacteur">
                     </div>
                     
-                    <datalist id="suggestions"></datalist>
+                    <datalist id="suggestions">
+                    	
+                    </datalist>
                     
                     <p>Suggestions: <span id="txtHint"></span></p>
                     
@@ -60,21 +62,21 @@
                     	
 			    <div class="input-group">
 			      <span class="input-group-addon">
-			        <input type="checkbox" aria-label="...">
+			        <input type="checkbox" aria-label="..." name="@proposalForm("facebookAdded").name">
 			      </span>
 			      <div class=" form-control well well-sm">Facebook</div>
 			    </div><!-- /input-group -->
 			    
 			    <div class="input-group">
 			      <span class="input-group-addon">
-			        <input type="checkbox" aria-label="...">
+			        <input type="checkbox" aria-label="..." name="@proposalForm("twitterAdded").name">
 			      </span>
 			      <div class=" form-control well well-sm">Twitter</div>
 			    </div><!-- /input-group -->
 			    
 			    <div class="input-group">
 			      <span class="input-group-addon">
-			        <input type="checkbox" aria-label="...">
+			        <input type="checkbox" aria-label="..." name="@proposalForm("mailingListAdded").name">
 			      </span>
 			      <div class=" form-control well well-sm">Mailing List</div>
 			    </div><!-- /input-group -->
@@ -87,8 +89,8 @@
         </div>
 
              <div>
-                 <button type="submit" class="btn btn-primary" id="save">Enregistrer</button>
-                 <button type="submit" class="btn btn-primary" id="saveAndRedact">Enregistrer et rediger contenu</button>
+                 <button type="submit" class="btn btn-primary" name="action" value="save">Enregistrer</button>
+                 <button type="submit" class="btn btn-primary" name="action" value="saveAndRedact">Enregistrer et rediger contenu</button>
              </div>
           </div>
        	</form>
@@ -97,30 +99,8 @@
     
     
     <script>
-    function showHint(str) {
-        if (str.length == 0) { 
-            document.getElementById("txtHint").innerHTML = "";
-            return;
-        } else {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                	
-                	var options = document.getElementById('suggestions');
-                	
-                	 var option = document.createElement('option');
-                	   option.value = this.responseText;
-                	   options.appendChild(option);
-                	
+     
    
-                    
-                    
-                }
-            };
-            xmlhttp.open("GET", "@routes.ProposalController.writerSuggestionAction(" + str + ")", true);
-            xmlhttp.send();
-        }
-    }
     
     	
     </script>

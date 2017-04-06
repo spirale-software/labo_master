@@ -1,0 +1,5 @@
+package services.data.dao;
+
+public interface FieldChannelDAO {
+
+}

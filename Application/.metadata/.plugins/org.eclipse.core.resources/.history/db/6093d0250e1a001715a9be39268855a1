@@ -1,0 +1,14 @@
+package services.data.jpaDao;
+
+import models.ProposalContent;
+import services.data.dao.ProposalContentDAO;
+
+public class ProposalContentJPA implements ProposalContentDAO {
+
+	@Override
+	public ProposalContent insertproposalContent(ProposalContent content) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

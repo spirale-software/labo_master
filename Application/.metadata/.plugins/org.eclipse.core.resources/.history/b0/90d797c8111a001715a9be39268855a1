@@ -1,0 +1,9 @@
+package services.data.dao;
+
+import com.google.inject.ImplementedBy;
+
+@ImplementedBy(RoleDaoJPA.class)
+public interface RoleDAO {
+	public Role insert(Role role);
+	public Role getRoleByName(String roleName);
+}

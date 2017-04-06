@@ -1,0 +1,11 @@
+package services.data.dao;
+
+import com.google.inject.ImplementedBy;
+
+import models.ProposalContent;
+import services.data.jpaDao.ChannelDaoJPA;
+
+@ImplementedBy(ProposalContentDaoJPA.class)
+public interface ProposalContentDAO {
+	public ProposalContent insertproposalContent(ProposalContent content);
+}

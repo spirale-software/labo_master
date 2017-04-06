@@ -1,0 +1,32 @@
+package services.general;
+
+import javax.inject.Inject;
+
+import services.data.dao.ChannelDAO;
+import services.data.dao.RoleDAO;
+
+public class BuildBdDefaultValue {
+	
+	private ChannelDAO channelDAO;
+	private RoleDAO roleDAO;
+	
+	@Inject
+	public BuildBdDefaultValue(ChannelDAO channelDAO, RoleDAO roleDAO) {
+		this.channelDAO = channelDAO;
+		this.roleDAO = roleDAO;
+	}
+	
+	public void createDbDefaultValue() {
+		fillDBRole();
+		fillDBChannel();
+	}
+	
+	public void fillDBRole() {
+		
+	}
+	
+	public void fillDBChannel() {
+		
+	}
+
+}

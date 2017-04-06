@@ -8,16 +8,15 @@ import models.Proposal;
 import models.ProposalVM;
 import models.User;
 import play.db.jpa.Transactional;
-import services.data.dao.IUserDAO;
-import services.data.jpaDao.UserDAO;
+import services.data.dao.UserDAO;
 
 public class ProposalBuilder {
 	private ProposalVM proposalVM;
 	private User authorOfProposal;
-	private IUserDAO userDAO;
+	private UserDAO userDAO;
 	private ProposalState proposalState;
 	@Inject
-	public ProposalBuilder(IUserDAO userDAO) {
+	public ProposalBuilder(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
 	

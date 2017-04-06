@@ -1,8 +1,13 @@
-@(proposalContentForm: Form[ProposalContentVM], proposalVM: ProposalVM, username: String)
+@(proposalContentForm: Form[ProposalContentVM], proposalVM: ProposalVM, username: String, isAlert: Boolean)
 
 @dashboardLayout("Nouvelle Proposition")(username) {
 	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/proposalContent.css")">
+	
+	@if(isAlert) {
+		<div class="alert alert-success" role="alert"> Le Contenu de la proposition a bien été enregistré</div>
+	}	
+	
 	<div class="panel panel-default proposal-content">
       <div class="panel-heading">
           <h3 class="panel-title">Redaction du contenu de la proposition</h3>
@@ -22,7 +27,8 @@
                 </div><!-- [/col-md-3]--> 
                 
                 <div class="col-md-8 form-contenu">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="post" 
+                    	action="@routes.ProposalController.addProposalContentAction(proposalVM.getIdProposal())">
                         <div class=" form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Titre</label>
                             <div class="col-sm-10">
@@ -97,13 +103,13 @@
                         <div class="checkbox">
                             Publier Sur:
                             <label>
-                                <input type="checkbox" name="@proposalContentForm("isFacebookSelected").name"> Facebook
+                                <input type="checkbox" name="@proposalContentForm("facebookSelected").name"> Facebook
                             </label>
                             <label>
-                                <input type="checkbox" name="@proposalContentForm("isTwitterSelected").name" > Twitter
+                                <input type="checkbox" name="@proposalContentForm("twitterSelected").name" > Twitter
                             </label>
                             <label>
-                                <input type="checkbox" name="@proposalContentForm("isMailingListSelected").name"> Mailing List
+                                <input type="checkbox" name="@proposalContentForm("mailingListSelected").name"> Mailing List
                             </label>
                         </div>
 

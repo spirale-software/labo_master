@@ -1,0 +1,5 @@
+package services.data.dao;
+
+public interface WritingContentDAO {
+	public WritingContent insert(WritingContent writingContent);
+}

@@ -1,0 +1,20 @@
+package services.data.jpaDao;
+
+import models.Channel;
+import services.data.dao.ChannelDAO;
+
+public class ChannelDaoJPA implements ChannelDAO {
+
+	@Override
+	public Channel insertChannel(Channel channel) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Channel getChannelByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

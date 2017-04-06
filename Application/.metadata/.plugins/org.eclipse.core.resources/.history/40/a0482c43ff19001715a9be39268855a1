@@ -1,0 +1,3 @@
+@(proposalContentVM: ProposalContentVM)
+
+<p>@proposalContentVM.getTitle()</p>

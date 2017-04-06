@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Date;
 
 public class ProposalContentVM {
+	private Long idOfConcernedProposal;
 	private String title;
 	private String content;
 	private String link;
@@ -13,9 +14,9 @@ public class ProposalContentVM {
 	private String media;
 	private File mediaFile;
 	private File imageFile;
-	private boolean isFacebookSelected;
-	private boolean isTwitterSelected;
-	private boolean isMailingListSelected;
+	private String facebookSelected;
+	private String twitterSelected;
+	private String mailingListSelected;
 	
 	public String getTitle() {
 		return title;
@@ -71,25 +72,28 @@ public class ProposalContentVM {
 	public void setImageFile(File imageFile) {
 		this.imageFile = imageFile;
 	}
-	public boolean isFacebookSelected() {
-		return isFacebookSelected;
+	public String getFacebookSelected() {
+		return facebookSelected;
 	}
-	public void setFacebookSelected(boolean isFacebookSelected) {
-		this.isFacebookSelected = isFacebookSelected;
+	public void setFacebookSelected(String facebookSelected) {
+		this.facebookSelected = facebookSelected;
 	}
-	public boolean isTwitterSelected() {
-		return isTwitterSelected;
+	public String getTwitterSelected() {
+		return twitterSelected;
 	}
-	public void setTwitterSelected(boolean isTwitterSelected) {
-		this.isTwitterSelected = isTwitterSelected;
+	public void setTwitterSelected(String twitterSelected) {
+		this.twitterSelected = twitterSelected;
 	}
-	public boolean isMailingListSelected() {
-		return isMailingListSelected;
+	public String getMailingListSelected() {
+		return mailingListSelected;
 	}
-	public void setMailingListSelected(boolean isMailingListSelected) {
-		this.isMailingListSelected = isMailingListSelected;
+	public void setMailingListSelected(String mailingListSelected) {
+		this.mailingListSelected = mailingListSelected;
 	}
-	
-	
-	
+	public Long getIdOfConcernedProposal() {
+		return idOfConcernedProposal;
+	}
+	public void setIdOfConcernedProposal(Long idOfConcernedProposal) {
+		this.idOfConcernedProposal = idOfConcernedProposal;
+	}	
 }

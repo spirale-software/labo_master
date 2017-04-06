@@ -1,0 +1,7 @@
+package services.data.dao;
+
+import models.ProposalContent;
+
+public interface ProposalContentDAO {
+	public ProposalContent insertproposalContent(ProposalContent content);
+}

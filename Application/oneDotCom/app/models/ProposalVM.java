@@ -7,6 +7,10 @@ public class ProposalVM {
 	private String proposedWriter;
 	private String proposedChannel;
 	
+	private String twitterAdded;
+	private String facebookAdded;
+	private String mailingListAdded;
+	
 	public long getProposalAuthorId() {
 		return proposalAuthorId;
 	}
@@ -37,6 +41,22 @@ public class ProposalVM {
 	public void setIdProposal(Long idProposal) {
 		this.idProposal = idProposal;
 	}
-	
-	
+	public String getTwitterAdded() {
+		return twitterAdded;
+	}
+	public void setTwitterAdded(String twitterAdded) {
+		this.twitterAdded = twitterAdded;
+	}
+	public String getFacebookAdded() {
+		return facebookAdded;
+	}
+	public void setFacebookAdded(String facebookAdded) {
+		this.facebookAdded = facebookAdded;
+	}
+	public String getMailingListAdded() {
+		return mailingListAdded;
+	}
+	public void setMailingListAdded(String mailingListAdded) {
+		this.mailingListAdded = mailingListAdded;
+	}
 }

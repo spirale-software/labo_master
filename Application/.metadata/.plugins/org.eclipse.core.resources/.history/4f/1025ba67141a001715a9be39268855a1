@@ -1,0 +1,7 @@
+package services.data.dao;
+
+import models.PropositionOfChannel;
+
+public interface PropositionOfChannelDAO {
+	public PropositionOfChannel insert(PropositionOfChannel propositionOfChannel);
+}

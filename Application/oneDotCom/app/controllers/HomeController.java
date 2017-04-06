@@ -4,7 +4,7 @@ import play.db.jpa.JPAApi;
 import play.mvc.Security.Authenticated;
 import javax.inject.Inject;
 
-import services.data.dao.IUserDAO;
+import services.data.dao.UserDAO;
 import services.general.*;
 import models.Role;
 import models.RoleType;
@@ -20,20 +20,25 @@ import views.html.*;
 
 public class HomeController extends Controller {
 	private final FormFactory formFactory;
-	private final IUserDAO userDAO;
-	private boolean isFail = false;
+	private final UserDAO userDAO;
 	private UserVM userVM;
+	
+	private BuildBdDefaultValue buildDB;
 
 	@Inject
-	public HomeController(FormFactory formFactory, IUserDAO userDAO) {
+	public HomeController(FormFactory formFactory, UserDAO userDAO, BuildBdDefaultValue buildDB ) {
 		this.formFactory = formFactory;
 		this.userDAO = userDAO;
+		
+		this.buildDB = buildDB;
 	}
 
+	@Transactional
 	public Result indexAction() {
-		Form<UserVM> userVMForm = formFactory.form(UserVM.class);
 		
-		return ok(index.render(userVMForm, isFail));
+		//buildDB.createDbDefaultValue();
+		
+		return getDefaultIndex(false);
 	}
 
 	@Transactional
@@ -42,7 +47,7 @@ public class HomeController extends Controller {
 
 		User user = userDAO.getUserByCredentials(userVM.getEmail(), CryptWithMD5.cryptWithMD5(userVM.getPassword()));
 		
-		return (user != null ? this.setUserVMAttributes(user) : redirect("/"));
+		return (user != null ? this.setUserVMAttributes(user) : getDefaultIndex(true));
 	}
 	
 	public Result showDashboardAction() {
@@ -104,6 +109,12 @@ public class HomeController extends Controller {
 		createUserSession();
 		
 		return ok(dashboard.render(userVM));	
+	}
+	
+	private Result getDefaultIndex(boolean isFail) {
+		Form<UserVM> userVMForm = formFactory.form(UserVM.class);
+		
+		return ok(index.render(userVMForm, isFail));
 	}
 }
 

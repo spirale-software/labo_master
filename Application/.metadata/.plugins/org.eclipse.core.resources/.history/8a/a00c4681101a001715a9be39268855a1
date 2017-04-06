@@ -1,0 +1,14 @@
+package services.data.jpaDao;
+
+import models.Field;
+import services.data.dao.FieldDAO;
+
+public class FieldDaoJPA implements FieldDAO {
+
+	@Override
+	public Field insertField(Field field) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

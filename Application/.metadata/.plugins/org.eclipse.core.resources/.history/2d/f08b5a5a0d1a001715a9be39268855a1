@@ -1,0 +1,8 @@
+package services.data.dao;
+
+import models.FieldChannel;
+
+public interface FieldChannelDAO {
+	FieldChannel insertFieldChannel(FieldChannel fieldChannel);
+
+}

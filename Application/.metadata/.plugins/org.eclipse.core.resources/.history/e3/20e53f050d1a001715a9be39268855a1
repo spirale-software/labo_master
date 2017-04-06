@@ -1,0 +1,5 @@
+package services.data.dao;
+
+public interface ProposalContentDAO {
+	public ProposalContent insertproposalContent(ProposalContent content);
+}

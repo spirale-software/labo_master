@@ -1,0 +1,10 @@
+package services.data.dao;
+
+import com.google.inject.ImplementedBy;
+
+import services.data.jpaDao.RoleDaoJPA;
+
+@ImplementedBy(PublicationChannelDaoJPA.class)
+public interface PublicationChannelDAO {
+	public PublicationChannel insert(PublicationChannel publicationChannel)
+}

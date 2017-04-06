@@ -1,0 +1,8 @@
+package services.data.dao;
+
+import com.google.inject.ImplementedBy;
+
+@ImplementedBy(PropositionOfWriterDaoJPA.class)
+public interface PropositionOfWriterDAO {
+
+}

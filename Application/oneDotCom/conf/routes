@@ -28,11 +28,10 @@ GET     /proposition/all         		controllers.ProposalController.getAllProposal
 
 GET     /proposition/contenu/:idProposal	controllers.ProposalController.writeProposalContentAction(idProposal: Long)
 
+POST    /proposition/contenu/add/:idProposal			controllers.ProposalController.addProposalContentAction(idProposal: Long)
+
 GET     /proposition/detail/:idProposal		controllers.ProposalController.detailProposalAction(idProposal: Long)
 
-
-
-GET     /proposition/suggestion/:text         		controllers.ProposalController.writerSuggestionAction(text: String)
 
 
 # An example controller showing how to use dependency injection

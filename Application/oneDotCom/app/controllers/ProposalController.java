@@ -15,10 +15,11 @@ import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
-import services.data.dao.IProposalDAO;
-import services.data.dao.IUserDAO;
-import services.data.jpaDao.UserDAO;
+import services.data.dao.ProposalDAO;
+import services.data.dao.UserDAO;
+import services.data.jpaDao.UserDaoJPA;
 import services.general.CustomAuthenticator;
+import services.proposal.ProposalContentManager;
 import services.proposal.ProposalBuilder;
 import views.html.*;
 
@@ -26,15 +27,18 @@ import views.html.*;
 public class ProposalController extends Controller {
 
 	private final FormFactory formFactory;
-	private final IProposalDAO proposalDAO;
+	private final ProposalDAO proposalDAO;
 	private ProposalBuilder proposalBuilder;
+	private ProposalContentManager contentManager;
 
 	
 	@Inject
-	public ProposalController(FormFactory formFactory, IProposalDAO proposalDAO, ProposalBuilder proposalBuilder) {
+	public ProposalController(FormFactory formFactory, ProposalDAO proposalDAO, ProposalBuilder proposalBuilder, 
+			ProposalContentManager contentManager) {
 		this.formFactory = formFactory;
 		this.proposalDAO = proposalDAO;
 		this.proposalBuilder = proposalBuilder;
+		this.contentManager = contentManager;
 	}
 
 	public Result proposalAction() {
@@ -46,11 +50,18 @@ public class ProposalController extends Controller {
 		ProposalVM proposalVM= formFactory.form(ProposalVM.class).bindFromRequest().get();
 		proposalVM.setProposalAuthorId(Long.parseLong(session("idUser")));
 		
+		
+		
+		//return ok(propositionTest.render(proposalVM));
+		
 		proposalBuilder.setProposalVM(proposalVM);
 		Proposal newProposal = proposalBuilder.getProposal();
 		
-		proposalDAO.insertProposal(newProposal);
+		Long idProposal = proposalDAO.insertProposal(newProposal).getIdProposal();
 	   
+		if(formFactory.form().bindFromRequest().get("action").equals("saveAndRedact"))
+			return this.writeProposalContentAction(idProposal);
+		
 		return this.getDefaultProposal(true);
 	}
 
@@ -81,12 +92,8 @@ public class ProposalController extends Controller {
 	
 	@Transactional
 	public Result writeProposalContentAction(Long idProposal) {
-		Proposal proposal = this.proposalDAO.getProposalById(idProposal);
 		
-		ProposalVM proposalVM = this.buildProposalVMFromProposal(proposal);
-		
-		Form<ProposalContentVM> proposalContentForm = formFactory.form(ProposalContentVM.class);
-		return ok(proposalContent.render(proposalContentForm, proposalVM, session("username")));
+		return this.getDefaultProposalContent(idProposal, false);
 	}
 	
 	@Transactional
@@ -96,14 +103,29 @@ public class ProposalController extends Controller {
 		return ok(proposalDetail.render(proposal, session("username")));
 	}
 	
-	public Result writerSuggestionAction(String text) {
+	@Transactional
+	public Result addProposalContentAction(Long idProposal) {
+		ProposalContentVM proposalContentVM = formFactory.form(ProposalContentVM.class).bindFromRequest().get();
+		proposalContentVM.setIdOfConcernedProposal(idProposal);
+		contentManager.manageProposalContent(proposalContentVM, Long.parseLong(session("idUser")));
 		
-		return ok("Yesssssss!!!");
+		return this.getDefaultProposalContent(idProposal, true);
+		//return ok(proposalContentTest.render(proposalContentVM));
 	}
-	
+
+	@Transactional
 	private Result getDefaultProposal(boolean isAlert) {
 		Form<ProposalVM> proposalVMForm = formFactory.form(ProposalVM.class);
 		return ok(proposalForm.render(proposalVMForm, session("username"), isAlert));	
+	}
+	
+	@Transactional
+	private Result getDefaultProposalContent(Long idProposal, boolean isAlert) {
+		Proposal proposal = this.proposalDAO.getProposalById(idProposal);
+		ProposalVM proposalVM = this.buildProposalVMFromProposal(proposal);
+		Form<ProposalContentVM> proposalContentForm = formFactory.form(ProposalContentVM.class);
+		
+		return ok(proposalContent.render(proposalContentForm, proposalVM, session("username"), isAlert));
 	}
 	
 	private ProposalVM buildProposalVMFromProposal(Proposal proposal) {
@@ -118,3 +140,8 @@ public class ProposalController extends Controller {
 	 
 
 }
+
+
+
+
+
