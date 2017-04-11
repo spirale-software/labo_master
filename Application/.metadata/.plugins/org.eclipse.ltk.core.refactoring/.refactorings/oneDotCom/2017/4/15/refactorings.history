@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;propositionState&apos; in &apos;models.ProposalVM&apos; to &apos;proposalState&apos;&#x0D;&#x0A;- Original project: &apos;oneDotCom&apos;&#x0D;&#x0A;- Original element: &apos;models.ProposalVM.propositionState&apos;&#x0D;&#x0A;- Renamed element: &apos;models.ProposalVM.proposalState&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;propositionState&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/app&lt;models{ProposalVM.java[ProposalVM^propositionState" name="proposalState" references="true" setter="false" stamp="1491923566522" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,141 @@
+package services.proposal;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+
+import javax.inject.Inject;
+
+import models.Channel;
+import models.ChannelPropositionType;
+import models.ChannelType;
+import models.Proposal;
+import models.ProposalStateType;
+import models.ProposalVM;
+import models.PropositionOfChannel;
+import models.PropositionOfWriter;
+import models.User;
+import play.db.jpa.Transactional;
+import services.data.dao.ChannelDAO;
+import services.data.dao.PropositionOfChannelDAO;
+import services.data.dao.PropositionOfWriterDAO;
+import services.data.dao.UserDAO;
+
+public class ProposalBuilder {
+	private ProposalVM proposalVM;
+	private User authorOfProposal;
+	private UserDAO userDAO;
+	private ProposalState proposalState;
+	private PropositionOfWriterDAO propositionOfWriterDAO;
+	private PropositionOfChannelDAO propositionOfChannelDAO;
+	private ChannelDAO channelDAO;
+
+	@Inject
+	public ProposalBuilder(UserDAO userDAO, PropositionOfWriterDAO propositionOfWriterDAO, ChannelDAO channelDAO,
+			PropositionOfChannelDAO propositionOfChannelDAO) {
+		this.userDAO = userDAO;
+		this.propositionOfWriterDAO = propositionOfWriterDAO;
+		this.channelDAO = channelDAO;
+		this.propositionOfChannelDAO = propositionOfChannelDAO;
+	}
+
+	public void setProposalVM(ProposalVM proposalVM) {
+		this.proposalVM = proposalVM;
+	}
+
+	public Proposal getProposal() {
+		Proposal proposal = new Proposal();
+
+		this.setAuthorOfProposal();
+		proposal.setAuthorOfProposal(authorOfProposal);
+		proposal.setCreationDate(new Date());
+		proposal.setProposalName(this.proposalVM.getProposalName());
+		proposal.setProposalState(this.getStateOfProposal(proposal));
+
+		return proposal;
+	}
+
+	@Transactional
+	public void setUpPropositionOfWriter(Proposal proposal) {
+		if (!this.proposalVM.getProposedWriter().isEmpty()) {
+			PropositionOfWriter propositionOfWriter = new PropositionOfWriter();
+			
+			propositionOfWriter.setAssignator(this.authorOfProposal);
+			propositionOfWriter.setAssignee(this.getAssignee());
+			propositionOfWriter.setConcernedProposal(proposal);
+			if(this.proposalVM.getDeadLine() != null) {
+				propositionOfWriter.setDeadLine(this.proposalVM.getDeadLine());
+				
+				// TODO Manage deadLine... 
+				
+			}
+			
+			this.propositionOfWriterDAO.insert(propositionOfWriter);
+		}
+	}
+
+	@Transactional
+	public void setUpPropositionOfChannel(Proposal proposal) {
+		if (isProposedChannelsNotNull()) {
+			Iterator<ChannelType> i = getProposedChannels().iterator();
+
+			while (i.hasNext()) {
+				PropositionOfChannel propositionOfChannel = new PropositionOfChannel();
+				propositionOfChannel.setConcernedProposal(proposal);
+
+				Channel channel = channelDAO.getChannelByName(i.next().toString());
+				propositionOfChannel.setProposedChannel(channel);
+
+				propositionOfChannel.setType(ChannelPropositionType.Proposed);
+
+				this.propositionOfChannelDAO.insert(propositionOfChannel);
+			}
+		}
+	}
+
+
+	@Transactional
+	private void setAuthorOfProposal() {
+		this.authorOfProposal = userDAO.getUserById(proposalVM.getProposalAuthorId());
+	}
+
+	@Transactional
+	private User getAssignee() {
+		String[] credentials = this.proposalVM.getProposedWriter().split("   <<");
+		String username = credentials[0];
+		String email = credentials[1].replaceAll(">>", "");
+
+		return userDAO.getUserByUsernameAndEmail(username, email);
+	}
+
+	private models.ProposalStateType getStateOfProposal(Proposal proposal) {
+		if (this.proposalVM.getProposedWriter().isEmpty())
+			return models.ProposalStateType.Created;
+		else {
+			proposalState = ProposalStateFactory.getProposalState(ProposalStateType.Assigned);
+			proposalState.doAction(proposal);
+
+			return models.ProposalStateType.Assigned;
+		}
+	}
+
+	private boolean isProposedChannelsNotNull() {
+		return (this.proposalVM.getFacebookAdded() != null || this.proposalVM.getMailingListAdded() != null
+				|| this.proposalVM.getTwitterAdded() != null) ? true : false;
+	}
+
+	private ArrayList<ChannelType> getProposedChannels() {
+		ArrayList<ChannelType> proposedChannels = null;
+
+		if (this.isProposedChannelsNotNull()) {
+			proposedChannels = new ArrayList<ChannelType>();
+			if (this.proposalVM.getFacebookAdded() != null)
+				proposedChannels.add(ChannelType.FACEBOOK);
+			if (this.proposalVM.getTwitterAdded() != null)
+				proposedChannels.add(ChannelType.TWITTER);
+			if (this.proposalVM.getMailingListAdded() != null)
+				proposedChannels.add(ChannelType.MAILING_LIST);
+		}
+		return proposedChannels;
+	}
+}

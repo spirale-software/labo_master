@@ -1,6 +1,8 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,9 +24,8 @@ public class PropositionOfChannel {
 	@JoinColumn(name="concernedProposal")
 	private Proposal concernedProposal;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="proposalMaker")
-	private User proposalMaker;
+	@Enumerated(EnumType.STRING)
+	private ChannelPropositionType type;
 
 	public long getId() {
 		return id;
@@ -50,11 +51,11 @@ public class PropositionOfChannel {
 		this.concernedProposal = concernedProposal;
 	}
 
-	public User getProposalMaker() {
-		return proposalMaker;
+	public ChannelPropositionType getType() {
+		return type;
 	}
 
-	public void setProposalMaker(User proposalMaker) {
-		this.proposalMaker = proposalMaker;
+	public void setType(ChannelPropositionType type) {
+		this.type = type;
 	}
 }

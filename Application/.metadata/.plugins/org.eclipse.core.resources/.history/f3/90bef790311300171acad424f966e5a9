@@ -1,7 +1,0 @@
-package services.general;
-
-import play.mvc.Security;
-
-public class Authenticator extends Security.Authenticator {
-
-}

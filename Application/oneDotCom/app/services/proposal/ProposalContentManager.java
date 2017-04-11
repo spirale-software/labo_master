@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.inject.Inject;
 
 import models.Channel;
+import models.ChannelType;
 import models.Field;
 import models.FieldChannel;
 import models.Proposal;
@@ -22,10 +23,6 @@ import services.data.dao.WritingContentDAO;
 import services.data.jpaDao.UserDaoJPA;
 
 public class ProposalContentManager {
-	private final String CHANNEL_FACEBOOK = "FACEBOOK";
-	private final String CHANNEL_TWITTER = "TWITTER";
-	private final String CHANNEL_MAILINGLIST = "MAILINGLIST";
-	
 	private WritingContentDAO writingContentDAO;
 	private ProposalDAO proposalDAO;
 	private UserDaoJPA userDAO;
@@ -78,13 +75,13 @@ public class ProposalContentManager {
 		fieldDAO.insertField(titleField);
 		
 		Channel channel;
-		channel = channelDAO.getChannelByName(CHANNEL_FACEBOOK);
+		channel = channelDAO.getChannelByName(ChannelType.FACEBOOK.toString());
 		insertFieldChannel(channel, titleField);
 		
-		channel = channelDAO.getChannelByName(CHANNEL_TWITTER);
+		channel = channelDAO.getChannelByName(ChannelType.TWITTER.toString());
 		insertFieldChannel(channel, titleField);
 		
-		channel = channelDAO.getChannelByName(CHANNEL_MAILINGLIST);
+		channel = channelDAO.getChannelByName(ChannelType.MAILING_LIST.toString());
 		insertFieldChannel(channel, titleField);
 	}
 	

@@ -1,5 +1,0 @@
-package services.proposition;
-
-public interface PropositionState {
-
-}

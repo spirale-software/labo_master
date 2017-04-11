@@ -8,4 +8,5 @@ import services.data.jpaDao.PropositionOfWriterDaoJPA;
 @ImplementedBy(PropositionOfWriterDaoJPA.class)
 public interface PropositionOfWriterDAO {
 	public PropositionOfWriter insert(PropositionOfWriter propositionOfWriter);
+	public PropositionOfWriter getByIdProposal(long idProposal);
 }

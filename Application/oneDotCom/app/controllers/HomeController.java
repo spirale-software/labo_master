@@ -30,7 +30,7 @@ public class HomeController extends Controller {
 		this.formFactory = formFactory;
 		this.userDAO = userDAO;
 		
-		this.buildDB = buildDB;
+		//this.buildDB = buildDB;
 	}
 
 	@Transactional
@@ -91,8 +91,8 @@ public class HomeController extends Controller {
 		
 		this.userVM.setIdUser(Long.parseLong(session("idUser")));
 		this.userVM.setUsername(session("username"));
-		this.userVM.setEmail(session("username"));
-		this.userVM.setRole(session("username"));	
+		this.userVM.setEmail(session("email"));
+		this.userVM.setRole(session("role"));	
 	}
 
 	private void destroyUserSession() {

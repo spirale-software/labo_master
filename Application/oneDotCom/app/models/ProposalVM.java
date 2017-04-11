@@ -1,15 +1,26 @@
 package models;
 
+import java.util.Date;
+
 public class ProposalVM {
 	private Long idProposal;
 	private long proposalAuthorId;
 	private String proposalName;
 	private String proposedWriter;
-	private String proposedChannel;
+	private Date deadLine;
+	
+	private String twitterProposed;
+	private String facebookProposed;
+	private String MailingListProposed;
 	
 	private String twitterAdded;
 	private String facebookAdded;
 	private String mailingListAdded;
+	
+	private String proposedChannels;
+	private String proposalAuthorName;
+	private String dateCreation;
+	private String proposalState;
 	
 	public long getProposalAuthorId() {
 		return proposalAuthorId;
@@ -28,12 +39,6 @@ public class ProposalVM {
 	}
 	public void setProposedWriter(String proposedWriter) {
 		this.proposedWriter = proposedWriter;
-	}
-	public String getProposedChannel() {
-		return proposedChannel;
-	}
-	public void setProposedChannel(String proposedChannel) {
-		this.proposedChannel = proposedChannel;
 	}
 	public Long getIdProposal() {
 		return idProposal;
@@ -59,4 +64,58 @@ public class ProposalVM {
 	public void setMailingListAdded(String mailingListAdded) {
 		this.mailingListAdded = mailingListAdded;
 	}
+	public Date getDeadLine() {
+		return deadLine;
+	}
+	public void setDeadLine(Date deadLine) {
+		this.deadLine = deadLine;
+	}
+	public String getTwitterProposed() {
+		return twitterProposed;
+	}
+	public void setTwitterProposed(String twitterProposed) {
+		this.twitterProposed = twitterProposed;
+	}
+	public String getFacebookProposed() {
+		return facebookProposed;
+	}
+	public void setFacebookProposed(String facebookProposed) {
+		this.facebookProposed = facebookProposed;
+	}
+	public String getMailingListProposed() {
+		return MailingListProposed;
+	}
+	public void setMailingListProposed(String mailingListProposed) {
+		MailingListProposed = mailingListProposed;
+	}
+	public String getProposedChannels() {
+		return proposedChannels;
+	}
+	public void setProposedChannels(String proposedChannels) {
+		this.proposedChannels = proposedChannels;
+	}
+	public String getProposalAuthorName() {
+		return proposalAuthorName;
+	}
+	public void setProposalAuthorName(String proposalAuthorName) {
+		this.proposalAuthorName = proposalAuthorName;
+	}
+	public String getDateCreation() {
+		return dateCreation;
+	}
+	public void setDateCreation(String dateCreation) {
+		this.dateCreation = dateCreation;
+	}
+	public String getProposalState() {
+		return proposalState;
+	}
+	public void setProposalState(String proposalState) {
+		this.proposalState = proposalState;
+	}
+	
 }
+
+
+
+
+

@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 @Entity
 public class User {
-	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long idUser;
@@ -21,9 +20,6 @@ public class User {
 	@OneToMany(mappedBy = "authorOfProposal")
 	@Basic(optional=true)
 	private List<Proposal> listOfProposals;
-	
-	@OneToMany(mappedBy = "proposalMaker")
-	private List<PropositionOfChannel> listOfpropositionsOfChannel;
 	
 	@OneToMany(mappedBy = "assignee")
 	private List<PropositionOfWriter> assigneePropositionsOfWriter;
@@ -80,14 +76,6 @@ public class User {
 
 	public void setListOfProposals(List<Proposal> listOfProposals) {
 		this.listOfProposals = listOfProposals;
-	}
-
-	public List<PropositionOfChannel> getListOfpropositionsOfChannel() {
-		return listOfpropositionsOfChannel;
-	}
-
-	public void setListOfpropositionsOfChannel(List<PropositionOfChannel> listOfpropositionsOfChannel) {
-		this.listOfpropositionsOfChannel = listOfpropositionsOfChannel;
 	}
 
 	public List<PropositionOfWriter> getAssigneePropositionsOfWriter() {

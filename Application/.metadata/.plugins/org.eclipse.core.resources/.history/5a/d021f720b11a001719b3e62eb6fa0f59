@@ -1,0 +1,13 @@
+package models;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+public class LinkField {
+	@Entity
+	@DiscriminatorValue("LINK")
+	public class TitleField extends Field {
+
+	}
+
+}

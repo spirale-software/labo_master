@@ -1,0 +1,25 @@
+ package services.data.jpaDao;
+
+import javax.inject.Inject;
+
+import models.PropositionOfChannel;
+import play.db.jpa.JPAApi;
+import play.db.jpa.Transactional;
+import services.data.dao.PropositionOfChannelDAO;
+
+public class PropositionOfChannelDaoJPA implements PropositionOfChannelDAO {
+	private final JPAApi jpaApi;
+	
+	@Inject
+	public PropositionOfChannelDaoJPA(JPAApi jpaApi) {
+		this.jpaApi = jpaApi;
+	}
+	
+	@Override
+	@Transactional
+	public PropositionOfChannel insert(PropositionOfChannel propositionOfChannel) {
+		jpaApi.em().persist(propositionOfChannel);
+		
+		return propositionOfChannel;
+	}
+}

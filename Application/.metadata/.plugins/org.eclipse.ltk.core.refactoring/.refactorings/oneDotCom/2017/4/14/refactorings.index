@@ -10,3 +10,16 @@
 1491427151521	Rename type 'ContentManager'
 1491428917116	Rename type 'ProposalContentJPA'
 1491429334457	Rename type 'BuildBDDefaultValue'
+1491486796519	Rename type 'ProposalState'
+1491487337347	Rename type 'CreatedStated'
+1491489639296	Delete element
+1491489657121	Delete element
+1491489669822	Delete element
+1491489689131	Delete element
+1491489692578	Delete element
+1491489696343	Delete element
+1491489712587	Delete element
+1491489717589	Delete element
+1491516877292	Rename field 'proposalBuilder'
+1491520350538	Rename resource 'propositionEdit.scala.html'
+1491611175571	Rename type 'ProposalBuilder'

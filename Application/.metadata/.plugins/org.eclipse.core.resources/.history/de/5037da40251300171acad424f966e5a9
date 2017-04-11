@@ -1,7 +1,0 @@
-package services.proposition;
-
-import models.Proposition;
-
-public class AssignedState implements PropositionState {
-
-}

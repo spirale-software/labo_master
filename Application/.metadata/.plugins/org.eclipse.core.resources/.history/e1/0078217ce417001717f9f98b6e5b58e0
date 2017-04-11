@@ -1,9 +1,0 @@
-package models;
-
-public class Publication {
-	private Long id;
-	private ProposalContent content;
-	private Channel concernedChannel;
-	private User publisher;
-
-}

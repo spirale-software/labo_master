@@ -14,7 +14,7 @@ public class Proposal {
 	private String proposalName;
 	
 	@Enumerated(EnumType.STRING)
-	private ProposalState proposalState;
+	private ProposalStateType proposalState;
 	
 	private Date creationDate;
 	
@@ -44,11 +44,11 @@ public class Proposal {
 		this.proposalName = proposalName;
 	}
 
-	public ProposalState getProposalState() {
+	public ProposalStateType getProposalState() {
 		return proposalState;
 	}
 
-	public void setProposalState(ProposalState proposalState) {
+	public void setProposalState(ProposalStateType proposalState) {
 		this.proposalState = proposalState;
 	}
 

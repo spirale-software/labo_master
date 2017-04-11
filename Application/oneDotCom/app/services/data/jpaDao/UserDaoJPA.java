@@ -1,11 +1,14 @@
 package services.data.jpaDao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import play.db.jpa.Transactional;
 import services.data.dao.UserDAO;
+import models.Proposal;
 import models.User;
 import play.db.jpa.JPAApi;
 
@@ -43,6 +46,30 @@ public class UserDaoJPA implements UserDAO {
 			query.setParameter("email", email);
 			query.setParameter("password", password);
 			
+			return (User) query.getSingleResult();
+		} catch (NoResultException e) { }
+		
+		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<User> getAllUsers() {
+		Query query = jpaApi.em().createQuery("SELECT user FROM User user");
+		
+		return  (List<User>) query.getResultList();
+	}
+
+	@Override
+	@Transactional
+	public User getUserByUsernameAndEmail(String username, String email) {
+		try {
+			Query query = jpaApi.em().createQuery("SELECT user FROM User user WHERE user.username=:username "
+					+ "AND user.email=:email");
+			query.setParameter("username", username);
+			query.setParameter("email", email);
+						
 			return (User) query.getSingleResult();
 		} catch (NoResultException e) { }
 		

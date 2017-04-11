@@ -1,0 +1,13 @@
+package models;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+public class ContentField {
+	@Entity
+	@DiscriminatorValue("CONTENT")
+	public class TitleField extends Field {
+
+	}
+
+}

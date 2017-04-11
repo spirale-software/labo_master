@@ -106,6 +106,12 @@
 	padding-bottom: 0px
 }
 
+.detail-proposal-style .input-group {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	width:300px;
+}
+
 .proposal-collapse .input-group {
 	width:300px; 
 	margin-left:20px; 

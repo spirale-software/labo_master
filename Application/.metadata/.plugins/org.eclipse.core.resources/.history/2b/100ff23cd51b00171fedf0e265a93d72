@@ -1,0 +1,61 @@
+package models;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class PropositionOfChannel {
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="proposedChannel")
+	private Channel proposedChannel;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="concernedProposal")
+	private Proposal concernedProposal;
+	
+	@Enumerated(EnumType.STRING)
+	private ChannelPropositionType type;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Channel getChannel() {
+		return channel;
+	}
+
+	public void setChannel(Channel channel) {
+		this.channel = channel;
+	}
+
+	public Proposal getProposal() {
+		return proposal;
+	}
+
+	public void setProposal(Proposal proposal) {
+		this.proposal = proposal;
+	}
+
+	public ChannelPropositionType getType() {
+		return type;
+	}
+
+	public void setType(ChannelPropositionType type) {
+		this.type = type;
+	}
+}

@@ -1,0 +1,35 @@
+package services.proposal;
+
+import javax.inject.Inject;
+
+import models.PropositionOfChannel;
+import models.PropositionOfWriter;
+import services.data.dao.PropositionOfChannelDAO;
+import services.data.dao.PropositionOfWriterDAO;
+
+public class ProposalEditionManager {
+	private PropositionOfChannelDAO propositionOfChannelDAO;
+	private PropositionOfWriterDAO propositionOfWriterDAO;
+	
+	@Inject
+	public ProposalEditionManager(PropositionOfChannelDAO propositionOfChannelDAO, 
+			PropositionOfWriterDAO propositionOfWriterDAO) {
+		this.propositionOfChannelDAO = propositionOfChannelDAO;
+		this.propositionOfWriterDAO = propositionOfWriterDAO;	
+	}
+	
+	public ProposalVM getProposalVmFromProposal(long idProposal) {
+		
+	}
+	
+	public PropositionOfChannel getPropositionOfChannel() {
+		
+		return null;
+	}
+	
+	public PropositionOfWriter getPropositionOfWriter() {
+		
+		return null;
+	}
+
+}

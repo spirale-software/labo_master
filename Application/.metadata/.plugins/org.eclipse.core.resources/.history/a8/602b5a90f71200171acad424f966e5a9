@@ -1,6 +1,0 @@
-package services.general;
-
-public interface Notify {
-
-	public void sendNotification(User userToNotify, String message);
-}
