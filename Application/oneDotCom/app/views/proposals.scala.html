@@ -2,6 +2,9 @@
 
 @dashboardLayout("Toutes les propositions")(lastName) {
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	@if(flash.containsKey("success")) {
+		<div class="alert alert-success" role="alert"> @flash.get("success") </div>
+	}
 	<div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading"><h3>Liste des propositions</h3></div>

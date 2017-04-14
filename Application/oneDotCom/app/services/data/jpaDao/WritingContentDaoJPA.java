@@ -1,6 +1,8 @@
 package services.data.jpaDao;
 
 import javax.inject.Inject;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 
 import models.WritingContent;
 import play.db.jpa.JPAApi;
@@ -20,6 +22,19 @@ public class WritingContentDaoJPA implements WritingContentDAO {
 		jpaApi.em().persist(writingContent);
 		
 		return writingContent;
+	}
+
+	@Override
+	public WritingContent getByIdProposal(Long idProposal) {
+		try {
+			Query query = jpaApi.em().createQuery("SELECT wc FROM WritingContent wc "
+					+ "WHERE wc.concernedProposal.idProposal=:idProposal");
+			query.setParameter("idProposal", idProposal);
+			
+			return (WritingContent) query.getSingleResult();
+		} catch (NoResultException e) { }
+		
+		return null;
 	}
 
 }

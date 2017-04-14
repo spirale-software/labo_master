@@ -1,7 +1,0 @@
-package services.data.dao;
-
-import models.Field;
-
-public interface FieldDAO {
-	public Field insertField(Field field);
-}

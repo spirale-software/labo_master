@@ -1,7 +1,0 @@
-package services.data.dao;
-
-import models.WritingContent;
-
-public interface WritingContentDAO {
-	public WritingContent insert(WritingContent writingContent);
-}

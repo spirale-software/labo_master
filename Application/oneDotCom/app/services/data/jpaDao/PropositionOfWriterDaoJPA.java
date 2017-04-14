@@ -40,4 +40,10 @@ public class PropositionOfWriterDaoJPA implements PropositionOfWriterDAO {
 		
 		return null;
 	}
+
+
+	@Override
+	public void update(PropositionOfWriter propositionOfWriter) {
+		this.jpaApi.em().merge(propositionOfWriter);
+	}
 }

@@ -11,7 +11,7 @@ public class ProposalVM {
 	
 	private String twitterProposed;
 	private String facebookProposed;
-	private String MailingListProposed;
+	private String mailingListProposed;
 	
 	private String twitterAdded;
 	private String facebookAdded;
@@ -83,10 +83,10 @@ public class ProposalVM {
 		this.facebookProposed = facebookProposed;
 	}
 	public String getMailingListProposed() {
-		return MailingListProposed;
+		return mailingListProposed;
 	}
 	public void setMailingListProposed(String mailingListProposed) {
-		MailingListProposed = mailingListProposed;
+		this.mailingListProposed = mailingListProposed;
 	}
 	public String getProposedChannels() {
 		return proposedChannels;

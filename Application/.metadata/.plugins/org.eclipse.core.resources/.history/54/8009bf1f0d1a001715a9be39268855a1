@@ -1,5 +1,0 @@
-package services.data.dao;
-
-public interface FieldDAO {
-	public Field insertField(Field field);
-}

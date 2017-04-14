@@ -22,7 +22,7 @@ POST    /proposition/ajouter           				controllers.ProposalController.addPro
 
 POST    /proposition/modifier						controllers.ProposalController.editProposalAction
 
-GET     /proposition/supprimer         				controllers.ProposalController.deleteProposalAction
+GET     /proposition/supprimer/:idProposal  		controllers.ProposalController.deleteProposalAction(idProposal: String)
 
 GET     /proposition/lister        					controllers.ProposalController.getAllProposalsAction
 
@@ -31,6 +31,8 @@ GET     /proposition/detail/:idProposal				controllers.ProposalController.detail
 GET     /proposition/contenu/:idProposal			controllers.ProposalController.writeProposalContentAction(idProposal: Long)
 
 POST    /proposition/contenu/ajouter/:idProposal	controllers.ProposalController.addProposalContentAction(idProposal: Long)
+
+GET     /proposition/contenu/detail/:idProposal		controllers.ProposalController.detailProposalContentAction(idProposal: String)
 
 
 

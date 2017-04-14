@@ -45,8 +45,7 @@ public class ProposalDaoJPA implements ProposalDAO{
 
 	@Override
 	public Proposal updateProposal(Proposal proposalUpdated) {
-		// TODO Auto-generated method stub
-		return null;
+		return jpaApi.em().merge(proposalUpdated);
 	}
 
 	@SuppressWarnings("unchecked")

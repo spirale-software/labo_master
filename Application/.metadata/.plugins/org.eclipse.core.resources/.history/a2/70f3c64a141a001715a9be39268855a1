@@ -1,5 +1,0 @@
-package services.data.dao;
-
-public interface PropositionOfChannelDAO {
-	public PropositionOfChannel insert(PropositionOfChannel propositionOfChannel);
-}

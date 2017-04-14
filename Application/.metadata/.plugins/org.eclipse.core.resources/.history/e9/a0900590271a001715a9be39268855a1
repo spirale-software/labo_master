@@ -1,5 +1,0 @@
-package services.data.jpaDao;
-
-public class FieldChannelDaoJPA {
-
-}

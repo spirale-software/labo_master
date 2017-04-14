@@ -9,4 +9,5 @@ import services.data.jpaDao.PropositionOfWriterDaoJPA;
 public interface PropositionOfWriterDAO {
 	public PropositionOfWriter insert(PropositionOfWriter propositionOfWriter);
 	public PropositionOfWriter getByIdProposal(long idProposal);
+	public void update(PropositionOfWriter propositionOfWriter);
 }

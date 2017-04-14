@@ -1,0 +1,233 @@
+@(proposalForm: Form[ProposalVM], users:List[User])
+
+@dashboardLayout("détail Proposition")(session().get("username")) {
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	
+	@if(flash.containsKey("success")) {
+		<div class="alert alert-success" role="alert"> @flash.get("success") </div>
+	}
+	
+	<form action="@routes.ProposalController.editProposalAction()" method="post" id="formId">
+	
+		 <input type="text" class="hidden" value="@proposalForm("idProposal").value"  name="@proposalForm("idProposal").name" >
+		 
+	 <div class="panel panel-default detail-proposal-style">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Detail de la proposition</h3> 
+                </div>
+                <div class="panel-body">
+                    <div class="panel panel-default" style="margin-top: 10px">
+                        <div class="panel-body">
+                            <p class="col-lg-3 col-md-3 ">Titre de la Proposition: </p>
+                            <input type="text" class="col-lg-6 col-md-6" id="titleId" disabled 
+                            	value="@proposalForm("proposalName").value"  name="@proposalForm("proposalName").name">
+                            <a class="col-lg-3 col-md-3 " href="#" onclick ="enabledTitleEdition()" id="idModifier">Modifier</a>
+                            <a class="hidden" href="#" onclick ="saveTitle()" id="idSaveTitle">
+                            	Enregistrer
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                        
+                        	<p class="col-lg-3 col-md-3 ">Redacteur proposé </p>
+                            <input type="text" class="col-lg-6 col-md-6" id="writerId" disabled value = "@proposalForm("proposedWriter").value"  
+                            	name = "@proposalForm("proposedWriter").name" list="suggestions">
+                            <a class="col-lg-3 col-md-3 " href="#" onclick ="enabledWriterEdition()">Modifier</a>
+                            
+                            <datalist id="suggestions">                   
+                    			@for(user <- users) {
+                    				<option value="@user.getUsername()   <<@user.getEmail()>>">
+                    			}                    	
+                    </datalist>       
+                      
+                        </div>
+                    </div>
+                    
+         
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                        	                      	
+                        	<p class="col-lg-3 col-md-3 ">Canals proposés: </p>
+                            <input type="text" class="col-lg-6 col-md-6" id="channelsId" disabled
+                            	value="@proposalForm("proposedChannels").value"  name="@proposalForm("proposedChannels").name">
+                        
+                            
+                            <div class="row proposal-collapse col-lg-6 col-md-6 hidden" id="listChannels">
+                    	
+							    <div class="input-group">
+							      <span class="input-group-addon">
+							        <input type="checkbox" name="@proposalForm("facebookProposed").name">
+							      </span>
+							      <div class=" form-control well well-sm">Facebook</div>
+							    </div><!-- /input-group -->
+							    
+							    <div class="input-group">
+							      <span class="input-group-addon">
+							        <input type="checkbox" name="@proposalForm("twitterProposed").name">
+							      </span>
+							      <div class=" form-control well well-sm">Twitter</div>
+							    </div><!-- /input-group -->
+							    
+							    <div class="input-group">
+							      <span class="input-group-addon">
+							        <input type="checkbox" name="@proposalForm("mailingListProposed").name">
+							      </span>
+							      <div class=" form-control well well-sm">Mailing List</div>
+							    </div><!-- /input-group -->
+							  
+							</div><!-- /.row -->   
+                   
+                            <a class="col-lg-3 col-md-3" href="#" onclick ="enabledChannelsEdition()">Modifier</a>
+                        	          
+                        </div>
+                    </div>
+                    
+                   
+                    <div class="panel panel-default">
+                        <div class="panel-body" style="padding-bottom:15px">
+                        	                      	
+                        	<a  role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" 
+                        		aria-controls="collapseExample" style="margin-left:15px;">
+  								Ajouter Canal
+							</a>
+							
+							<div class="collapse" id="collapseExample">
+  								
+  								<div class="input-group">
+							      <span class="input-group-addon">
+							        <input type="checkbox" name="@proposalForm("facebookAdded").name">
+							      </span>
+							      <div class=" form-control well well-sm">Facebook</div>
+							    </div><!-- /input-group -->
+							    
+							    <div class="input-group">
+							      <span class="input-group-addon">
+							        <input type="checkbox" name="@proposalForm("twitterAdded").name" >
+							      </span>
+							      <div class=" form-control well well-sm">Twitter</div>
+							    </div><!-- /input-group -->
+							    
+							    <div class="input-group">
+							      <span class="input-group-addon">
+							        <input type="checkbox" name="@proposalForm("mailingListAdded").name">
+							      </span>
+							      <div class=" form-control well well-sm">Mailing List</div>
+							    </div><!-- /input-group -->	
+							</div>
+				                       	          
+                        </div>
+                    </div>
+                    
+                             
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p class="col-lg-3 col-md-3 ">Date Butoir </p>
+                            <input type="date" class="col-lg-6 col-md-6" id="dateId" disabled
+                            	value="@proposalForm("deadLine").value"  name="@proposalForm("deadLine").name">
+                            <a class="col-lg-3 col-md-3 " href="#" onclick ="enabledDateEdition()">Modifier</a>
+                        </div>
+                    </div>
+                                 
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p class="col-lg-3 col-md-3 ">Etat de la proposition: </p>
+                            <p class="col-lg-9 col-md-9">@proposalForm("proposalState").value</p>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p>Proposé par <em class="text-primary">@proposalForm("proposalAuthorName").value</em> 
+                             	le @proposalForm("dateCreation").value</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 30px">
+	                	<button type="submit" class="btn btn-primary" name="action" value="edit">
+	                		Enregistrer modifications
+	                	</button>
+	                              
+	                	<button type="submit" class="btn btn-primary" name="action" value="redact"> 
+	                		Rédiger contenu
+	                	</button>
+	               		
+	               		<a href="#" class="btn btn-danger" name="action" value="delete"  id="sup"
+	               			data-toggle="modal" data-target="#myModal"> 
+	               			Supprimer
+	               		</a>
+	               		
+	               		<!-- [Modal] -->
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						        <h4 class="modal-title" id="myModalLabel">Attention!</h4>
+						      </div>
+						      <div class="modal-body">
+						        Il n'y a pas de retour en arrière pour cette action.<br>
+						        Etes vous sûr de vouloir continuer?
+						      </div>
+						      <div class="modal-footer">
+						        <a type="button" class="btn btn-primary" data-dismiss="modal">Arreter</a>
+						        <a href = "@routes.ProposalController.deleteProposalAction(proposalForm("idProposal").value)" 
+						        	type="button" class="btn btn-danger">Supprimer</a>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+						<!-- [/Modal] -->
+	                   
+                    </div>
+                </div>
+            </div>
+            
+            </form>
+            
+            <script>
+            	function enabledTitleEdition() {
+            		document.getElementById("titleId").disabled = false;
+            		
+            		document.getElementById("idSaveTitle").hidden == false;
+            		document.getElementById("idSaveTitle").className = "col-lg-3 col-md-3"          		
+            		
+            		document.getElementById("idModifier").hidden = true;
+            	}
+            	
+            	function enabledWriterEdition() {
+            		document.getElementById("writerId").disabled = false;
+            	}
+            	
+            	function enabledChannelsEdition() {
+            		document.getElementById("channelsId").hidden = true;
+            		document.getElementById("listChannels").className = "row proposal-collapse col-lg-6 col-md-6";
+            	}
+            	
+            	function enabledDateEdition() {
+            		document.getElementById("dateId").disabled = false;
+            	}
+            	
+            	function saveTitle() {
+            		document.getElementById("idSaveTitle").hidden = true; 
+            		document.getElementById("titleId").disabled = true;
+            		
+            		document.getElementById("idModifier").hidden = false;
+            		document.getElementById("idModifier").className = "col-lg-3 col-md-3";
+            	}
+            	
+            </script>
+            
+            
+            
+
+}
+
+
+
+
+
+
+
+
