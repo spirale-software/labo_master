@@ -1,10 +1,13 @@
 package services.data.jpaDao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import models.Role;
+import models.User;
 import play.db.jpa.JPAApi;
 import services.data.dao.RoleDAO;
 
@@ -33,5 +36,13 @@ private final JPAApi jpaApi;
 		} catch (NoResultException e) { }
 		
 		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Role> getAllRoles() {
+		Query query = jpaApi.em().createQuery("SELECT role FROM Role role");
+		
+		return  (List<Role>) query.getResultList();
 	}
 }

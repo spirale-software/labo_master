@@ -1,0 +1,65 @@
+package controllers;
+
+import play.mvc.Controller;
+import java.util.List;
+import javax.inject.Inject;
+import models.Proposal;
+import models.ProposalContentVM;
+import models.ProposalVM;
+import models.User;
+import models.UserVM;
+import play.data.Form;
+import play.data.FormFactory;
+import play.db.jpa.Transactional;
+import play.mvc.Controller;
+import play.mvc.Result;
+import play.mvc.Security.Authenticated;
+import services.data.dao.ProposalDAO;
+import services.data.dao.UserDAO;
+import services.data.jpaDao.UserDaoJPA;
+import services.general.CustomAuthenticator;
+import services.proposal.ProposalContentManager;
+import services.proposal.ProposalEditionManager;
+import services.proposal.ProposalManager;
+import views.html.*;
+
+@Authenticated(CustomAuthenticator.class)
+public class ProposalContentController extends Controller {
+	
+	private final FormFactory formFactory;
+	private final ProposalDAO proposalDAO;
+	private ProposalManager proposalManager;
+	private ProposalEditionManager proposalEditionManager;
+	private ProposalContentManager contentManager;
+	private UserDAO userDAO;
+	
+	@Inject
+	public ProposalContentController(FormFactory formFactory, ProposalDAO proposalDAO ) {
+		this.formFactory = formFactory;
+		this.proposalDAO = proposalDAO;
+	}
+
+	@Transactional
+	public Result proposalContentAction(Long idProposal) {
+		Proposal proposal = this.proposalDAO.getProposalById(idProposal);
+		Form<ProposalContentVM> proposalContentForm = formFactory.form(ProposalContentVM.class);
+
+		if(this.isFormSubmitted()) {
+			ProposalContentVM proposalContentVM = formFactory.form(ProposalContentVM.class).bindFromRequest().get();
+			proposalContentVM.setIdOfConcernedProposal(idProposal);
+			contentManager.manageProposalContent(proposalContentVM, Long.parseLong(session("idUser")));
+			
+			flash("success", "Le contenu de la proposition a bien été enregistré");
+		}
+		
+		return ok(proposalContent.render(proposalContentForm, proposal));
+	}
+	
+	
+	
+	/**************************************** Helpers Methods **********************************/
+	/*******************************************************************************************/
+	public boolean isFormSubmitted() {
+		return request().method().equals("POST");
+	}
+}

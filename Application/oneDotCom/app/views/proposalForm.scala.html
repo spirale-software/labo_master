@@ -1,17 +1,17 @@
-@(proposalForm: Form[ProposalVM], username: String, isAlert: Boolean, users: List[User])
+@(proposalForm: Form[ProposalVM], users: List[User])
 
-@dashboardLayout("Nouvelle Proposition")(username) {
+@dashboardLayout("Nouvelle Proposition")(session().get("username")) {
 	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 	
-	@if(isAlert) {
-		<div class="alert alert-success" role="alert"> Votre proposition a bien été enregistrée</div>
-	}	
+	@if(flash.containsKey("success")) {
+		<div class="alert alert-success" role="alert"> @flash.get("success") </div>
+	}
 	
 <div class="panel panel-default">
                <!-- Default panel contents -->
             <div class="panel-heading"><h3>Redaction d'une nouvelle proposition</h3></div>
             
-            <form method="post" action="@routes.ProposalController.addProposalAction">
+            <form method="post" action="@routes.ProposalController.proposalAction">
                 <div class="container divProposition">
                     <div class="form-group">
                         <label for="proposalTitle">Titre Proposition</label>
@@ -99,10 +99,6 @@
                 	</div>
             	</div>
         	</div>
-        
-        
-        
-        
 
              <div>
                  <button type="submit" class="btn btn-primary" name="action" value="save">Enregistrer</button>

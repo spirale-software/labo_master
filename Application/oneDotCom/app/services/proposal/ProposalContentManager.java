@@ -24,6 +24,7 @@ import models.ProposalStateType;
 import models.TitleField;
 import models.User;
 import models.WritingContent;
+import play.db.jpa.Transactional;
 import services.data.dao.ChannelDAO;
 import services.data.dao.FieldChannelDAO;
 import services.data.dao.FieldDAO;
@@ -75,6 +76,7 @@ public class ProposalContentManager {
 		proposalDAO.updateProposal(concernedProposal);
 	}
 	
+	@Transactional
 	public ProposalContentVM getProposalContentVMFromIdProposal(Long idProposal) {
 		ProposalContentVM pcVM = new ProposalContentVM();
 		
@@ -90,6 +92,9 @@ public class ProposalContentManager {
 				pcVM.setLink(field.getFieldContent());
 			if(field instanceof PlaceField)
 				pcVM.setPlace(field.getFieldContent());
+			if(field instanceof DateField)
+				pcVM.setDate(((DateField) field).getDate());
+				
 		}
 		
 		//TODO Other field have to be doing
@@ -105,12 +110,22 @@ public class ProposalContentManager {
 		insertContentField(proposalContent, proposalContentVM.getContent());
 		insertLinkField(proposalContent, proposalContentVM.getLink());
 		insertPlaceField(proposalContent, proposalContentVM.getPlace());
+		insertDateField(proposalContent, proposalContentVM.getDate());
 		
 		//TODO 
-		//insertDateField(proposalContent, proposalContentVM.getDate());
 		//insertImageField(proposalContent, proposalContentVM.getImage());		
 		//insertMediaField(proposalContent, proposalContentVM.getMedia());
 		
+	}
+	
+	private void insertDateField(ProposalContent proposalContent, Date date) {
+		Field field = this.insertField(proposalContent, "date", date);
+		
+		ArrayList<String> channelsNames = new ArrayList<>();
+		channelsNames.add(ChannelType.FACEBOOK.toString());
+		channelsNames.add(ChannelType.MAILING_LIST.toString());
+		
+		this.insertFieldsChannels(field, channelsNames);
 	}
 	
 	private void insertTitleField(ProposalContent proposalContent, String title) {
@@ -172,28 +187,13 @@ public class ProposalContentManager {
 		if(obj instanceof String) {
 			field.setFieldContent((String) obj);
 		}
+		if(obj instanceof Date) {
+			((DateField) field).setDate((Date) obj);
+		}
 		
 		field.setContainer(proposalContent);
 		return fieldDAO.insertField(field);
 	}
-	
-	
-	/*private void insertTitleField(ProposalContent proposalContent, String title) {
-		Field titleField = new TitleField();
-		titleField.setContainer(proposalContent);
-		titleField.setFieldContent(title);
-		fieldDAO.insertField(titleField);
-		
-		Channel channel;
-		channel = channelDAO.getChannelByName(ChannelType.FACEBOOK.toString());
-		insertFieldChannel(channel, titleField);
-		
-		channel = channelDAO.getChannelByName(ChannelType.TWITTER.toString());
-		insertFieldChannel(channel, titleField);
-		
-		channel = channelDAO.getChannelByName(ChannelType.MAILING_LIST.toString());
-		insertFieldChannel(channel, titleField);
-	}*/
 	
 	private void insertFieldChannel(Channel channel, Field field) {
 		FieldChannel fieldChannel = new FieldChannel();

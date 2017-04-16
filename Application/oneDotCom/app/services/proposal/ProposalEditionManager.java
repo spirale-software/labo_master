@@ -36,7 +36,7 @@ public class ProposalEditionManager {
 		this.userDAO = userDAO;
 	}
 
-	public ProposalVM getProposalVmFromProposal(long idProposal) {
+	public ProposalVM getProposalVMFromProposal(long idProposal) {
 		Proposal proposal = this.proposalDAO.getProposalById(idProposal);
 		PropositionOfWriter propOfWriter = this.propositionOfWriterDAO.getByIdProposal(idProposal);
 		List<PropositionOfChannel> propOfChannels = this.propositionOfChannelDAO.getAllByIdProposal(idProposal);

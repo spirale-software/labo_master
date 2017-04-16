@@ -1,0 +1,29 @@
+package controllers;
+
+import play.mvc.Controller;
+import play.mvc.Result;
+import services.data.dao.RoleDAO;
+import services.data.dao.UserDAO;
+
+import java.util.List;
+import models.Role;
+import models.User;
+
+public class ManageUserController extends Controller {
+	private UserDAO userDAO;
+	private RoleDAO roleDAO;
+
+	public ManageUserController() {
+		
+	}
+	
+	public Result indexAction() {
+		
+		List<User> users = userDAO.getAllUsers();
+		List<Role> roles = roleDAO.getAllRoles();
+		
+		
+		return ok(manageRole.render());
+	}
+
+}

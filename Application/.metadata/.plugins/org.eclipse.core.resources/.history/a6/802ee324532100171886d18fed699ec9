@@ -1,0 +1,42 @@
+package controllers;
+
+import play.data.FormFactory;
+import play.mvc.Controller;
+import play.mvc.Result;
+import services.data.dao.RoleDAO;
+import services.data.dao.UserDAO;
+
+import java.util.List;
+import models.Role;
+import models.User;
+
+public class ManageUserController extends Controller {
+	private UserDAO userDAO;
+	private RoleDAO roleDAO;
+	private final FormFactory formFactory;
+
+	public ManageUserController() {
+		
+	}
+	
+	public Result roleAction() {
+		List<User> users = userDAO.getAllUsers();
+		List<Role> roles = roleDAO.getAllRoles();
+		
+		if() {
+			
+		}
+		
+		flash("notice", "L'attribution du rôle a bien été enregistrée");
+		return ok(manageRole.render(users, roles));
+	}
+	
+	/******************************* HELPERS METHODS *************************************/
+	/************************************************************************************/
+	
+	public boolean isFormSubmitted() {
+		
+		return formFactory.form().bindFromRequest().get("manageRole") != null;
+	}
+
+}

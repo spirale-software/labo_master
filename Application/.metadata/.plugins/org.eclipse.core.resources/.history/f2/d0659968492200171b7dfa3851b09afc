@@ -1,0 +1,37 @@
+@(listProposals: List[Proposal], lastName: String)
+
+@dashboardLayout("Toutes les propositions")(lastName) {
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	@if(flash.containsKey("success")) {
+		<div class="alert alert-success" role="alert"> @flash.get("success") </div>
+	}
+	<div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading"><h3>Liste des propositions</h3></div>
+
+                <!-- Table -->
+                <table class="table table-striped">
+                    <tr>
+                        <th>Propositions</th>
+                        <th>Etat</th>
+                        <th>Actions</th>
+                    </tr>
+                    
+                    @for(proposal <- listProposals) {
+                    
+                    	<tr>
+	                        <td>
+	                            <p><a href="@routes.ProposalController.detailProposalAction(proposal.getIdProposal())">@proposal.getProposalName()</a></p>
+	                        </td>
+	                        <td>@proposal.getProposalState()</td>
+	                        <td>
+                               <a class="btn btn-primary" href="@routes.ProposalContentController.detailPropContAction(proposal.getIdProposal())">
+                               		Voir Contenu
+                               </a>
+	                        </td>
+                    	</tr>
+                    }
+                </table>
+            </div>
+	
+}

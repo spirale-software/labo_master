@@ -8,7 +8,6 @@ import javax.persistence.Query;
 
 import play.db.jpa.Transactional;
 import services.data.dao.UserDAO;
-import models.Proposal;
 import models.User;
 import play.db.jpa.JPAApi;
 
@@ -74,6 +73,12 @@ public class UserDaoJPA implements UserDAO {
 		} catch (NoResultException e) { }
 		
 		return null;
+	}
+
+	@Override
+	@Transactional
+	public User update(User user) {
+		return jpaApi.em().merge(user);
 	}
 }
 

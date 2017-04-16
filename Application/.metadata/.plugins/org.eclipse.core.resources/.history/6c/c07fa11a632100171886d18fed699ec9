@@ -1,0 +1,38 @@
+@(users: List[User], roles: List[Role])
+
+@dashboardLayout("Gestion des rôles")(session().get("username")) {
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	
+	@if(flash.containsKey("success")) {
+		<div class="alert alert-success" role="alert"> @flash.get("success") </div>
+	}
+	<h2 class="page-header">Assignation des rôles</h2>
+	<form name="manageRole" action="@routes.ManageUserController.roleAction" method="post">
+		<div class="row">
+	     <div class="col-lg-3">
+	         <div class="form-group">
+	             <label>Nom de l'utilisateur</label>
+	             <select class="form-control" name="userId">
+	             	@for(user <- users) {
+	             		<option value="123">@user.getUsername()</option>
+	             	}
+	             </select>
+	         </div>
+	     </div>
+	     <div class="col-lg-3">
+	         <div class="form-group">
+	             <label>Assigner rôle</label>
+	             <select class="form-control">
+	             	@for(role <- roles) {
+	             		<option name="roleId">@role.getRoleName()</option>
+	             	}
+	             </select>
+	         </div>
+	     </div>
+	     <div class="col-lg-3" style="margin-top: 35px">
+	         <button type="submit" class="btn btn-primary">Valider</button>
+	     </div>
+	
+	    </div>
+    </form>
+}

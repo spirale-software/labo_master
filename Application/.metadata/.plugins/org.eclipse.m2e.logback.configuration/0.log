@@ -1,0 +1,15 @@
+2017-04-16 06:49:46,183 [Worker-165] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.tutorial:facebookAPI:0.0.1-SNAPSHOT @ C:\Users\Lapi Emo\Desktop\Tutorial\Java\facebookAPI\pom.xml.
+2017-04-16 06:49:46,183 [Worker-41] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.tutorial:facebookAPI:0.0.1-SNAPSHOT @ C:\Users\Lapi Emo\Desktop\Tutorial\Java\facebookAPI\pom.xml.
+2017-04-16 06:49:48,297 [Worker-165] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-16 06:49:48,297 [Worker-165] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Lapi Emo\Desktop\Tutorial\Java\facebookAPI\src\main\resources
+2017-04-16 06:49:48,300 [Worker-165] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-16 06:49:48,300 [Worker-165] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Lapi Emo\Desktop\Tutorial\Java\facebookAPI\src\test\resources
+2017-04-16 06:49:48,610 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-16 06:49:48,610 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Lapi Emo\Desktop\Tutorial\Java\facebookAPI\src\main\resources
+2017-04-16 06:49:48,612 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-16 06:49:48,612 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Lapi Emo\Desktop\Tutorial\Java\facebookAPI\src\test\resources
+2017-04-16 06:49:50,018 [Worker-173] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.tutorial:facebookAPI:0.0.1-SNAPSHOT @ C:\Users\Lapi Emo\Desktop\Tutorial\Java\facebookAPI\pom.xml.
+2017-04-16 06:49:51,024 [Worker-172] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-16 06:49:51,024 [Worker-172] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Lapi Emo\Desktop\Tutorial\Java\facebookAPI\src\main\resources
+2017-04-16 06:49:51,027 [Worker-172] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-16 06:49:51,027 [Worker-172] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Lapi Emo\Desktop\Tutorial\Java\facebookAPI\src\test\resources

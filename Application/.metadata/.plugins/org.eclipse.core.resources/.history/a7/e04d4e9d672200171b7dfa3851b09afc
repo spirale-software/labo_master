@@ -1,0 +1,25 @@
+package services.publication;
+
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.Parameter;
+import com.restfb.Version;
+import com.restfb.types.GraphResponse;
+
+public class FacebookPublication implements Publish {
+
+	private String accessToken = "EAAaYgALZAE3IBAJJwgVK7tgFLrMjx2gZCZCm7ZBIPJgy59aopPqKcy7XVe6ssxpe2ZCE8BlBr1kJy6GTvuZCLFnR2erxxjD1YgxW7rdEwvSW53zfTQCI6BXoJz2N5KqAg3v3KwpMxbjlniuo40LXf2p1LTrlryverG4RMRobghxidb8ZA3Dq3PzKKLb3Y4SMjkEIAgSUvPkPwZDZD";
+	
+	@Override
+	public String publish(String message) {
+		FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.LATEST);
+
+		GraphResponse publishMessageResponse = fbClient.publish("me/feed", GraphResponse.class,
+				Parameter.with("message", message));
+
+		//System.out.println("Published message ID: " + publishMessageResponse.getId());
+		
+		return publishMessageResponse.getId();
+	}
+
+}

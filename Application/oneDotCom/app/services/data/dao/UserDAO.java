@@ -15,4 +15,5 @@ public interface UserDAO {
 	public User getUserByCredentials(String email, String pwd);
 	public User getUserByUsernameAndEmail(String username, String email);
 	public List<User> getAllUsers();
+	public User update(User user);
 }

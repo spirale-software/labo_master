@@ -1,0 +1,171 @@
+@(proposalContentForm: Form[ProposalContentVM], proposalVM: ProposalVM)
+
+@dashboardLayout("Nouvelle Proposition")(session().get("username")) {
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/proposalContent.css")">
+	
+	@if(flash.containsKey("success")) {
+		<div class="alert alert-success" role="alert"> @flash.get("success") </div>
+	}
+	
+	<div class="panel panel-default proposal-content">
+      <div class="panel-heading">
+          <h3 class="panel-title">Redaction du contenu de la proposition</h3>
+      </div>
+		
+	
+	
+	<div class="row">
+                <div class="col-md-4">
+                    <p>Titre de la proposition: @proposalVM.getProposalName()</p>
+                    <p>Redacteur proposé: @proposalVM.getProposedWriter() </p>
+                    <p>Canals Proposés: </p>
+                    <a href="@routes.ProposalController.detailProposalAction(proposalVM.getIdProposal())" style="padding-left:10px">
+                    	Modifier cette proposition
+                    </a>
+					<hr class="divider">
+					
+					
+					<div class="panel panel-default">
+                		<div class="panel-heading" role="tab" id="headingTwo">
+                    	<h4 class="panel-title">
+                        	<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" 
+                        	aria-expanded="false" aria-controls="collapse">
+                            Versionning
+                        	</a>
+                    	</h4>
+                		</div>
+	                	<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+	                    	<div class="panel-body">
+		                    	<div class="input-group">
+								     <span class="input-group-addon">
+								       <input type="checkbox" aria-label="..." name="">
+								     </span>
+								     <div class=" form-control well well-sm">Soumettre au versionning</div>
+					   			</div><!-- /input-group -->
+					   			
+					   			<div class="form-group" style="border:0px; width:200px">
+					   				<div class="col-sm-9">
+					   					<label>Choisir une version</label>
+	             						<select class="form-control" name="userId">
+	             							<option value="empty">Version 1</option>
+	             							<option value="empty">Version 2</option>
+	             							<option value="empty">Version 3</option>
+	             						</select>
+					   				</div>
+					   				<a class="col-sm-3" class="btn btn-primary">Restituer</a>
+	             					
+	         					</div>
+	         					
+	                		</div>
+	            		</div>
+        			</div>
+        
+					
+					
+					
+                </div><!-- [/col-md-3]--> 
+                
+                <div class="col-md-8 form-contenu">
+                    <form class="form-horizontal" method="post" 
+                    	action="@routes.ProposalController.addProposalContentAction(proposalVM.getIdProposal())">
+                        <div class=" form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Titre</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputEmail3" name="@proposalContentForm("title").name"
+                                       placeholder="Titre du contenu">
+                            </div>
+                            <p>Ceci sera publié sur <em class="text-primary">Facebook</em>,
+                                <em class="text-primary">Twitter</em>,
+                                <em class="text-primary">Mailing List</em></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Contenu</label>
+                            <div class="col-sm-10">
+                                <textarea  class="form-control" rows="4" placeholder="Contenu de la proposition" 
+                                name="@proposalContentForm("content").name"></textarea>
+                            </div>
+                            <p>Ceci sera publié sur <em class="text-primary">Facebook</em>,
+                                <em class="text-primary">Mailing List</em></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Lien</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="" placeholder="Lien vers un article"
+                                	name="@proposalContentForm("link").name">
+                            </div>
+                            <p>Ceci sera publié sur <em class="text-primary">Facebook</em>,
+                                <em class="text-primary">Twitter</em>,
+                                <em class="text-primary">Mailing List</em></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Image</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="@proposalContentForm("image").name">
+                            </div>
+                            <p>Ceci sera publié sur <em class="text-primary">Facebook</em>,
+                                <em class="text-primary">Twitter</em>,
+                                <em class="text-primary">Mailing List</em></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Date</label>
+                            <div class="col-sm-10">
+                                <input type="date" id="" placeholder="Date" name="@proposalContentForm("date").name">
+                            </div>
+                            <p>Ceci sera publié sur <em class="text-primary">Facebook</em>,
+                                <em class="text-primary">Mailing List</em></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Lieu</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="@proposalContentForm("place").name" placeholder="Lieu">
+                            </div>
+                            <p>Ceci sera publié sur <em class="text-primary">Facebook</em>,
+                                <em class="text-primary">Twitter</em>,
+                                <em class="text-primary">Mailing List</em></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Media</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="@proposalContentForm("media").name" placeholder="Password">
+                            </div>
+                            <p>Ceci sera publié sur <em class="text-primary">Facebook</em>,
+                                <em class="text-primary">Twitter</em>,
+                                <em class="text-primary">Mailing List</em></p>
+                        </div>
+                        
+                        <div class="checkbox">
+                            Publier Sur:
+                            <label>
+                                <input type="checkbox" name="@proposalContentForm("facebookSelected").name"> Facebook
+                            </label>
+                            <label>
+                                <input type="checkbox" name="@proposalContentForm("twitterSelected").name" > Twitter
+                            </label>
+                            <label>
+                                <input type="checkbox" name="@proposalContentForm("mailingListSelected").name"> Mailing List
+                            </label>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <button type="submit" class="btn btn-primary">Enregistrer et publier</button>
+                        </div>
+                    </form>
+                </div> <!-- [/col-md-9]-->
+
+            </div>
+	
+	
+	
+	
+	
+   </div>
+	
+}

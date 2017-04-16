@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 public class Channel {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	private long idCanal;
+	private long channelId;
 	
 	private String channelName;
 	
@@ -28,13 +28,13 @@ public class Channel {
 	
 	@OneToMany(mappedBy = "channel")
 	private List<FieldChannel> listOfFieldChannels;
-
-	public long getIdCanal() {
-		return idCanal;
+	
+	public long getChannelId() {
+		return channelId;
 	}
 
-	public void setIdCanal(long idCanal) {
-		this.idCanal = idCanal;
+	public void setChannelId(long channelId) {
+		this.channelId = channelId;
 	}
 
 	public String getChannelName() {

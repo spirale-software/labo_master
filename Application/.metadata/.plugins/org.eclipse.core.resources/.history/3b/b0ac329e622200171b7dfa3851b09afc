@@ -1,0 +1,13 @@
+package services.general;
+
+import models.User;
+
+public class SendEmail implements Notify{
+
+	@Override
+	public void sendNotification(User userToNotify, String message) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

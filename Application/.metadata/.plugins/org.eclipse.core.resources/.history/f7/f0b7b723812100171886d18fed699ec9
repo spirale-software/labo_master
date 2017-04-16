@@ -1,0 +1,54 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Routes related to index and registration routes
+#--------------------------------------------------------------------------------------------------
+GET     /                 							controllers.HomeController.indexAction
+
+GET     /deconnexion           						controllers.HomeController.logOutAction
+
+GET     /tableau_de_bord         					controllers.HomeController.showDashboardAction
+
+POST	/utilisateur/nouveau						controllers.HomeController.connectNewUserAction
+
+POST	/utilisateur/enregistrer					controllers.HomeController.connectRegisteredUserAction
+
+
+# Routes related to propositions
+# -------------------------------------------------------------------------------------------------
+GET     /proposition          						controllers.ProposalController.proposalAction
+
+POST    /proposition/ajouter           				controllers.ProposalController.addProposalAction
+
+POST    /proposition/modifier						controllers.ProposalController.editProposalAction
+
+GET     /proposition/supprimer/:idProposal  		controllers.ProposalController.deleteProposalAction(idProposal: String)
+
+GET     /proposition/lister        					controllers.ProposalController.getAllProposalsAction
+
+GET     /proposition/detail/:idProposal				controllers.ProposalController.detailProposalAction(idProposal: Long)
+
+
+# Routes related to content of the proposition
+#---------------------------------------------------------------------------------------------------------------------
+
+GET     /proposition/contenu/:idProposal			controllers.ProposalContentController.proposalContentAction(idProposal: Long)
+
+POST    /proposition/contenu/:idProposal			controllers.ProposalContentController.proposalContentAction(idProposal: Long)
+
+GET     /proposition/contenu/detail/:idProposal			controllers.ProposalContentController.propContAction(idProposal: Long)
+
+
+#Routes related to managing users
+#-------------------------------------------------------------------------------------------------------------
+GET		/gestion_des_utilisateurs					controllers.ManageUserController.roleAction
+
+POST	/gestion_des_utilisateurs					controllers.ManageUserController.roleAction
+
+
+# Map static resources from the /public folder to the /assets URL path
+# ---------------------------------------------------------------------------------------------------------------------------
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+

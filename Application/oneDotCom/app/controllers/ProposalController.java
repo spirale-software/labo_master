@@ -1,9 +1,7 @@
 package controllers;
 
 import java.util.List;
-
 import javax.inject.Inject;
-
 import models.Proposal;
 import models.ProposalContentVM;
 import models.ProposalVM;
@@ -17,9 +15,9 @@ import play.mvc.Result;
 import play.mvc.Security.Authenticated;
 import services.data.dao.ProposalDAO;
 import services.data.dao.UserDAO;
+import services.data.dao.WritingContentDAO;
 import services.data.jpaDao.UserDaoJPA;
 import services.general.CustomAuthenticator;
-import services.proposal.ProposalContentManager;
 import services.proposal.ProposalEditionManager;
 import services.proposal.ProposalManager;
 import views.html.*;
@@ -30,48 +28,38 @@ public class ProposalController extends Controller {
 	private final ProposalDAO proposalDAO;
 	private ProposalManager proposalManager;
 	private ProposalEditionManager proposalEditionManager;
-	private ProposalContentManager contentManager;
 	private UserDAO userDAO;
+	private WritingContentDAO writingContentDAO;
 
 	@Inject
 	public ProposalController(FormFactory formFactory, ProposalDAO proposalDAO, ProposalManager proposalBuilder,
-			ProposalContentManager contentManager, UserDAO userDAO, ProposalEditionManager proposalEditionManager) {
+			UserDAO userDAO, ProposalEditionManager proposalEditionManager, WritingContentDAO writingContentDAO) {
 		this.formFactory = formFactory;
 		this.proposalDAO = proposalDAO;
 		this.proposalManager = proposalBuilder;
-		this.contentManager = contentManager;
 		this.userDAO = userDAO;
 		this.proposalEditionManager = proposalEditionManager;
+		this.writingContentDAO = writingContentDAO;
 	}
 
 	@Transactional
 	public Result proposalAction() {
 		List<User> users = userDAO.getAllUsers();
-
-		return this.getDefaultProposal(false, users);
+		
+		if(this.isFormSubmitted()) {
+			Proposal proposal = this.addProposal();
+			
+			if(this.isSaveButtonPressed()) 
+				flash("success", "La proposition a bien été enregistrée.");
+			
+			if(this.isSaveAndRedactButtonPressed())
+				return redirect("/proposition/contenu/" + proposal.getIdProposal());
+		}
+		
+		Form<ProposalVM> proposalVMForm = formFactory.form(ProposalVM.class);
+		return ok(proposalForm.render(proposalVMForm, users));
 	}
 
-	@Transactional
-	public Result addProposalAction() {
-		ProposalVM proposalVM = formFactory.form(ProposalVM.class).bindFromRequest().get();
-		proposalVM.setProposalAuthorId(Long.parseLong(session("idUser")));
-
-		// return ok(propositionTest.render(proposalVM));
-
-		proposalManager.setProposalVM(proposalVM);
-		Proposal newProposal = proposalManager.getProposal();
-
-		Proposal proposal = proposalDAO.insertProposal(newProposal);
-
-		proposalManager.setUpPropositionOfWriter(proposal);
-		proposalManager.setUpPropositionOfChannel(proposal);
-
-		if (formFactory.form().bindFromRequest().get("action").equals("saveAndRedact"))
-			return this.writeProposalContentAction(proposal.getIdProposal());
-
-		List<User> users = userDAO.getAllUsers();
-		return this.getDefaultProposal(true, users);
-	}
 
 	@Transactional
 	public Result getAllProposalsAction() {
@@ -89,8 +77,10 @@ public class ProposalController extends Controller {
 			List<User> users = userDAO.getAllUsers();
 			Form<ProposalVM> proposalVMForm = formFactory.form(ProposalVM.class);
 			
+			Proposal proposal = proposalDAO.getProposalById(proposalVM.getIdProposal());
+			
 			flash("success", "Vos modifications ont bien été enregistrées");
-			return ok(proposalDetail.render(proposalVMForm.fill(proposalVM), users));
+			return ok(proposalDetail.render(proposalVMForm.fill(proposalVM), users, proposal));
 			//return ok(detailProposalTest.render(proposalVM));
 		} else if (formFactory.form().bindFromRequest().get("action").equals("delete")) {
 			//TODO
@@ -113,55 +103,23 @@ public class ProposalController extends Controller {
 
 	@Transactional
 	public Result detailProposalAction(Long idProposal) {
-
-		ProposalVM proposalVM = this.proposalEditionManager.getProposalVmFromProposal(idProposal);
-
+		ProposalVM proposalVM = this.proposalEditionManager.getProposalVMFromProposal(idProposal);
 		Form<ProposalVM> proposalVMForm = formFactory.form(ProposalVM.class);
-
-		List<User> users = userDAO.getAllUsers();
-
-		// return ok(detailProposalTest.render(proposalVM));
-
-		return ok(proposalDetail.render(proposalVMForm.fill(proposalVM), users));
-	}
-	
-	/************************* Proposal Content **********************************************/
-
-	@Transactional
-	public Result writeProposalContentAction(Long idProposal) {
-		return this.getDefaultProposalContent(idProposal);
-	}
-	
-	@Transactional
-	public Result addProposalContentAction(Long idProposal) {
-		ProposalContentVM proposalContentVM = formFactory.form(ProposalContentVM.class).bindFromRequest().get();
-		proposalContentVM.setIdOfConcernedProposal(idProposal);
-		contentManager.manageProposalContent(proposalContentVM, Long.parseLong(session("idUser")));
-
-		flash("success", "Le contenu de la proposition a bien été enregistré");
-		return this.getDefaultProposalContent(idProposal);
-		// return ok(proposalContentTest.render(proposalContentVM));
-	}
-	
-	@Transactional
-	public Result detailProposalContentAction(String idProposal) {
-		Form<ProposalContentVM> pcVMForm = formFactory.form(ProposalContentVM.class);
+		Proposal proposal = proposalDAO.getProposalById(idProposal);
 		
-		ProposalContentVM pcVM = this.contentManager.getProposalContentVMFromIdProposal(Long.valueOf(idProposal));
-		Proposal proposal = proposalDAO.getProposalById(Long.valueOf(idProposal));
+		if(isAuthorized(idProposal)) {
+			// return ok(detailProposalTest.render(proposalVM));
+			List<User> users = userDAO.getAllUsers();
+			
+			return ok(proposalDetail.render(proposalVMForm.fill(proposalVM), users, proposal));
+		}
 		
-		return ok(contentDetail.render(pcVMForm.fill(pcVM), proposal));
+		return ok(proposalDetail2.render(proposalVMForm.fill(proposalVM), proposal));
 	}
 
 	/**************************** HELPERS METHODS ************************************/
 	/*********************************************************************************/
 
-	@Transactional
-	private Result getDefaultProposal(boolean isAlert, List<User> users) {
-
-		Form<ProposalVM> proposalVMForm = formFactory.form(ProposalVM.class);
-		return ok(proposalForm.render(proposalVMForm, session("username"), isAlert, users));
-	}
 
 	@Transactional
 	private Result getDefaultProposalContent(Long idProposal) {
@@ -169,7 +127,13 @@ public class ProposalController extends Controller {
 		ProposalVM proposalVM = this.buildProposalVMFromProposal(proposal);
 		Form<ProposalContentVM> proposalContentForm = formFactory.form(ProposalContentVM.class);
 
-		return ok(proposalContent.render(proposalContentForm, proposalVM));
+		return ok(proposalContent.render(proposalContentForm, proposal));
+	}
+	
+	public boolean isAuthorized(Long idProposal) {
+		User authorOfProposal = this.proposalDAO.getProposalById(idProposal).getAuthorOfProposal();
+				
+		return authorOfProposal.getIdUser() == Long.valueOf(session("idUser"));
 	}
 
 	private ProposalVM buildProposalVMFromProposal(Proposal proposal) {
@@ -181,5 +145,34 @@ public class ProposalController extends Controller {
 
 		return proposalVM;
 	}
+	
+	@Transactional
+	public Proposal addProposal() {
+		ProposalVM proposalVM = formFactory.form(ProposalVM.class).bindFromRequest().get();
+		proposalVM.setProposalAuthorId(Long.parseLong(session("idUser")));
 
+		// return ok(propositionTest.render(proposalVM));
+
+		proposalManager.setProposalVM(proposalVM);
+		Proposal newProposal = proposalManager.getProposal();
+
+		Proposal proposal = proposalDAO.insertProposal(newProposal);
+
+		proposalManager.setUpPropositionOfWriter(proposal);
+		proposalManager.setUpPropositionOfChannel(proposal);
+		
+		return proposal;
+	}
+	
+	public boolean isSaveButtonPressed() {
+		return formFactory.form().bindFromRequest().get("action").equals("save");	
+	}
+	
+	public boolean isSaveAndRedactButtonPressed() {
+		return formFactory.form().bindFromRequest().get("action").equals("saveAndRedact");
+	}
+	
+	public boolean isFormSubmitted() {
+		return request().method().equals("POST");
+	}
 }

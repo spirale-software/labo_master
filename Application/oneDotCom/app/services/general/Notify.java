@@ -4,5 +4,5 @@ import models.User;
 
 public interface Notify {
 
-	public void sendNotification(User userToNotify, String message);
+	public void sendNotification(User userToNotify, String subject, String message);
 }

@@ -1,0 +1,53 @@
+package services.general;
+
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+import models.User;
+
+public class SendEmail implements Notify {
+	
+	private final String  PASSWORD = "entrepreneur1989";
+	private final String FROM = "gyleentrepreneur@gmail.com";
+
+	@Override
+	public void sendNotification(User userToNotify, String subject, String message) {
+		
+		this.send(FROM, PASSWORD, userToNotify.getEmail(), subject, message);
+	}
+	
+	private void send(String from, String password, String to, String sub, String msg) {
+		// Get properties object
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.socketFactory.port", "465");
+		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.port", "465");
+		// get Session
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(from, password);
+			}
+		});
+		// compose message
+		try {
+			MimeMessage message = new MimeMessage(session);
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			message.setSubject(sub);
+			message.setText(msg);
+			message.setFrom(new InternetAddress(from));
+			// send message
+			Transport.send(message);
+			System.out.println("message sent successfully");
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+	}
+}

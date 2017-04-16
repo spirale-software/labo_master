@@ -1,0 +1,29 @@
+package controllers;
+
+import play.mvc.Controller;
+import java.util.List;
+import javax.inject.Inject;
+import models.Proposal;
+import models.ProposalContentVM;
+import models.ProposalVM;
+import models.User;
+import models.UserVM;
+import play.data.Form;
+import play.data.FormFactory;
+import play.db.jpa.Transactional;
+import play.mvc.Controller;
+import play.mvc.Result;
+import play.mvc.Security.Authenticated;
+import services.data.dao.ProposalDAO;
+import services.data.dao.UserDAO;
+import services.data.jpaDao.UserDaoJPA;
+import services.general.CustomAuthenticator;
+import services.proposal.ProposalContentManager;
+import services.proposal.ProposalEditionManager;
+import services.proposal.ProposalManager;
+import views.html.*;
+
+@Authenticated(CustomAuthenticator.class)
+public class ProposalContentController extends Controller {
+
+}

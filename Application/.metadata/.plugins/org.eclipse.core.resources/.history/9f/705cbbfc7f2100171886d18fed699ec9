@@ -1,0 +1,6 @@
+@(pcVM: ProposalContentVM)
+
+@dashboardLayout("Contenu de la proposition")(session().get("username")) {
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	
+}

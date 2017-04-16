@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 source folders to &apos;lib&apos;&#x0D;&#x0A;- Original project: &apos;sendingMailByGmail&apos;&#x0D;&#x0A;- Destination element: &apos;lib&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     sendingMailByGmail/lib/mail.jar&#x0D;&#x0A;     sendingMailByGmail/lib/activation.jar" description="Copy source folders" element1="/lib\/mail.jar" element2="/lib\/activation.jar" flags="6" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyRoots" roots="2" stamp="1492319335864" target="/oneDotCom/lib" version="1.0"/>
+</session>

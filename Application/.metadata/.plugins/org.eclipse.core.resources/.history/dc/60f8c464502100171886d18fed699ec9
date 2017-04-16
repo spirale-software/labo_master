@@ -1,0 +1,21 @@
+package controllers;
+
+import play.mvc.Controller;
+import play.mvc.Result;
+
+public class ManageUserController extends Controller {
+
+	public ManageUserController() {
+		
+	}
+	
+	public Result indexAction() {
+		
+		List<User> users;
+		List<Role> roles;
+		
+		
+		return ok(manageRole.render());
+	}
+
+}

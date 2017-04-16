@@ -2,6 +2,6 @@ package services.publication;
 
 public interface Publish {
 	
-	public int publish(String message);
+	public String publish(String message);
 
 }
