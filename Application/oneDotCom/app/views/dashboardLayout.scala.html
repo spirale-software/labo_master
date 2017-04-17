@@ -67,10 +67,12 @@
                 <li><a href="@routes.ProposalController.proposalAction">Nouvelle Proposition</a></li>
             </ul>
             
-            <p>Gestion des utilisateurs</p>
-            <ul class="nav nav-sidebar">
-                <li><a href="@routes.ManageUserController.roleAction">Assigner rôles</a></li>
-            </ul>
+            @if(session.get("role") == "RESP_COMMUNICATION" || session.get("role") == "PRESIDENT") {
+            	<p>Gestion des utilisateurs</p>
+	            <ul class="nav nav-sidebar">
+	                <li><a href="@routes.ManageUserController.roleAction">Assigner rôles</a></li>
+	            </ul>
+	        }
 
             <p>Template</p>
             <ul class="nav nav-sidebar">

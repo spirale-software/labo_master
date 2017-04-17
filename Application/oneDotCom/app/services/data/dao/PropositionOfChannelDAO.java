@@ -12,4 +12,5 @@ import services.data.jpaDao.PropositionOfChannelDaoJPA;
 public interface PropositionOfChannelDAO {
 	public PropositionOfChannel insert(PropositionOfChannel propositionOfChannel);
 	public List<PropositionOfChannel> getAllByIdProposal(long idProposal);
+	public void deleteFromIdProposal(Long idProposal);
 }

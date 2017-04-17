@@ -1,0 +1,75 @@
+@(proposalForm: Form[ProposalVM], proposal: Proposal)
+
+@dashboardLayout("détail Proposition")(session().get("username")) {
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	
+	
+	<form action="@routes.ProposalController.editProposalAction()" method="post" id="formId">
+		 
+	 <div class="panel panel-default detail-proposal-style">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Detail de la proposition</h3> 
+                </div>
+                <div class="panel-body">
+                    <div class="panel panel-default" style="margin-top: 10px">
+                        <div class="panel-body">
+                            <p class="col-lg-3 col-md-3 ">Titre de la Proposition: </p>
+                            <p>@proposalForm("proposalName").value</p>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                        
+                        	<p class="col-lg-3 col-md-3 ">Redacteur proposé </p>
+                        	<p>@proposalForm("proposedWriter").name</p>
+                         
+                        </div>
+                    </div>
+                    
+         
+                    <div class="panel panel-default">                      	
+                        	<p class="col-lg-3 col-md-3 ">Canals proposés: </p>
+                        	<p>@proposalForm("proposedChannels").value</p>
+                        </div>
+                    </div>
+                              
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p class="col-lg-3 col-md-3 ">Date Butoir </p>
+                            <p>@proposalForm("deadLine").value</p>
+                        </div>
+                    </div>
+                                 
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p class="col-lg-3 col-md-3 ">Etat de la proposition: </p>
+                            <p class="col-lg-9 col-md-9">@proposalForm("proposalState").value</p>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p>Proposé par <em class="text-primary">@proposalForm("proposalAuthorName").value</em> 
+                             	le @proposalForm("dateCreation").value</p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+            <div style="margin-bottom: 30px">
+				@if(proposal.getProposalState().name == "Writed" || proposal.getProposalState().name == "In_Writing") {
+                     <a href="@routes.ProposalContentController.detailPropContAction(proposal.getIdProposal())" class="btn btn-primary" > 
+                		Voir contenu de cette proposition
+                	 </a>
+               	}
+            </div>
+}
+
+
+
+
+
+
+
+

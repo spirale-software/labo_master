@@ -28,6 +28,7 @@ public class PropositionOfWriterDaoJPA implements PropositionOfWriterDAO {
 
 
 	@Override
+	@Transactional
 	public PropositionOfWriter getByIdProposal(long idProposal) {
 		Query query = jpaApi.em().createQuery("SELECT pw FROM PropositionOfWriter pw "
 				+ "WHERE pw.concernedProposal.idProposal= :id");
@@ -43,7 +44,18 @@ public class PropositionOfWriterDaoJPA implements PropositionOfWriterDAO {
 
 
 	@Override
+	@Transactional
 	public void update(PropositionOfWriter propositionOfWriter) {
 		this.jpaApi.em().merge(propositionOfWriter);
+	}
+
+
+	@Override
+	@Transactional
+	public void deleteFromIdProposal(Long idProposal) {
+		jpaApi.em().createQuery("DELETE FROM PropositionOfWriter pw WHERE pw.concernedProposal.idProposal= :idProposal")
+			.setParameter("idProposal", idProposal)
+			.executeUpdate();
+		
 	}
 }

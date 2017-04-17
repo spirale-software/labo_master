@@ -1,0 +1,58 @@
+package services.data.jpaDao;
+
+import javax.inject.Inject;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
+
+import models.PropositionOfWriter;
+import play.db.jpa.JPAApi;
+import play.db.jpa.Transactional;
+import services.data.dao.PropositionOfWriterDAO;
+
+public class PropositionOfWriterDaoJPA implements PropositionOfWriterDAO {
+	private final JPAApi jpaApi;
+	
+	@Inject
+	public PropositionOfWriterDaoJPA(JPAApi jpaApi) {
+		this.jpaApi = jpaApi;
+	}
+
+
+	@Override
+	@Transactional
+	public PropositionOfWriter insert(PropositionOfWriter propositionOfWriter) {
+		 jpaApi.em().persist(propositionOfWriter);
+		 
+		return propositionOfWriter; 
+	}
+
+
+	@Override
+	public PropositionOfWriter getByIdProposal(long idProposal) {
+		Query query = jpaApi.em().createQuery("SELECT pw FROM PropositionOfWriter pw "
+				+ "WHERE pw.concernedProposal.idProposal= :id");
+		query.setParameter("id", idProposal);
+		
+		try {
+			return (PropositionOfWriter)query.getSingleResult();
+			
+		} catch(NoResultException e) {}
+		
+		return null;
+	}
+
+
+	@Override
+	public void update(PropositionOfWriter propositionOfWriter) {
+		this.jpaApi.em().merge(propositionOfWriter);
+	}
+
+
+	@Override
+	public void deleteFromIdProposal(Long idProposal) {
+		jpaApi.em().createQuery("DELETE FROM PropositionOfWriter pw WHERE pw.concernedProposal.idProposal= :idProposal")
+		.setParameter("idProposal", idProposal)
+		.executeUpdate();
+		
+	}
+}

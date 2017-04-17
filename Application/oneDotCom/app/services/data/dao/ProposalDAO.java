@@ -16,4 +16,5 @@ public interface ProposalDAO {
 	public Proposal getProposalByName(String name);
 	public Proposal updateProposal(Proposal proposalUpdated);
 	public List<Proposal> get10NewestProposals();
+	public void delete(Long idProposal);
 }

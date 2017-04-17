@@ -17,9 +17,9 @@ POST	/utilisateur/enregistrer					controllers.HomeController.connectRegisteredUs
 
 # Routes related to propositions
 # -------------------------------------------------------------------------------------------------
-GET     /proposition/ajouter          						controllers.ProposalController.proposalAction
+GET     /proposition/ajouter          				controllers.ProposalController.proposalAction
 
-POST    /proposition/ajouter           						controllers.ProposalController.proposalAction
+POST    /proposition/ajouter           				controllers.ProposalController.proposalAction
 
 POST    /proposition/modifier						controllers.ProposalController.editProposalAction
 
@@ -28,6 +28,13 @@ GET     /proposition/supprimer/:idProposal  		controllers.ProposalController.del
 GET     /proposition/lister        					controllers.ProposalController.getAllProposalsAction
 
 GET     /proposition/detail/:idProposal				controllers.ProposalController.detailProposalAction(idProposal: Long)
+
+
+
+
+GET     /proposition/modifier/:idProposal/:fieldName/:newValue  controllers.ProposalController.editAction(idProposal: Long, fieldName: String, newValue: String)
+
+
 
 
 # Routes related to content of the proposition

@@ -1,10 +1,17 @@
 package controllers;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 import models.Proposal;
 import models.ProposalContentVM;
+import models.ProposalStateType;
 import models.ProposalVM;
+import models.PropositionOfWriter;
 import models.User;
 import models.UserVM;
 import play.data.Form;
@@ -16,6 +23,7 @@ import play.mvc.Security.Authenticated;
 import services.data.dao.ProposalDAO;
 import services.data.dao.UserDAO;
 import services.data.dao.WritingContentDAO;
+import services.data.dao.PropositionOfWriterDAO;
 import services.data.jpaDao.UserDaoJPA;
 import services.general.CustomAuthenticator;
 import services.proposal.ProposalEditionManager;
@@ -30,36 +38,38 @@ public class ProposalController extends Controller {
 	private ProposalEditionManager proposalEditionManager;
 	private UserDAO userDAO;
 	private WritingContentDAO writingContentDAO;
+	private PropositionOfWriterDAO propositionOfWriterDAO;
 
 	@Inject
 	public ProposalController(FormFactory formFactory, ProposalDAO proposalDAO, ProposalManager proposalBuilder,
-			UserDAO userDAO, ProposalEditionManager proposalEditionManager, WritingContentDAO writingContentDAO) {
+			UserDAO userDAO, ProposalEditionManager proposalEditionManager, WritingContentDAO writingContentDAO,
+			PropositionOfWriterDAO propositionOfWriterDAO) {
 		this.formFactory = formFactory;
 		this.proposalDAO = proposalDAO;
 		this.proposalManager = proposalBuilder;
 		this.userDAO = userDAO;
 		this.proposalEditionManager = proposalEditionManager;
 		this.writingContentDAO = writingContentDAO;
+		this.propositionOfWriterDAO = propositionOfWriterDAO;
 	}
 
 	@Transactional
 	public Result proposalAction() {
 		List<User> users = userDAO.getAllUsers();
-		
-		if(this.isFormSubmitted()) {
+
+		if (this.isFormSubmitted()) {
 			Proposal proposal = this.addProposal();
-			
-			if(this.isSaveButtonPressed()) 
+
+			if (this.isSaveButtonPressed())
 				flash("success", "La proposition a bien été enregistrée.");
-			
-			if(this.isSaveAndRedactButtonPressed())
+
+			if (this.isSaveAndRedactButtonPressed())
 				return redirect("/proposition/contenu/" + proposal.getIdProposal());
 		}
-		
+
 		Form<ProposalVM> proposalVMForm = formFactory.form(ProposalVM.class);
 		return ok(proposalForm.render(proposalVMForm, users));
 	}
-
 
 	@Transactional
 	public Result getAllProposalsAction() {
@@ -76,29 +86,58 @@ public class ProposalController extends Controller {
 			this.proposalEditionManager.saveModifications(proposalVM);
 			List<User> users = userDAO.getAllUsers();
 			Form<ProposalVM> proposalVMForm = formFactory.form(ProposalVM.class);
-			
+
 			Proposal proposal = proposalDAO.getProposalById(proposalVM.getIdProposal());
-			
+
 			flash("success", "Vos modifications ont bien été enregistrées");
 			return ok(proposalDetail.render(proposalVMForm.fill(proposalVM), users, proposal));
-			//return ok(detailProposalTest.render(proposalVM));
+			// return ok(detailProposalTest.render(proposalVM));
 		} else if (formFactory.form().bindFromRequest().get("action").equals("delete")) {
-			//TODO
-			
+			// TODO
+
 			flash("success", "Cette proposition a bien été supprimée");
 			return ok("Delete Page");
 		} else {
-			
+
 			Long idProposal = Long.valueOf(formFactory.form().bindFromRequest().get("idProposal"));
 			return this.getDefaultProposalContent(idProposal);
 		}
 	}
 
+	@Transactional
+	public Result editAction(Long idProposal, String fieldName, String newValue) {
+		String flashMessage = "";
+
+		if (fieldName.equals("title")) {
+			this.editProposalTitle(idProposal, newValue);
+			flashMessage = "Le titre de la proposition a bien été modifié";
+		} else if (fieldName.equals("writer")) {
+			this.editProposalWriter(idProposal, newValue);
+			flashMessage = "La nouvelle proposition de rédacteur a bien été enregistrée";
+		} else if (fieldName.equals("date")) {
+			if (this.editProposalDate(idProposal, newValue).equals("OK")) {
+				flashMessage = "La nouvelle date butoir a bien été enregistrée";
+			} else {
+				flashMessage = "erreur";
+			}
+		}
+
+		return ok(flashMessage);
+	}
+
+	@Transactional
 	public Result deleteProposalAction(String idProposal) {
-		this.proposalEditionManager.delete(Long.valueOf(idProposal));
-		
-		flash("success", "La proposition a bien été supprimée.");
-		return redirect("/proposition/lister");
+
+		if (isDeleteAllowed(Long.valueOf(idProposal))) {
+			this.proposalEditionManager.delete(Long.valueOf(idProposal));
+
+			flash("success", "La proposition a bien été supprimée.");
+			return redirect("/proposition/lister");
+		}
+
+		flash("warning", "La suppression de cette proposition n'est pas permise");
+		return this.detailProposalAction(Long.valueOf(idProposal));
+
 	}
 
 	@Transactional
@@ -106,20 +145,21 @@ public class ProposalController extends Controller {
 		ProposalVM proposalVM = this.proposalEditionManager.getProposalVMFromProposal(idProposal);
 		Form<ProposalVM> proposalVMForm = formFactory.form(ProposalVM.class);
 		Proposal proposal = proposalDAO.getProposalById(idProposal);
-		
-		if(isAuthorized(idProposal)) {
+
+		if (isAuthorized(idProposal)) {
 			// return ok(detailProposalTest.render(proposalVM));
 			List<User> users = userDAO.getAllUsers();
-			
+
 			return ok(proposalDetail.render(proposalVMForm.fill(proposalVM), users, proposal));
 		}
-		
+
 		return ok(proposalDetail2.render(proposalVMForm.fill(proposalVM), proposal));
 	}
 
-	/**************************** HELPERS METHODS ************************************/
+	/****************************
+	 * HELPERS METHODS
+	 ************************************/
 	/*********************************************************************************/
-
 
 	@Transactional
 	private Result getDefaultProposalContent(Long idProposal) {
@@ -129,10 +169,10 @@ public class ProposalController extends Controller {
 
 		return ok(proposalContent.render(proposalContentForm, proposal));
 	}
-	
+
 	public boolean isAuthorized(Long idProposal) {
 		User authorOfProposal = this.proposalDAO.getProposalById(idProposal).getAuthorOfProposal();
-				
+
 		return authorOfProposal.getIdUser() == Long.valueOf(session("idUser"));
 	}
 
@@ -145,7 +185,7 @@ public class ProposalController extends Controller {
 
 		return proposalVM;
 	}
-	
+
 	@Transactional
 	public Proposal addProposal() {
 		ProposalVM proposalVM = formFactory.form(ProposalVM.class).bindFromRequest().get();
@@ -160,19 +200,83 @@ public class ProposalController extends Controller {
 
 		proposalManager.setUpPropositionOfWriter(proposal);
 		proposalManager.setUpPropositionOfChannel(proposal);
-		
+
 		return proposal;
 	}
-	
+
 	public boolean isSaveButtonPressed() {
-		return formFactory.form().bindFromRequest().get("action").equals("save");	
+		return formFactory.form().bindFromRequest().get("action").equals("save");
 	}
-	
+
 	public boolean isSaveAndRedactButtonPressed() {
 		return formFactory.form().bindFromRequest().get("action").equals("saveAndRedact");
 	}
-	
+
 	public boolean isFormSubmitted() {
 		return request().method().equals("POST");
 	}
+
+	@Transactional
+	private boolean isDeleteAllowed(Long idProposal) {
+		Proposal proposal = proposalDAO.getProposalById(idProposal);
+
+		ProposalStateType proposalState = proposal.getProposalState();
+
+		return (proposalState != ProposalStateType.In_Writing && proposalState != ProposalStateType.Published
+				&& proposalState != ProposalStateType.Writed);
+
+	}
+
+	@Transactional
+	private void editProposalTitle(Long idProposal, String newTitle) {
+		Proposal proposal = this.proposalDAO.getProposalById(idProposal);
+		proposal.setProposalName(newTitle);
+		this.proposalDAO.updateProposal(proposal);
+	}
+
+	@Transactional
+	private void editProposalWriter(Long idProposal, String newWriterName) {
+
+		String[] names = newWriterName.split("<");
+
+		String username = names[0].trim();
+		String email = names[1].replaceAll(">", "").trim();
+
+		User newAssignedWriter = this.userDAO.getUserByUsernameAndEmail(username, email);
+		PropositionOfWriter pw = this.propositionOfWriterDAO.getByIdProposal(idProposal);
+		if (pw == null) {
+			pw = new PropositionOfWriter();
+			Proposal proposal = this.proposalDAO.getProposalById(idProposal);
+			User assignator = this.userDAO.getUserById(Long.valueOf(session("idUser")));
+			pw.setAssignator(assignator);
+			pw.setAssignee(newAssignedWriter);
+			pw.setConcernedProposal(proposal);
+			this.propositionOfWriterDAO.insert(pw);
+		} else {
+			pw.setAssignee(newAssignedWriter);
+			this.propositionOfWriterDAO.update(pw);
+		}
+	}
+
+	@Transactional
+	private String editProposalDate(Long idProposal, String newDate) {
+
+		PropositionOfWriter pw = this.propositionOfWriterDAO.getByIdProposal(idProposal);
+		if (pw == null) {
+			return "Not OK";
+		} else {
+			Date newDateLine = null;
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			try {
+				newDateLine = formatter.parse(newDate);
+				pw.setDeadLine(newDateLine);
+				this.propositionOfWriterDAO.update(pw);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+
+			return "OK";
+		}
+	}
+
 }

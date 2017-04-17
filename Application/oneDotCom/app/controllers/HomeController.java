@@ -2,10 +2,15 @@ package controllers;
 
 import play.db.jpa.JPAApi;
 import play.mvc.Security.Authenticated;
+
+import java.util.List;
+
 import javax.inject.Inject;
 
+import services.data.dao.ProposalDAO;
 import services.data.dao.UserDAO;
 import services.general.*;
+import models.Proposal;
 import models.Role;
 import models.RoleType;
 import models.User;
@@ -22,13 +27,15 @@ public class HomeController extends Controller {
 	private final FormFactory formFactory;
 	private final UserDAO userDAO;
 	private UserVM userVM;
+	private ProposalDAO proposalDAO;
 	
 	private BuildBdDefaultValue buildDB;
 
 	@Inject
-	public HomeController(FormFactory formFactory, UserDAO userDAO, BuildBdDefaultValue buildDB ) {
+	public HomeController(FormFactory formFactory, UserDAO userDAO, ProposalDAO proposalDAO, BuildBdDefaultValue buildDB ) {
 		this.formFactory = formFactory;
 		this.userDAO = userDAO;
+		this.proposalDAO = proposalDAO;
 		
 		this.buildDB = buildDB;
 	}
@@ -50,10 +57,11 @@ public class HomeController extends Controller {
 		return (user != null ? this.setUserVMAttributes(user) : getDefaultIndex(true));
 	}
 	
+	@Transactional
 	public Result showDashboardAction() {
 		this.initialiseUserVM();
 		
-		return ok(dashboard.render(userVM));
+		return this.getDashboard();
 	}
 
 	@Transactional
@@ -69,7 +77,7 @@ public class HomeController extends Controller {
 		userVM.setIdUser(idUser);
 		createUserSession();
 
-		return ok(dashboard.render(userVM));
+		return this.getDashboard();
 	}
 
 	@Authenticated(CustomAuthenticator.class)
@@ -78,6 +86,9 @@ public class HomeController extends Controller {
 
 		return redirect("/");
 	}
+	
+	/*************************************** Helpers Methods *****************************************/
+	/*************************************************************************************************/
 
 	private void createUserSession() {
 		session("idUser", Long.toString(userVM.getIdUser()));
@@ -108,13 +119,20 @@ public class HomeController extends Controller {
 		userVM.setIdUser(user.getIdUser());
 		createUserSession();
 		
-		return ok(dashboard.render(userVM));	
+		return this.getDashboard();	
 	}
 	
 	private Result getDefaultIndex(boolean isFail) {
 		Form<UserVM> userVMForm = formFactory.form(UserVM.class);
 		
 		return ok(index.render(userVMForm, isFail));
+	}
+	
+	@Transactional
+	private Result getDashboard() {		
+		List<Proposal> proposals = proposalDAO.get10NewestProposals();
+		
+		return ok(dashboard.render(userVM, proposals));
 	}
 }
 

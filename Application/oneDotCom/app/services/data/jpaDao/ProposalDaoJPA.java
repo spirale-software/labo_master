@@ -25,10 +25,13 @@ public class ProposalDaoJPA implements ProposalDAO{
 		return proposal;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public List<Proposal> getAllProposals() {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = jpaApi.em().createQuery("SELECT p FROM Proposal p");
+		
+		return  (List<Proposal>) query.getResultList();
 	}
 
 	@Override
@@ -52,10 +55,18 @@ public class ProposalDaoJPA implements ProposalDAO{
 	@Override
 	@Transactional
 	public List<Proposal> get10NewestProposals() {
-		
-		Query query = jpaApi.em().createQuery("SELECT p FROM Proposal p");
+		Query query = jpaApi.em().createQuery("SELECT p FROM Proposal p ORDER BY p.creationDate");
+		query.setMaxResults(10);
 		
 		return  (List<Proposal>) query.getResultList();
+	}
+
+	@Override
+	@Transactional
+	public void delete(Long idProposal) {
+		jpaApi.em().createQuery("DELETE FROM Proposal p WHERE p.idProposal= :idProposal")
+			.setParameter("idProposal", idProposal)
+			.executeUpdate();	
 	}
 }
 

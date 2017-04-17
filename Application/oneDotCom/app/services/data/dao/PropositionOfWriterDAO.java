@@ -10,4 +10,5 @@ public interface PropositionOfWriterDAO {
 	public PropositionOfWriter insert(PropositionOfWriter propositionOfWriter);
 	public PropositionOfWriter getByIdProposal(long idProposal);
 	public void update(PropositionOfWriter propositionOfWriter);
+	public void deleteFromIdProposal(Long idProposal);
 }

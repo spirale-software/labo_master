@@ -1,0 +1,39 @@
+@(userVM: UserVM, proposals: List[Proposal])
+
+@dashboardLayout("Tableau de bord")(userVM.getUsername()){
+
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+	 <h1 class="page-header">Tableau de bord</h1>
+	 
+	 <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Propositions récentes</h3>
+                        </div>
+                        <div class="panel-body">
+                        
+                        	@for(proposal <- proposals) {
+                        		<div class="panel panel-default">
+                                	<div class="panel-body">
+                                    	<a href="#">@proposal.getProposalName()</a> : @proposal.getProposalState().name<br>
+                                        proposé par <em>@proposal.getAuthorOfProposal().getUsername()</em> le @proposal.getCreationDate()
+                                	</div>
+                            	</div>
+                        	}
+                        </div><!--[/panel-body]-->
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 col-md-6">
+
+
+                </div>
+
+            </div>
+	
+
+}

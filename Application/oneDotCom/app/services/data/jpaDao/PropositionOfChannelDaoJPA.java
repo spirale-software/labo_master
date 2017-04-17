@@ -1,4 +1,4 @@
- package services.data.jpaDao;
+package services.data.jpaDao;
 
 import java.util.List;
 
@@ -13,26 +13,36 @@ import services.data.dao.PropositionOfChannelDAO;
 
 public class PropositionOfChannelDaoJPA implements PropositionOfChannelDAO {
 	private final JPAApi jpaApi;
-	
+
 	@Inject
 	public PropositionOfChannelDaoJPA(JPAApi jpaApi) {
 		this.jpaApi = jpaApi;
 	}
-	
+
 	@Override
 	@Transactional
 	public PropositionOfChannel insert(PropositionOfChannel propositionOfChannel) {
 		jpaApi.em().persist(propositionOfChannel);
-		
+
 		return propositionOfChannel;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<PropositionOfChannel> getAllByIdProposal(long idProposal) {
-		Query query = jpaApi.em().createQuery("SELECT pc FROM PropositionOfChannel pc "
-				+ "WHERE pc.concernedProposal.idProposal= :id");
+		Query query = jpaApi.em()
+				.createQuery("SELECT pc FROM PropositionOfChannel pc " + "WHERE pc.concernedProposal.idProposal= :id");
 		query.setParameter("id", idProposal);
-		
-		return  (List<PropositionOfChannel>) query.getResultList();
+
+		return (List<PropositionOfChannel>) query.getResultList();
+	}
+
+	@Override
+	@Transactional
+	public void deleteFromIdProposal(Long idProposal) {
+		jpaApi.em().createQuery("DELETE FROM PropositionOfChannel pc WHERE pc.concernedProposal.idProposal= :idProposal")
+			.setParameter("idProposal", idProposal)
+			.executeUpdate();
+
 	}
 }

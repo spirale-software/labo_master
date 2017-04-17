@@ -1,0 +1,203 @@
+package services.proposal;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.inject.Inject;
+
+import models.Channel;
+import models.ChannelPropositionType;
+import models.ChannelType;
+import models.Proposal;
+import models.ProposalVM;
+import models.PropositionOfChannel;
+import models.PropositionOfWriter;
+import models.User;
+import play.db.jpa.Transactional;
+import services.data.dao.ChannelDAO;
+import services.data.dao.ProposalDAO;
+import services.data.dao.PropositionOfChannelDAO;
+import services.data.dao.PropositionOfWriterDAO;
+import services.data.dao.UserDAO;
+
+public class ProposalEditionManager {
+	private PropositionOfChannelDAO propositionOfChannelDAO;
+	private PropositionOfWriterDAO propositionOfWriterDAO;
+	private ProposalDAO proposalDAO;
+	private ChannelDAO channelDAO;
+	private UserDAO userDAO;
+
+	@Inject
+	public ProposalEditionManager(PropositionOfChannelDAO propositionOfChannelDAO,
+			PropositionOfWriterDAO propositionOfWriterDAO, ProposalDAO proposalDAO, ChannelDAO channelDAO, UserDAO userDAO) {
+		this.propositionOfChannelDAO = propositionOfChannelDAO;
+		this.propositionOfWriterDAO = propositionOfWriterDAO;
+		this.proposalDAO = proposalDAO;
+		this.channelDAO = channelDAO;
+		this.userDAO = userDAO;
+	}
+
+	public ProposalVM getProposalVMFromProposal(long idProposal) {
+		Proposal proposal = this.proposalDAO.getProposalById(idProposal);
+		PropositionOfWriter propOfWriter = this.propositionOfWriterDAO.getByIdProposal(idProposal);
+		List<PropositionOfChannel> propOfChannels = this.propositionOfChannelDAO.getAllByIdProposal(idProposal);
+
+		return getProposalVM(proposal, propOfWriter, propOfChannels);
+	}
+	
+	public void delete(Long idProposal) {
+		deletePropositionOfChannel(idProposal);
+		deletePropositionOfWriter(idProposal);
+		deleteWritingContent(idProposal);
+		deleteProposal(idProposal);
+	}
+
+	public void saveModifications(ProposalVM proposalVM) {
+		Long idProposal = proposalVM.getIdProposal();
+
+		String proposedWriter = proposalVM.getProposedWriter();
+		Date dateLine = proposalVM.getDeadLine();
+		String proposalName = proposalVM.getProposalName();
+
+		String twitterProposed = proposalVM.getTwitterProposed();
+		String facebookProposed = proposalVM.getFacebookProposed();
+		String mailingListProposed = proposalVM.getMailingListProposed();
+
+		String twitterAdded = proposalVM.getTwitterAdded();
+		String facebookAdded = proposalVM.getFacebookAdded();
+		String mailingListAdded = proposalVM.getMailingListProposed();
+
+		if (proposedWriter != null || dateLine != null || proposalName != null || twitterProposed != null|| facebookProposed != null 
+				|| mailingListProposed != null || twitterAdded != null || facebookAdded != null || mailingListAdded != null) {
+
+			Proposal proposalToUpdate = proposalDAO.getProposalById(idProposal);
+
+			if (proposedWriter != null || dateLine != null) {
+				PropositionOfWriter propOfWriter = this.propositionOfWriterDAO.getByIdProposal(idProposal);
+				if (proposedWriter != null) {
+					User assignee = this.getAssignee(proposalVM);
+					propOfWriter.setAssignee(assignee);
+				}
+				if (dateLine != null) {
+					propOfWriter.setDeadLine(dateLine);
+				}
+				this.propositionOfWriterDAO.update(propOfWriter);
+			}
+
+			if (twitterProposed != null || facebookProposed != null || mailingListProposed != null) {
+				// TODO
+			}
+
+			if (proposalName != null) {
+				proposalToUpdate.setProposalName(proposalName);
+				this.proposalDAO.updateProposal(proposalToUpdate);
+			}
+
+			if (twitterAdded != null || facebookAdded != null || mailingListAdded != null) {
+				if (twitterAdded != null)
+					this.addPropOfChannel(proposalToUpdate, ChannelType.TWITTER.name(), ChannelPropositionType.Added);
+
+				if (facebookAdded != null)
+					this.addPropOfChannel(proposalToUpdate, ChannelType.FACEBOOK.name(), ChannelPropositionType.Added);
+
+				if (mailingListAdded != null)
+					this.addPropOfChannel(proposalToUpdate, ChannelType.MAILING_LIST.name(),
+							ChannelPropositionType.Added);
+			}
+		}
+
+	}
+
+	/*************************************** HELPERS METHODS ***************************************************/
+	/**********************************************************************************************************/
+
+	private void addPropOfChannel(Proposal p, String channelName, ChannelPropositionType cpType) {
+		List<PropositionOfChannel> propOfChannels = this.propositionOfChannelDAO.getAllByIdProposal(p.getIdProposal());
+		
+		boolean isAlreadyExist = false;
+		
+		for (PropositionOfChannel propOfChannel : propOfChannels) {
+			if(propOfChannel.getProposedChannel().getChannelName().equals(channelName)) {
+				isAlreadyExist = true;
+				break;
+			}
+		}
+ 		
+		if(!isAlreadyExist) {
+			PropositionOfChannel propOfChannel = new PropositionOfChannel();
+			propOfChannel.setConcernedProposal(p);
+			propOfChannel.setType(cpType);
+
+			Channel channel = channelDAO.getChannelByName(channelName);
+			propOfChannel.setProposedChannel(channel);
+
+			this.propositionOfChannelDAO.insert(propOfChannel);
+		}
+	}
+	
+	private User getAssignee(ProposalVM proposalVM) {
+		String[] credentials = proposalVM.getProposedWriter().split("   <<");
+		String username = credentials[0];
+		String email = credentials[1].replaceAll(">>", "");
+
+		return userDAO.getUserByUsernameAndEmail(username, email);
+	}
+
+	private ProposalVM getProposalVM(Proposal proposal, PropositionOfWriter propOfWriter,
+			List<PropositionOfChannel> propOfChannels) {
+		ProposalVM proposalVM = new ProposalVM();
+
+		proposalVM.setIdProposal(proposal.getIdProposal());
+		proposalVM.setProposalName(proposal.getProposalName());
+		proposalVM.setProposalAuthorName(proposal.getAuthorOfProposal().getUsername());
+		proposalVM.setDateCreation(proposal.getCreationDate().toString());
+		proposalVM.setProposalState(proposal.getProposalState().toString());
+
+		if (propOfWriter != null) {
+			proposalVM.setProposedWriter(propOfWriter.getAssignee().getUsername());
+			if (propOfWriter.getDeadLine() != null) {
+				proposalVM.setDeadLine(propOfWriter.getDeadLine());
+			}
+		}
+
+		if (propOfChannels != null) {
+			String proposedChannels = "";
+			for (PropositionOfChannel propOfChannel : propOfChannels) {
+				proposedChannels += propOfChannel.getProposedChannel().getChannelName() + ", ";
+			}
+			proposalVM.setProposedChannels(proposedChannels);
+		}
+
+		return proposalVM;
+	}
+	
+	@Transactional
+	private void deletePropositionOfChannel(Long idProposal) {
+		this.propositionOfChannelDAO.deleteFromIdProposal(idProposal);
+	}
+	
+	@Transactional
+	private void deletePropositionOfWriter(Long idProposal) {
+		this.propositionOfWriterDAO.deleteFromIdProposal(idProposal);
+	}
+	
+	
+	@Transactional
+	private void deleteProposal(Long idProposal) {
+		this.proposalDAO.delete(idProposal);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

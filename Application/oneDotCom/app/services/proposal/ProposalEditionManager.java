@@ -13,6 +13,7 @@ import models.ProposalVM;
 import models.PropositionOfChannel;
 import models.PropositionOfWriter;
 import models.User;
+import play.db.jpa.Transactional;
 import services.data.dao.ChannelDAO;
 import services.data.dao.ProposalDAO;
 import services.data.dao.PropositionOfChannelDAO;
@@ -45,7 +46,9 @@ public class ProposalEditionManager {
 	}
 	
 	public void delete(Long idProposal) {
-		// TODO
+		deletePropositionOfChannel(idProposal);
+		deletePropositionOfWriter(idProposal);
+		deleteProposal(idProposal);
 	}
 
 	public void saveModifications(ProposalVM proposalVM) {
@@ -166,4 +169,34 @@ public class ProposalEditionManager {
 
 		return proposalVM;
 	}
+	
+	@Transactional
+	private void deletePropositionOfChannel(Long idProposal) {
+		this.propositionOfChannelDAO.deleteFromIdProposal(idProposal);
+	}
+	
+	@Transactional
+	private void deletePropositionOfWriter(Long idProposal) {
+		this.propositionOfWriterDAO.deleteFromIdProposal(idProposal);
+	}
+	
+	
+	@Transactional
+	private void deleteProposal(Long idProposal) {
+		this.proposalDAO.delete(idProposal);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
