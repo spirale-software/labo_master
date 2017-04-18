@@ -12,6 +12,7 @@ import models.ProposalContentVM;
 import models.ProposalStateType;
 import models.ProposalVM;
 import models.PropositionOfWriter;
+import models.RoleType;
 import models.User;
 import models.UserVM;
 import play.data.Form;
@@ -170,10 +171,14 @@ public class ProposalController extends Controller {
 		return ok(proposalContent.render(proposalContentForm, proposal));
 	}
 
+	@Transactional
 	public boolean isAuthorized(Long idProposal) {
 		User authorOfProposal = this.proposalDAO.getProposalById(idProposal).getAuthorOfProposal();
+		
+		boolean isResponsibleForCommission = (session("role") == RoleType.RESP_COMMUNICATION.name() 
+				|| session("role") == RoleType.PRESIDENT.name());
 
-		return authorOfProposal.getIdUser() == Long.valueOf(session("idUser"));
+		return (authorOfProposal.getIdUser() == Long.valueOf(session("idUser")) || isResponsibleForCommission);
 	}
 
 	private ProposalVM buildProposalVMFromProposal(Proposal proposal) {

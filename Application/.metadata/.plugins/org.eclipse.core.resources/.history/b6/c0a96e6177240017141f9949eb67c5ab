@@ -1,0 +1,83 @@
+package services.data.jpaDao;
+
+import java.util.List;
+import javax.inject.Inject;
+import javax.persistence.Query;
+
+import models.Proposal;
+import play.db.jpa.JPAApi;
+import play.db.jpa.Transactional;
+import services.data.dao.ProposalDAO;
+
+public class ProposalDaoJPA implements ProposalDAO{
+	private final JPAApi jpaApi;
+
+	@Inject
+	public ProposalDaoJPA(JPAApi jpaApi) {
+		this.jpaApi = jpaApi;
+	}
+	
+	@Override
+	@Transactional
+	public Proposal insertProposal(Proposal proposal) {
+		jpaApi.em().persist(proposal);
+		
+		return proposal;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Proposal> getAllProposals() {
+		Query query = jpaApi.em().createQuery("SELECT p FROM Proposal p");
+		
+		return  (List<Proposal>) query.getResultList();
+	}
+
+	@Override
+	@Transactional
+	public Proposal getProposalById(Long id) {
+		return jpaApi.em().getReference(Proposal.class, id);
+	}
+
+	@Override
+	public Proposal getProposalByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Proposal updateProposal(Proposal proposalUpdated) {
+		return jpaApi.em().merge(proposalUpdated);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Proposal> get10NewestProposals() {
+		Query query = jpaApi.em().createQuery("SELECT p FROM Proposal p ORDER BY p.creationDate");
+		query.setMaxResults(10);
+		
+		return  (List<Proposal>) query.getResultList();
+	}
+
+	@Override
+	@Transactional
+	public void delete(Long idProposal) {
+		jpaApi.em().createQuery("DELETE FROM Proposal p WHERE p.idProposal= :idProposal")
+			.setParameter("idProposal", idProposal)
+			.executeUpdate();	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+

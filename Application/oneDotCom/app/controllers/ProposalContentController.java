@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import models.Proposal;
 import models.ProposalContentVM;
 import models.ProposalVM;
+import models.RoleType;
 import models.User;
 import models.UserVM;
 import play.data.Form;
@@ -54,6 +55,8 @@ public class ProposalContentController extends Controller {
 		if(this.isFormSubmitted()) {
 			ProposalContentVM proposalContentVM = formFactory.form(ProposalContentVM.class).bindFromRequest().get();
 			proposalContentVM.setIdOfConcernedProposal(idProposal);
+			
+			//contentManager.manageProposalContent(proposalContentVM, Long.parseLong(session("idUser")));
 			contentManager.manageProposalContent(proposalContentVM, Long.parseLong(session("idUser")));
 			
 			flash("success", "Le contenu de la proposition a bien été enregistré");
@@ -93,12 +96,13 @@ public class ProposalContentController extends Controller {
 		return this.detailPropContAction(idProposal);
 	}
 	
-	public Result twitterPublicationAction(Long idProposal) {
+	public Result twitterPublicationAction(String message) {
 		
-		String message = "test";
+		/*String message = "test";
 		
 		flash("success", "Le message a bien été publié sur twitter.");
-		return this.detailPropContAction(idProposal);
+		return this.detailPropContAction(idProposal);*/
+		return ok(message);
 	}
 	
 	
@@ -111,7 +115,10 @@ public class ProposalContentController extends Controller {
 	
 	public boolean isAuthorized(Long idProposal) {
 		User writer = this.writingContentDAO.getByIdProposal(idProposal).getWriter();
+		
+		boolean isResponsibleForCommission = (session("role") == RoleType.RESP_COMMUNICATION.name() 
+				|| session("role") == RoleType.PRESIDENT.name());
 				
-		return writer.getIdUser() == Long.valueOf(session("idUser"));
+		return (writer.getIdUser() == Long.valueOf(session("idUser")) || isResponsibleForCommission);
 	}
 }

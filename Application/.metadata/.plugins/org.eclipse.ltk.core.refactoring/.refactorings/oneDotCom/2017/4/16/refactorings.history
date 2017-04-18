@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;proposalState&apos; in &apos;services.proposal.ProposalManager&apos; to &apos;assignedState&apos;&#x0D;&#x0A;- Original project: &apos;oneDotCom&apos;&#x0D;&#x0A;- Original element: &apos;services.proposal.ProposalManager.proposalState&apos;&#x0D;&#x0A;- Renamed element: &apos;services.proposal.ProposalManager.assignedState&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;proposalState&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/app&lt;services.proposal{ProposalManager.java[ProposalManager^proposalState" name="assignedState" references="true" setter="false" stamp="1492526233798" textual="false" version="1.0"/>
+</session>

@@ -54,7 +54,7 @@ public class ProposalContentManager {
 		this.proposalContentDAO = proposalContentDAO;
 	}
 	
-	public void manageProposalContent(ProposalContentVM proposalContentVM, Long idOfContentWriter) {
+	/*public void manageProposalContent(ProposalContentVM proposalContentVM, Long idOfContentWriter) {
 		User writer = userDAO.getUserById(idOfContentWriter);
 		
 		Proposal concernedProposal = proposalDAO.getProposalById(proposalContentVM.getIdOfConcernedProposal());
@@ -74,6 +74,36 @@ public class ProposalContentManager {
 		
 		concernedProposal.setProposalState(ProposalStateType.Writed);
 		proposalDAO.updateProposal(concernedProposal);
+	}*/
+	
+	public void manageProposalContent(ProposalContentVM proposalContentVM, Long idOfContentWriter) {
+		ProposalContent proposalContent;
+		
+		WritingContent wc = writingContentDAO.getByIdProposal(proposalContentVM.getIdOfConcernedProposal());
+		
+		if(isContentAlreadyWritten(wc)) {
+			addVersion(proposalContentVM);
+		} else {
+			User writer = userDAO.getUserById(idOfContentWriter);
+			
+			Proposal concernedProposal = proposalDAO.getProposalById(proposalContentVM.getIdOfConcernedProposal());
+			
+			proposalContent = new ProposalContent();
+			proposalContent.setWritingDate(new Date());
+			proposalContent = proposalContentDAO.insertproposalContent(proposalContent);
+			
+			this.insertFiels(proposalContent, proposalContentVM);
+			
+			WritingContent writingContent = new WritingContent();
+			writingContent.setConcernedProposal(concernedProposal);
+			writingContent.setContent(proposalContent);
+			writingContent.setWriter(writer);
+			
+			writingContentDAO.insert(writingContent);
+						
+			concernedProposal.setProposalState(ProposalStateType.Writed);
+			proposalDAO.updateProposal(concernedProposal);
+		}	
 	}
 	
 	@Transactional
@@ -201,6 +231,15 @@ public class ProposalContentManager {
 		fieldChannel.setField(field);
 		fieldChannelDAO.insertFieldChannel(fieldChannel);
 	}
+	
+	private boolean isContentAlreadyWritten(WritingContent wc) {
+		return wc != null;
+	}
+	
+	private void addVersion(ProposalContentVM pcVM) {
+		//TODO
+	}
+	
 	
 	/********************************** Inner Class ********************************************/
 	/*******************************************************************************************/

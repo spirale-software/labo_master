@@ -1,0 +1,19 @@
+package services.proposal;
+
+import models.Proposal;
+import services.general.Notify;
+import services.general.SendEmail;
+
+public class AssignedState implements ProposalState {
+	private Notify notify;
+
+	@Override
+	public void doAction(Proposal proposition) {
+		
+		notify = new SendEmail();
+		String subject = "Assignation de rédaction du contenu d'une proposition";
+		String message = "";
+		notify.sendNotification(userToNotify, subject, message);
+	}
+
+}

@@ -192,7 +192,7 @@
 							      </div>
 							      <div class="modal-footer">
 							        <a href="@routes.ProposalContentController.fbPublicationAction(proposal.getIdProposal())" class="btn btn-primary">
-							        	Publier
+							        	Publier Sur Facebook
 							        </a>
 							      </div>
 							    </div>
@@ -216,7 +216,10 @@
 							      </div>
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
-							        <button type="button" class="btn btn-primary">Publier</button>
+							        <a href="@routes.ProposalContentController.twitterPublicationAction(
+							        	proposalContentForm("title").value + "\n" + proposalContentForm("link").value)" class="btn btn-primary">
+							        	Publier Sur Twitter
+							        </a>
 							      </div>
 							    </div>
 							  </div>

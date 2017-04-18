@@ -55,7 +55,7 @@ public class ProposalDaoJPA implements ProposalDAO{
 	@Override
 	@Transactional
 	public List<Proposal> get10NewestProposals() {
-		Query query = jpaApi.em().createQuery("SELECT p FROM Proposal p ORDER BY p.creationDate");
+		Query query = jpaApi.em().createQuery("SELECT p FROM Proposal p ORDER BY p.creationDate DESC");
 		query.setMaxResults(10);
 		
 		return  (List<Proposal>) query.getResultList();

@@ -25,7 +25,7 @@ public class ProposalManager {
 	private ProposalVM proposalVM;
 	private User authorOfProposal;
 	private UserDAO userDAO;
-	private ProposalState proposalState;
+	private ProposalState assignedState;
 	private PropositionOfWriterDAO propositionOfWriterDAO;
 	private PropositionOfChannelDAO propositionOfChannelDAO;
 	private ChannelDAO channelDAO;
@@ -71,6 +71,8 @@ public class ProposalManager {
 			}
 			
 			this.propositionOfWriterDAO.insert(propositionOfWriter);
+			
+			this.doActionWithProposalAssignedState(proposal);
 		}
 	}
 
@@ -111,12 +113,8 @@ public class ProposalManager {
 	private models.ProposalStateType getStateOfProposal(Proposal proposal) {
 		if (this.proposalVM.getProposedWriter().isEmpty())
 			return models.ProposalStateType.Created;
-		else {
-			proposalState = ProposalStateFactory.getProposalState(ProposalStateType.Assigned);
-			proposalState.doAction(proposal);
-
+		else 
 			return models.ProposalStateType.Assigned;
-		}
 	}
 
 	private boolean isProposedChannelsNotNull() {
@@ -137,5 +135,11 @@ public class ProposalManager {
 				proposedChannels.add(ChannelType.MAILING_LIST);
 		}
 		return proposedChannels;
+	}
+	
+	private void doActionWithProposalAssignedState(Proposal proposal) {
+		assignedState = ProposalStateFactory.getProposalState(ProposalStateType.Assigned);
+		((AssignedState) assignedState).setPropositionOfWriterDAO(propositionOfWriterDAO);
+		assignedState.doAction(proposal);
 	}
 }

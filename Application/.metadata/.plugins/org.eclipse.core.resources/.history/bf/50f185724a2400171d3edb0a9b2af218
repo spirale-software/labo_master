@@ -1,0 +1,38 @@
+package services.proposal;
+
+import javax.inject.Inject;
+
+import models.Proposal;
+import models.PropositionOfWriter;
+import models.User;
+import services.data.dao.PropositionOfWriterDAO;
+import services.general.Notify;
+import services.general.SendEmail;
+
+public class AssignedState implements ProposalState {
+	private Notify notify;
+	private PropositionOfWriterDAO propositionOfWriterDAO;
+	
+	@Inject
+	public AssignedState(PropositionOfWriterDAO propositionOfWriterDAO) {
+		this.propositionOfWriterDAO = propositionOfWriterDAO;
+	}
+
+	@Override
+	public void doAction(Proposal proposal) {
+		
+		notify = new SendEmail();
+		String subject = "Assignation de rédaction du contenu d'une proposition";
+		String message = "Monsieur " + proposal.getAuthorOfProposal().getUsername() + "\n"
+				+ "Vous a assigé la rédaction de:" + proposal.getProposalName() + "\n";
+		
+		PropositionOfWriter propOfWriter = this.propositionOfWriterDAO.getByIdProposal(proposal.getIdProposal());
+		if(propOfWriter.getDeadLine() != null)
+			message+= "avec pour date butoir de rédaction le: " + propOfWriter.getDeadLine().toString();
+		
+		User userToNotify = propOfWriter.getAssignee();
+		
+		notify.sendNotification(userToNotify, subject, message);
+	}
+
+}

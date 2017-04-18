@@ -27,7 +27,7 @@
                             <input type="text" class="col-lg-6 col-md-6" id="titleId" disabled 
                             	value="@proposalForm("proposalName").value"  name="@proposalForm("proposalName").name">
                             	
-                            @if(proposal.getProposalState.name == "Writed")	{
+                            @if(proposal.getProposalState.name != "Writed")	{
 	                            <a class="col-lg-3 col-md-3 " href="#" onclick ="enabledTitle()" id="idEditTitle">Modifier</a>
 	                            <a class="hidden" href="#" onclick ="saveTitle()" id="idSaveTitle">
 	                            	Enregistrer
@@ -44,7 +44,7 @@
                             <input type="text" class="col-lg-6 col-md-6" id="writerId" disabled value = "@proposalForm("proposedWriter").value"  
                             	name = "@proposalForm("proposedWriter").name" list="suggestions">
                             	
-                            	@if(proposal.getProposalState.name == "Writed")	{
+                            	@if(proposal.getProposalState.name != "Writed")	{
 		                            <a class="col-lg-3 col-md-3 " href="#" onclick ="enabledWriter()" id="idEditWriter">Modifier</a>
 		                            <a class="hidden" href="#" onclick ="saveWriter()" id="idSaveWriter">
 		                            	Enregistrer
@@ -94,8 +94,9 @@
 							    </div><!-- /input-group -->
 							  
 							</div><!-- /.row -->   
-                   
-                            <a class="col-lg-3 col-md-3" href="#" onclick ="enabledChannelsEdition()">Modifier</a>
+                   			@if(proposal.getProposalState.name != "Writed")	{
+                            	<a class="col-lg-3 col-md-3" href="#" onclick ="enabledChannelsEdition()">Modifier</a>
+                            }
                         	          
                         </div>
                     </div>
@@ -103,11 +104,12 @@
                    
                     <div class="panel panel-default">
                         <div class="panel-body" style="padding-bottom:15px">
-                        	                      	
-                        	<a  role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" 
-                        		aria-controls="collapseExample" style="margin-left:15px;">
-  								Ajouter Canal
-							</a>
+                        	@if(proposal.getProposalState.name != "Writed")	{                    	
+	                        	<a  role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" 
+	                        		aria-controls="collapseExample" style="margin-left:15px;">
+	  								Ajouter Canal
+								</a>
+							}
 							
 							<div class="collapse" id="collapseExample">
   								
@@ -143,7 +145,7 @@
                             <input type="date" class="col-lg-6 col-md-6" id="dateId" disabled
                             	value="@proposalForm("deadLine").value"  name="@proposalForm("deadLine").name">
                             	
-                            	@if(proposal.getProposalState.name == "Writed")	{
+                            	@if(proposal.getProposalState.name != "Writed")	{
 		                            <a class="col-lg-3 col-md-3 " href="#" onclick ="enabledDate()" id="idEditDate">Modifier</a>
 		                            <a class="hidden" href="#" onclick ="saveDate()" id="idSaveDate">
 		                            	Enregistrer
