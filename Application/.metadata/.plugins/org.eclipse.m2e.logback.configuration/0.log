@@ -29,3 +29,11 @@
 2017-04-18 22:15:03,621 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Lapi Emo\Desktop\Tutorial\Java\facebookAPI\src\main\resources
 2017-04-18 22:15:03,624 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2017-04-18 22:15:03,624 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Lapi Emo\Desktop\Tutorial\Java\facebookAPI\src\test\resources
+2017-04-20 13:02:40,671 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-20 13:02:40,677 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Lapi Emo\Desktop\Tutorial\Java\facebookAPI\src\main\resources
+2017-04-20 13:02:40,680 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-20 13:02:40,680 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Lapi Emo\Desktop\Tutorial\Java\facebookAPI\src\test\resources
+2017-04-22 16:52:40,300 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-22 16:52:40,314 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Lapi Emo\Desktop\Tutorial\Java\facebookAPI\src\main\resources
+2017-04-22 16:52:40,318 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-04-22 16:52:40,318 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Lapi Emo\Desktop\Tutorial\Java\facebookAPI\src\test\resources

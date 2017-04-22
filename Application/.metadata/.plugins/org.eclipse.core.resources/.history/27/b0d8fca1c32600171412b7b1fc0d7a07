@@ -1,0 +1,274 @@
+@(proposalContentForm: Form[ProposalContentVM], proposal: Proposal, pc: ProposalContent)
+
+@dashboardLayout("Nouvelle Proposition")(session().get("username")) {
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/proposalContent.css")">
+	
+	@if(flash.containsKey("success")) {
+		<div class="alert alert-success" role="alert"> @flash.get("success") </div>
+	}
+	
+	<div class="panel panel-default proposal-content">
+      <div class="panel-heading">
+          <h3 class="panel-title">Redaction du contenu de la proposition</h3>
+      </div>
+		
+	
+	
+	<div class="row">
+                <div class="col-md-4">
+                    <p>Proposition: @proposal.getProposalName()</p>
+                    <p>Etat : @proposal.getProposalState() </p>
+                    <p>Proposé par: @proposal.getAuthorOfProposal.getUsername() </p>
+                    <p>Date: @proposal.getCreationDate() </p>
+                    <a href="@routes.ProposalController.detailProposalAction(proposal.getIdProposal())" style="padding-left:10px">
+                    	Modifier cette proposition
+                    </a>
+					<hr class="divider">
+					
+					
+					<div class="panel panel-default">
+                		<div class="panel-heading" role="tab" id="headingTwo">
+                    	<h4 class="panel-title">
+                        	<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" 
+                        	aria-expanded="false" aria-controls="collapse">
+                            Versionning
+                        	</a>
+                    	</h4>
+                		</div>
+	                	<div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+	                    	<div class="panel-body">
+		                    	<div class="input-group hidden">
+								     <span class="input-group-addon">
+								       <input type="checkbox" aria-label="..." name="">
+								     </span>
+								     <div class=" form-control well well-sm">Soumettre au versionning</div>
+					   			</div><!-- /input-group -->
+					   			@if(pc != null) {
+						   			 @if(pc.getVersions.size != 0) {
+						   			 	<form action="@routes.ProposalContentController.manageVersionAction()" method="post">
+								   			<div class="row form-group" style="border:0px; width:300px">
+								   				<div class="col-sm-8">
+								   					<label>Choisir une version</label>
+				             						<select class="form-control" name="idVersion">
+				             							@for(version <- pc.getVersions) {
+				             								<!-- option value=@version.getId>Version @version.getVersionNumber</option-->
+				             							}
+				             						</select>
+								   				</div>
+								   				<a type="submit" name="versionButton" class="btn btn-primary col-sm-3" style="margin-top:25px">Restituer</a>
+				             					
+				         					</div>
+			         					</form>
+		         					}
+	         					}
+	         					
+	                		</div>
+	            		</div>
+        			</div>
+      
+					
+                </div><!-- [/col-md-3]--> 
+                
+                <div class="col-md-8 form-contenu">
+                    <form class="form-horizontal" method="post" 
+                    	action="@routes.ProposalContentController.proposalContentAction(proposal.getIdProposal())">
+                        <div class=" form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Titre</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputEmail3" name="@proposalContentForm("title").name"
+                                       value="@proposalContentForm("title").value" placeholder="Titre du contenu">
+                            </div>
+                            <p>Ceci sera publié sur <em class="text-primary">Facebook</em>,
+                                <em class="text-primary">Twitter</em>,
+                                <em class="text-primary">Mailing List</em></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Contenu</label>
+                            <div class="col-sm-10">
+                                <textarea  class="form-control" rows="4" placeholder="Contenu de la proposition" name="@proposalContentForm("content").name">
+                                	@proposalContentForm("content").value
+                                </textarea>
+                            </div>
+                            <p>Ceci sera publié sur <em class="text-primary">Facebook</em>,
+                                <em class="text-primary">Mailing List</em></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Lien</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="" placeholder="Lien vers un article"
+                                	value="@proposalContentForm("link").value" name="@proposalContentForm("link").name">
+                            </div>
+                            <p>Ceci sera publié sur <em class="text-primary">Facebook</em>,
+                                <em class="text-primary">Twitter</em>,
+                                <em class="text-primary">Mailing List</em></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Image</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="@proposalContentForm("image").name">
+                            </div>
+                            <p>Ceci sera publié sur <em class="text-primary">Facebook</em>,
+                                <em class="text-primary">Twitter</em>,
+                                <em class="text-primary">Mailing List</em></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Date</label>
+                            <div class="col-sm-10">
+                                <input type="date" id="" placeholder="Date" name="@proposalContentForm("date").name"
+                                	value="@proposalContentForm("date").value">
+                            </div>
+                            <p>Ceci sera publié sur <em class="text-primary">Facebook</em>,
+                                <em class="text-primary">Mailing List</em></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Lieu</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="@proposalContentForm("place").name" placeholder="Lieu"
+                                	value="@proposalContentForm("place").value">
+                            </div>
+                            <p>Ceci sera publié sur <em class="text-primary">Facebook</em>,
+                                <em class="text-primary">Twitter</em>,
+                                <em class="text-primary">Mailing List</em></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Media</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="@proposalContentForm("media").name" placeholder="Password">
+                            </div>
+                            <p>Ceci sera publié sur <em class="text-primary">Facebook</em>,
+                                <em class="text-primary">Twitter</em>,
+                                <em class="text-primary">Mailing List</em></p>
+                        </div>
+                        
+                        @if(proposal.getProposalState().name == "Writed") {
+	                        <div class="checkbox">
+	                            Publier Sur:
+	                            <label>
+	                                <input type="checkbox" name="@proposalContentForm("facebookSelected").name" id="fbCheckBox"
+	                                	onclick="publierFacebook()" > Facebook
+	                            </label>
+	                            <label>
+	                                <input type="checkbox" name="@proposalContentForm("twitterSelected").name" id="twCheckBox"
+	                                	onclick="publierTwitter()"> Twitter
+	                            </label>
+	                            <label>
+	                                <input type="checkbox" name="@proposalContentForm("mailingListSelected").name"> Mailing List
+	                            </label>
+	                        </div>
+                        }
+
+                        <div>
+                        	@if(proposal.getProposalState().name == "Writed") {
+                        		<button type="submit" class="btn btn-primary">Enregistrer Modifications</button>
+                        		
+                            	<button type="button" class="hidden" id="facebook" data-toggle="modal" data-target="#myModal">
+                            		Publier Sur Facebook
+                            	</button>
+                            	<button type="button" class="hidden" id="twitter" data-toggle="modal" data-target="#modal-twitter">
+                            		Publier Sur Twitter
+                            	</button>
+                            	
+               
+                        		
+                        	} else {
+                        		<button type="submit" class="btn btn-primary">Enregistrer</button>
+                        	}
+                        	
+                        	<!-- Modal Facebook-->
+                        	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h3 class="modal-title" id="myModalLabel">Aperçu Facebook</h3>
+							      </div>
+							      <div class="modal-body">
+							        <p>@proposalContentForm("title").value</p>
+							        <p>@proposalContentForm("content").value</p>
+							        <p>@proposalContentForm("link").value</p>
+							        <p>@proposalContentForm("place").value</p>
+							        <p>@proposalContentForm("date").value</p>
+							      </div>
+							      <div class="modal-footer">
+							        <a href="@routes.ProposalContentController.fbPublicationAction(proposal.getIdProposal())" class="btn btn-primary">
+							        	Publier Sur Facebook
+							        </a>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+							<!-- /Modal Facebook-->
+							
+							<!-- Modal Twitter-->
+                        	<div class="modal fade" id="modal-twitter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h3 class="modal-title" id="myModalLabel">Aperçu Twitter</h3>
+							      </div>
+							      <div class="modal-body">
+							        <p>@proposalContentForm("title").value</p>
+							        <p>@proposalContentForm("link").value</p>
+							        <p>@proposalContentForm("place").value</p>
+							        <p>@proposalContentForm("date").value</p>
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
+							        <a href="@routes.ProposalContentController.twitterPublicationAction(
+							        	proposalContentForm("title").value + "\n" + proposalContentForm("link").value)" class="btn btn-primary">
+							        	Publier Sur Twitter
+							        </a>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+							<!-- /Modal Twitter-->
+                        </div>
+                    </form>
+                </div> <!-- [/col-md-9]-->
+
+            </div>
+	
+	
+   </div>
+   
+	<script>
+		function publierFacebook() {
+
+			if(document.getElementById("fbCheckBox").checked == true) {
+				document.getElementById("facebook").className = "btn btn-primary";
+			} else {
+				document.getElementById("facebook").className = "hidden";
+			}
+		}
+		
+		function publierTwitter() {
+
+			if(document.getElementById("twCheckBox").checked == true) {
+				document.getElementById("twitter").className = "btn btn-primary";
+			} else {
+				document.getElementById("twitter").className = "hidden";
+			}
+		}
+		
+		
+		
+	</script>
+}
+
+
+
+
+
+
+
+
+

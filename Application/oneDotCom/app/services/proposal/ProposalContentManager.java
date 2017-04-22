@@ -23,6 +23,7 @@ import models.ProposalContentVM;
 import models.ProposalStateType;
 import models.TitleField;
 import models.User;
+import models.Version;
 import models.WritingContent;
 import play.db.jpa.Transactional;
 import services.data.dao.ChannelDAO;
@@ -132,8 +133,37 @@ public class ProposalContentManager {
 		return pcVM;
 	}
 	
+	@Transactional
+	public ProposalContentVM getProposalContentVMFromIdPropCont(Long idPropCont) {
+		ProposalContentVM pcVM = new ProposalContentVM();
+		
+		ProposalContent propCont = this.proposalContentDAO.getFromId(idPropCont);
+		List<Field> fields = propCont.getListOfFields();
+		
+		return this.fillFields(fields, pcVM);
+	}
+	
 	/********************************* HELPERS METHODS ****************************************************/
 	/******************************************************************************************************/
+	
+	private ProposalContentVM fillFields(List<Field> fields, ProposalContentVM pcVM) {
+		for(Field field : fields) {
+			if(field instanceof TitleField)
+				pcVM.setTitle(field.getFieldContent());
+			if(field instanceof ContentField)
+				pcVM.setContent(field.getFieldContent());
+			if(field instanceof LinkField)
+				pcVM.setLink(field.getFieldContent());
+			if(field instanceof PlaceField)
+				pcVM.setPlace(field.getFieldContent());
+			if(field instanceof DateField)
+				pcVM.setDate(((DateField) field).getDate());
+			
+			//TODO Other field have to be doing
+		}
+		
+		return pcVM;
+	}
 	
 	private void insertFiels(ProposalContent proposalContent, ProposalContentVM proposalContentVM) {
 		insertTitleField(proposalContent, proposalContentVM.getTitle());		
@@ -236,8 +266,23 @@ public class ProposalContentManager {
 		return wc != null;
 	}
 	
+	@Transactional
 	private void addVersion(ProposalContentVM pcVM) {
-		//TODO
+		ProposalContent version = new Version();
+		
+		WritingContent wc = this.writingContentDAO.getByIdProposal(pcVM.getIdOfConcernedProposal());
+		ProposalContent original = wc.getContent();
+		
+		int versionNumber = original.getVersions().size();;
+		
+		if(versionNumber < 5) {
+			((Version) version).setVersionNumber(versionNumber + 1);
+			((Version) version).setOriginal(original);
+			version.setWritingDate(new Date());
+			version = proposalContentDAO.insertproposalContent(version);
+			
+			this.insertFiels(version, pcVM);	
+		}
 	}
 	
 	

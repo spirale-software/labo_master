@@ -1,0 +1,17 @@
+package services.proposal;
+
+import services.data.dao.ProposalContentDAO;
+import services.data.dao.ProposalDAO;
+import services.data.dao.PublicationChannelDAO;
+import services.data.dao.PublicationDAO;
+import services.data.dao.UserDAO;
+
+public class PublicationManager {
+	private ProposalDAO proposalDAO;
+	private PublicationDAO publicationDAO;
+	private PublicationChannelDAO publicationChannelDAO;
+	private UserDAO userDAO;
+	private ProposalContentDAO proposalContentDAO;
+	
+
+}

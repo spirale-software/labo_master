@@ -1,0 +1,11 @@
+package models;
+
+import java.util.Date;
+
+public class Version {
+	private Long id;
+	private Date writingDate;
+	private int versionNumber;
+	private ProposalContent original;
+
+}

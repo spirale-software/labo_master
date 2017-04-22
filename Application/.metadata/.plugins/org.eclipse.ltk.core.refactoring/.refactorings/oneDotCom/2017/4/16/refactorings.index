@@ -1,1 +1,4 @@
 1492526233798	Rename field 'proposalState'
+1492874188572	Infer generic type arguments
+1492876957608	Rename method 'getMessageToPublish'
+1492881596625	Rename local variable 'fc'

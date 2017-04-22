@@ -1,11 +1,15 @@
 package services.data.dao;
 
+import java.util.List;
+
 import com.google.inject.ImplementedBy;
 
+import models.Field;
 import models.FieldChannel;
 import services.data.jpaDao.FieldChannelDaoJPA;
 
 @ImplementedBy(FieldChannelDaoJPA.class)
 public interface FieldChannelDAO {
 	FieldChannel insertFieldChannel(FieldChannel fieldChannel);
+	List<FieldChannel> getFbFields();
 }

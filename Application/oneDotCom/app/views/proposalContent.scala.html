@@ -1,4 +1,4 @@
-@(proposalContentForm: Form[ProposalContentVM], proposal: Proposal)
+@(proposalContentForm: Form[ProposalContentVM], proposal: Proposal, pc: ProposalContent)
 
 @dashboardLayout("Nouvelle Proposition")(session().get("username")) {
 	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
@@ -13,8 +13,6 @@
           <h3 class="panel-title">Redaction du contenu de la proposition</h3>
       </div>
 		
-	
-	
 	<div class="row">
                 <div class="col-md-4">
                     <p>Proposition: @proposal.getProposalName()</p>
@@ -36,27 +34,33 @@
                         	</a>
                     	</h4>
                 		</div>
-	                	<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+	                	<div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
 	                    	<div class="panel-body">
-		                    	<div class="input-group">
+		                    	<div class="input-group hidden">
 								     <span class="input-group-addon">
 								       <input type="checkbox" aria-label="..." name="">
 								     </span>
 								     <div class=" form-control well well-sm">Soumettre au versionning</div>
 					   			</div><!-- /input-group -->
-					   			
-					   			<div class="row form-group" style="border:0px; width:300px">
-					   				<div class="col-sm-8">
-					   					<label>Choisir une version</label>
-	             						<select class="form-control" name="userId">
-	             							<option value="empty">Version 1</option>
-	             							<option value="empty">Version 2</option>
-	             							<option value="empty">Version 3</option>
-	             						</select>
-					   				</div>
-					   				<a class="btn btn-primary col-sm-3" style="margin-top:25px">Restituer</a>
-	             					
-	         					</div>
+					   	<form class="form-horizontal" method="post" 
+                    	action="@routes.ProposalContentController.proposalContentAction(proposal.getIdProposal())">
+					   			@if(pc != null) {
+						   			 @if(pc.getVersions.size != 0) {
+								   			<div class="row form-group" style="border:0px; width:300px">
+								   				<div class="col-sm-8">
+								   					<label>Choisir une version</label>
+				             						<select class="form-control" name="idVersion">
+				             							@for(version <- pc.getVersions) {
+				             								<option value=@version.getId>Version @version.getVersionNumber</option>
+				             							}
+				             						</select>
+								   				</div>
+								   				<button type="submit" name="versionButton" value="version" class="btn btn-primary col-sm-3" style="margin-top:25px">Restituer</button>
+				             					
+				         					</div>
+			         					<!--/form-->
+		         					}
+	         					}
 	         					
 	                		</div>
 	            		</div>
@@ -66,8 +70,8 @@
                 </div><!-- [/col-md-3]--> 
                 
                 <div class="col-md-8 form-contenu">
-                    <form class="form-horizontal" method="post" 
-                    	action="@routes.ProposalContentController.proposalContentAction(proposal.getIdProposal())">
+                    <!-- form class="form-horizontal" method="post" 
+                    	action="@routes.ProposalContentController.proposalContentAction(proposal.getIdProposal())"-->
                         <div class=" form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Titre</label>
                             <div class="col-sm-10">
@@ -162,15 +166,13 @@
                         <div>
                         	@if(proposal.getProposalState().name == "Writed") {
                         		<button type="submit" class="btn btn-primary">Enregistrer Modifications</button>
+                        		
                             	<button type="button" class="hidden" id="facebook" data-toggle="modal" data-target="#myModal">
                             		Publier Sur Facebook
                             	</button>
                             	<button type="button" class="hidden" id="twitter" data-toggle="modal" data-target="#modal-twitter">
                             		Publier Sur Twitter
-                            	</button>
-                            	
-               
-                        		
+                            	</button>                        		
                         	} else {
                         		<button type="submit" class="btn btn-primary">Enregistrer</button>
                         	}
@@ -188,13 +190,15 @@
 							        <p>@proposalContentForm("content").value</p>
 							        <p>@proposalContentForm("link").value</p>
 							        <p>@proposalContentForm("place").value</p>
-							        <p>@proposalContentForm("date").value</p>
+							        <p>@proposalContentForm("date").value</p>					
 							      </div>
-							      <div class="modal-footer">
-							        <a href="@routes.ProposalContentController.fbPublicationAction(proposal.getIdProposal())" class="btn btn-primary">
-							        	Publier Sur Facebook
-							        </a>
-							      </div>
+							      @if(pc != null) {
+								      <div class="modal-footer">
+								        <a href="@routes.ProposalContentController.fbPublicationAction(proposal.getIdProposal(),pc.getId())" class="btn btn-primary">
+								        	Publier Sur Facebook
+								        </a>							        
+								      </div>
+							      }
 							    </div>
 							  </div>
 							</div>
@@ -229,9 +233,7 @@
                     </form>
                 </div> <!-- [/col-md-9]-->
 
-            </div>
-	
-	
+            </div>	
    </div>
    
 	<script>
@@ -252,15 +254,6 @@
 				document.getElementById("twitter").className = "hidden";
 			}
 		}
-		
+	
 	</script>
 }
-
-
-
-
-
-
-
-
-

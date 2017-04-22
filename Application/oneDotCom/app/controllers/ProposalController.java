@@ -157,9 +157,7 @@ public class ProposalController extends Controller {
 		return ok(proposalDetail2.render(proposalVMForm.fill(proposalVM), proposal));
 	}
 
-	/****************************
-	 * HELPERS METHODS
-	 ************************************/
+	/***************************** HELPERS METHODS ************************************/
 	/*********************************************************************************/
 
 	@Transactional

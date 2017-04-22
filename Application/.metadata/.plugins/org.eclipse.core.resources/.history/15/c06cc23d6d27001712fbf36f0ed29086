@@ -1,0 +1,45 @@
+package services.proposal;
+
+import services.data.dao.ProposalContentDAO;
+import services.data.dao.ProposalDAO;
+import services.data.dao.PublicationChannelDAO;
+import services.data.dao.PublicationDAO;
+import services.data.dao.UserDAO;
+
+public class PublicationManager {
+	private ProposalDAO proposalDAO;
+	private PublicationDAO publicationDAO;
+	private PublicationChannelDAO publicationChannelDAO;
+	private UserDAO userDAO;
+	private ProposalContentDAO proposalContentDAO;
+	
+	
+	
+	public String manageFbPublication(Long idProposal, Long idPropCont, Long idPublisher) {
+		
+	}
+	
+
+	public void setProposalDAO(ProposalDAO proposalDAO) {
+		this.proposalDAO = proposalDAO;
+	}
+
+	public void setPublicationDAO(PublicationDAO publicationDAO) {
+		this.publicationDAO = publicationDAO;
+	}
+
+	public void setPublicationChannelDAO(PublicationChannelDAO publicationChannelDAO) {
+		this.publicationChannelDAO = publicationChannelDAO;
+	}
+
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
+	
+	public void setProposalContentDAO(ProposalContentDAO proposalContentDAO) {
+		this.proposalContentDAO = proposalContentDAO;
+	}
+	
+	
+
+}

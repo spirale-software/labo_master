@@ -1,0 +1,23 @@
+package services.data.jpaDao;
+
+import javax.inject.Inject;
+
+import models.Publication;
+import play.db.jpa.JPAApi;
+import services.data.dao.PublicationDAO;
+
+public class PublicationDaoJPA implements PublicationDAO {
+	private final JPAApi jpaApi;
+	
+	@Inject
+	public public PublicationDaoJPA(JPAApi jpaApi) {
+		this.jpaApi = jpaApi;
+	}
+
+	@Override
+	public Publication insert(Publication publication) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

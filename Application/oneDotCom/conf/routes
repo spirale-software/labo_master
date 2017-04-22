@@ -46,9 +46,10 @@ POST    /proposition/contenu/:idProposal			controllers.ProposalContentController
 
 GET     /proposition/contenu/detail/:idProposal		controllers.ProposalContentController.detailPropContAction(idProposal: Long)
 
-GET     /proposition/contenu/publish/fb/:idProposal	controllers.ProposalContentController.fbPublicationAction(idProposal: Long)
+GET     /proposition/contenu/publish/fb/:idProposal	controllers.ProposalContentController.fbPublicationAction(idProposal: Long, idPropCont: Long)
 
 GET     /proposition/contenu/publish/tw/:message	controllers.ProposalContentController.twitterPublicationAction(message: String)
+
 
 
 #Routes related to managing users

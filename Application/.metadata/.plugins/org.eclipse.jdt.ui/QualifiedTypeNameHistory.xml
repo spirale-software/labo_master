@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="services.data.jpaDao.PropositionDAO"/>
-<fullyQualifiedTypeName name="models.ProposalState"/>
-<fullyQualifiedTypeName name="com.sun.jna.platform.win32.Netapi32Util.User"/>
-<fullyQualifiedTypeName name="services.proposition.AssignedState"/>
-<fullyQualifiedTypeName name="services.proposition.ProposalState"/>
-<fullyQualifiedTypeName name="services.data.dao.IUserDAO"/>
-<fullyQualifiedTypeName name="services.proposal.ProposalBuilder"/>
-<fullyQualifiedTypeName name="services.data.jpaDao.UserDAO"/>
 <fullyQualifiedTypeName name="play.db.jpa.Transactional"/>
 <fullyQualifiedTypeName name="models.ProposalContentVM"/>
 <fullyQualifiedTypeName name="javax.persistence.Entity"/>
@@ -28,7 +20,6 @@
 <fullyQualifiedTypeName name="models.ChannelType"/>
 <fullyQualifiedTypeName name="models.Channel"/>
 <fullyQualifiedTypeName name="models.ChannelPropositionType"/>
-<fullyQualifiedTypeName name="services.data.dao.UserDAO"/>
 <fullyQualifiedTypeName name="models.PropositionOfChannel"/>
 <fullyQualifiedTypeName name="controllers.routes"/>
 <fullyQualifiedTypeName name="models.ContentField"/>
@@ -43,14 +34,10 @@
 <fullyQualifiedTypeName name="models.DateField"/>
 <fullyQualifiedTypeName name="services.publication.FacebookPublication"/>
 <fullyQualifiedTypeName name="services.publication.Publish"/>
-<fullyQualifiedTypeName name="services.data.dao.ProposalDAO"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="models.Proposal"/>
 <fullyQualifiedTypeName name="models.ProposalStateType"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.time.LocalDate"/>
 <fullyQualifiedTypeName name="java.text.DateFormat"/>
-<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.text.ParseException"/>
 <fullyQualifiedTypeName name="models.RoleType"/>
 <fullyQualifiedTypeName name="services.general.Notify"/>
@@ -60,4 +47,17 @@
 <fullyQualifiedTypeName name="models.User"/>
 <fullyQualifiedTypeName name="services.proposal.AssignedState"/>
 <fullyQualifiedTypeName name="javax.inject.Inject"/>
+<fullyQualifiedTypeName name="services.proposal.ProposalStateFactory"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="models.ProposalContent"/>
+<fullyQualifiedTypeName name="models.WritingContent"/>
+<fullyQualifiedTypeName name="models.Version"/>
+<fullyQualifiedTypeName name="services.data.dao.ProposalDAO"/>
+<fullyQualifiedTypeName name="services.data.dao.PublicationDAO"/>
+<fullyQualifiedTypeName name="services.data.dao.PublicationChannelDAO"/>
+<fullyQualifiedTypeName name="services.data.dao.UserDAO"/>
+<fullyQualifiedTypeName name="services.data.dao.ProposalContentDAO"/>
+<fullyQualifiedTypeName name="services.proposal.PublicationManager"/>
 </qualifiedTypeNameHistroy>

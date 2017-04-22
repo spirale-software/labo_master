@@ -1,0 +1,11 @@
+package models;
+
+public enum ProposalStateType {
+	Created,
+	Assigned,
+	In_Writing,
+	Writed,
+	Published,
+	Published_On_Facebook,
+	Published_On_Twitter
+}

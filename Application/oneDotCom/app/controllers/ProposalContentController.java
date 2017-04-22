@@ -4,16 +4,19 @@ import play.mvc.Controller;
 import java.util.List;
 import javax.inject.Inject;
 import models.Proposal;
+import models.ProposalContent;
 import models.ProposalContentVM;
 import models.ProposalVM;
 import models.RoleType;
 import models.User;
 import models.UserVM;
+import models.WritingContent;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.Transactional;
 import play.mvc.Result;
 import play.mvc.Security.Authenticated;
+import services.data.dao.ProposalContentDAO;
 import services.data.dao.ProposalDAO;
 import services.data.dao.UserDAO;
 import services.data.dao.WritingContentDAO;
@@ -24,6 +27,7 @@ import services.general.SendEmail;
 import services.proposal.ProposalContentManager;
 import services.proposal.ProposalEditionManager;
 import services.proposal.ProposalManager;
+import services.proposal.PublicationManager;
 import services.publication.FacebookPublication;
 import services.publication.Publish;
 import views.html.*;
@@ -36,15 +40,17 @@ public class ProposalContentController extends Controller {
 	private ProposalContentManager contentManager;
 	private UserDAO userDAO;
 	private WritingContentDAO writingContentDAO;
+	private PublicationManager publicationManager;
 	
 	@Inject
 	public ProposalContentController(FormFactory formFactory, ProposalDAO proposalDAO, ProposalContentManager contentManager,
-			UserDAO userDAO, WritingContentDAO writingContentDAO) {
+			UserDAO userDAO, WritingContentDAO writingContentDAO, PublicationManager publicationManager) {
 		this.formFactory = formFactory;
 		this.proposalDAO = proposalDAO;
 		this.contentManager = contentManager;		
 		this.userDAO = userDAO;
 		this.writingContentDAO = writingContentDAO;
+		this.publicationManager = publicationManager;
 	}
 
 	@Transactional
@@ -53,6 +59,9 @@ public class ProposalContentController extends Controller {
 		Form<ProposalContentVM> proposalContentForm = formFactory.form(ProposalContentVM.class);
 
 		if(this.isFormSubmitted()) {
+			if (this.isVersionButtonClicked())
+				return this.manageVersionAction(idProposal);
+			
 			ProposalContentVM proposalContentVM = formFactory.form(ProposalContentVM.class).bindFromRequest().get();
 			proposalContentVM.setIdOfConcernedProposal(idProposal);
 			
@@ -63,7 +72,7 @@ public class ProposalContentController extends Controller {
 			return redirect("/proposition/contenu/detail/" + proposal.getIdProposal());
 		}
 		
-		return ok(proposalContent.render(proposalContentForm, proposal));
+		return ok(proposalContent.render(proposalContentForm, proposal, null));
 	}
 	
 	@Transactional
@@ -73,27 +82,24 @@ public class ProposalContentController extends Controller {
 		if(isAuthorized(idProposal)) {
 			Proposal proposal = this.proposalDAO.getProposalById(idProposal);
 			Form<ProposalContentVM> proposalContentForm = formFactory.form(ProposalContentVM.class);
+			ProposalContent pc = this.getProposalContentByIdProposal(idProposal);
 			
-			return ok(proposalContent.render(proposalContentForm.fill(pcVM), proposal));
+			return ok(proposalContent.render(proposalContentForm.fill(pcVM), proposal, pc));
 		}
 		
 		return ok(pcDetail.render(pcVM));
 	}
 	
 	@Transactional
-	public Result fbPublicationAction(Long idProposal) {
+	public Result fbPublicationAction(Long idProposal, Long idPropCont) {
+		String message = this.publicationManager.manageFbPublication(idProposal, idPropCont, Long.valueOf(session("idUser")));
+
+		//Publish fb = new FacebookPublication();
+		//fb.publish(message);
 		
-		/*Notify notify = new SendEmail();
-		User userToNotify = new User();
-		userToNotify.setEmail("lapigerard@yahoo.fr");
-		notify.sendNotification(userToNotify, "Test", "My first message");*/
-		
-		String message = "test FB";
-		Publish fb = new FacebookPublication();
-		fb.publish(message);
-		
-		flash("success", "Le message a bien été publié sur facebook.");
-		return this.detailPropContAction(idProposal);
+		//flash("success", "Le message a bien été publié sur facebook.");
+		return ok(message);
+		//return this.detailPropContAction(idProposal);
 	}
 	
 	public Result twitterPublicationAction(String message) {
@@ -103,6 +109,17 @@ public class ProposalContentController extends Controller {
 		flash("success", "Le message a bien été publié sur twitter.");
 		return this.detailPropContAction(idProposal);*/
 		return ok(message);
+	}
+	
+	public Result manageVersionAction(Long idProposal) {
+		String idVersion = this.formFactory.form().bindFromRequest().get("idVersion"); 
+		
+		ProposalContentVM pcVM = this.contentManager.getProposalContentVMFromIdPropCont(Long.valueOf(idVersion));
+		Proposal proposal = this.proposalDAO.getProposalById(idProposal);
+		ProposalContent pc = this.getProposalContentByIdProposal(idProposal);
+		Form<ProposalContentVM> proposalContentForm = formFactory.form(ProposalContentVM.class);
+			
+		return ok(proposalContent.render(proposalContentForm.fill(pcVM), proposal, pc));	
 	}
 	
 	
@@ -121,4 +138,27 @@ public class ProposalContentController extends Controller {
 				
 		return (writer.getIdUser() == Long.valueOf(session("idUser")) || isResponsibleForCommission);
 	}
+	
+	private ProposalContent getProposalContentByIdProposal(Long idProposal) {
+		WritingContent wc = this.writingContentDAO.getByIdProposal(idProposal);
+		ProposalContent pc = wc.getContent();
+		
+		return pc;
+	}
+	
+	private boolean isVersionButtonClicked() {		
+		return this.formFactory.form().bindFromRequest().get("versionButton") != null;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

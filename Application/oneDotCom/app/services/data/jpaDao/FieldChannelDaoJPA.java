@@ -1,7 +1,12 @@
 package services.data.jpaDao;
 
-import javax.inject.Inject;
+import java.util.List;
 
+import javax.inject.Inject;
+import javax.persistence.Query;
+
+import models.ChannelType;
+import models.Field;
 import models.FieldChannel;
 import play.db.jpa.JPAApi;
 import play.db.jpa.Transactional;
@@ -21,6 +26,15 @@ public class FieldChannelDaoJPA implements FieldChannelDAO {
 		this.jpaApi.em().persist(fieldChannel);
 		
 		return fieldChannel;
+	}
+
+	@Override
+	@Transactional
+	public List<FieldChannel> getFbFields() {
+		Query query = this.jpaApi.em().createQuery("SELECT fc FROM FieldChannel fc WHERE fc.channel.channelName=:fb");
+		query.setParameter("fb", ChannelType.FACEBOOK.name());
+		
+		return query.getResultList();
 	}
 
 }

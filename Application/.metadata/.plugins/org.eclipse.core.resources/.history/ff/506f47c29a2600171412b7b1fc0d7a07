@@ -1,0 +1,59 @@
+package models;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Version extends ProposalContent {
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="ORIGINAL_ID")
+	private ProposalContent original;
+	
+	private Date writingDate;
+	private int versionNumber;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getWritingDate() {
+		return writingDate;
+	}
+
+	public void setWritingDate(Date writingDate) {
+		this.writingDate = writingDate;
+	}
+
+	public int getVersionNumber() {
+		return versionNumber;
+	}
+
+	public void setVersionNumber(int versionNumber) {
+		this.versionNumber = versionNumber;
+	}
+
+	public ProposalContent getOriginal() {
+		return original;
+	}
+
+	public void setOriginal(ProposalContent original) {
+		this.original = original;
+	}
+}

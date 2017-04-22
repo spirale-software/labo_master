@@ -8,4 +8,5 @@ import services.data.jpaDao.ProposalContentDaoJPA;
 @ImplementedBy(ProposalContentDaoJPA.class)
 public interface ProposalContentDAO {
 	public ProposalContent insertproposalContent(ProposalContent content);
+	public ProposalContent getFromId(Long idPropCont);
 }

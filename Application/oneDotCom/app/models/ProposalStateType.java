@@ -5,5 +5,7 @@ public enum ProposalStateType {
 	Assigned,
 	In_Writing,
 	Writed,
-	Published
+	Published, //If Proposal has been published on Facebook and Twitter
+	Published_On_Facebook,
+	Published_On_Twitter
 }

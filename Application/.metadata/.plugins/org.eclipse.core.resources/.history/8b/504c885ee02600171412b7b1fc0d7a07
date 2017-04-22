@@ -1,0 +1,10 @@
+package services.proposal;
+
+public class PublicationManager {
+	private ProposalDAO proposalDAO;
+	private PublicationDAO publicationDAO;
+	private PublicationChannelDAO publicationChannelDAO;
+	private UserDAO userDAO;
+	private ProposalContentDAO proposalContentDAO;
+
+}

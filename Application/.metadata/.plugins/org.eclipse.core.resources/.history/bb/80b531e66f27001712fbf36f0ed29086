@@ -1,0 +1,65 @@
+package services.proposal;
+
+import services.data.dao.FieldChannelDAO;
+import services.data.dao.ProposalContentDAO;
+import services.data.dao.ProposalDAO;
+import services.data.dao.PublicationChannelDAO;
+import services.data.dao.PublicationDAO;
+import services.data.dao.UserDAO;
+
+import java.util.List;
+
+import models.ContentField;
+import models.Field;
+import models.FieldChannel;
+import models.TitleField;
+
+public class PublicationManager {
+	private ProposalDAO proposalDAO;
+	private PublicationDAO publicationDAO;
+	private PublicationChannelDAO publicationChannelDAO;
+	private UserDAO userDAO;
+	private ProposalContentDAO proposalContentDAO;
+	private FieldChannelDAO fieldChannelDAO;
+	
+	
+	
+	public String manageFbPublication(Long idProposal, Long idPropCont, Long idPublisher) {
+		String message = "";
+		List<FieldChannel> fieldsToPublishOnFb = this.fieldChannelDAO.getFbFields();
+		for(FieldChannel fc : fieldsToPublishOnFb) {
+			if(fc.getField() instanceof TitleField) 
+				message += fc.getField().getFieldContent();
+			if(fc.getField() instanceof ContentField)
+				message += fc.getField().getFieldContent();
+		}
+		
+		
+		
+		return message;	
+	}
+	
+
+	public void setProposalDAO(ProposalDAO proposalDAO) {
+		this.proposalDAO = proposalDAO;
+	}
+
+	public void setPublicationDAO(PublicationDAO publicationDAO) {
+		this.publicationDAO = publicationDAO;
+	}
+
+	public void setPublicationChannelDAO(PublicationChannelDAO publicationChannelDAO) {
+		this.publicationChannelDAO = publicationChannelDAO;
+	}
+
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
+	
+	public void setProposalContentDAO(ProposalContentDAO proposalContentDAO) {
+		this.proposalContentDAO = proposalContentDAO;
+	}
+	
+	
+
+}

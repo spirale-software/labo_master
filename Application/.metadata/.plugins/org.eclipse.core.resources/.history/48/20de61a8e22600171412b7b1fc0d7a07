@@ -1,0 +1,171 @@
+package controllers;
+
+import play.mvc.Controller;
+import java.util.List;
+import javax.inject.Inject;
+import models.Proposal;
+import models.ProposalContent;
+import models.ProposalContentVM;
+import models.ProposalVM;
+import models.RoleType;
+import models.User;
+import models.UserVM;
+import models.WritingContent;
+import play.data.Form;
+import play.data.FormFactory;
+import play.db.jpa.Transactional;
+import play.mvc.Result;
+import play.mvc.Security.Authenticated;
+import services.data.dao.ProposalContentDAO;
+import services.data.dao.ProposalDAO;
+import services.data.dao.UserDAO;
+import services.data.dao.WritingContentDAO;
+import services.data.jpaDao.UserDaoJPA;
+import services.general.CustomAuthenticator;
+import services.general.Notify;
+import services.general.SendEmail;
+import services.proposal.ProposalContentManager;
+import services.proposal.ProposalEditionManager;
+import services.proposal.ProposalManager;
+import services.proposal.PublicationManager;
+import services.publication.FacebookPublication;
+import services.publication.Publish;
+import views.html.*;
+
+@Authenticated(CustomAuthenticator.class)
+public class ProposalContentController extends Controller {
+	
+	private final FormFactory formFactory;
+	private final ProposalDAO proposalDAO;
+	private ProposalContentManager contentManager;
+	private UserDAO userDAO;
+	private WritingContentDAO writingContentDAO;
+	
+	@Inject
+	public ProposalContentController(FormFactory formFactory, ProposalDAO proposalDAO, ProposalContentManager contentManager,
+			UserDAO userDAO, WritingContentDAO writingContentDAO) {
+		this.formFactory = formFactory;
+		this.proposalDAO = proposalDAO;
+		this.contentManager = contentManager;		
+		this.userDAO = userDAO;
+		this.writingContentDAO = writingContentDAO;
+	}
+
+	@Transactional
+	public Result proposalContentAction(Long idProposal) {
+		Proposal proposal = this.proposalDAO.getProposalById(idProposal);
+		Form<ProposalContentVM> proposalContentForm = formFactory.form(ProposalContentVM.class);
+
+		if(this.isFormSubmitted()) {
+			if (this.isVersionButtonClicked())
+				return this.manageVersionAction(idProposal);
+			
+			ProposalContentVM proposalContentVM = formFactory.form(ProposalContentVM.class).bindFromRequest().get();
+			proposalContentVM.setIdOfConcernedProposal(idProposal);
+			
+			//contentManager.manageProposalContent(proposalContentVM, Long.parseLong(session("idUser")));
+			contentManager.manageProposalContent(proposalContentVM, Long.parseLong(session("idUser")));
+			
+			flash("success", "Le contenu de la proposition a bien été enregistré");
+			return redirect("/proposition/contenu/detail/" + proposal.getIdProposal());
+		}
+		
+		return ok(proposalContent.render(proposalContentForm, proposal, null));
+	}
+	
+	@Transactional
+	public Result detailPropContAction(Long idProposal) {
+		ProposalContentVM pcVM = contentManager.getProposalContentVMFromIdProposal(idProposal);
+		
+		if(isAuthorized(idProposal)) {
+			Proposal proposal = this.proposalDAO.getProposalById(idProposal);
+			Form<ProposalContentVM> proposalContentForm = formFactory.form(ProposalContentVM.class);
+			ProposalContent pc = this.getProposalContentByIdProposal(idProposal);
+			
+			return ok(proposalContent.render(proposalContentForm.fill(pcVM), proposal, pc));
+		}
+		
+		return ok(pcDetail.render(pcVM));
+	}
+	
+	@Transactional
+	public Result fbPublicationAction(Long idProposal) {
+		PublicationManager publicationManager = new PublicationManager();
+		this.setAttributesOfPublicationManager(publicationManager);
+		
+		publicationManager.manageFbPublication(idProposal);
+		
+		String message = "test FB";
+		Publish fb = new FacebookPublication();
+		fb.publish(message);
+		
+		flash("success", "Le message a bien été publié sur facebook.");
+		return this.detailPropContAction(idProposal);
+	}
+	
+	public Result twitterPublicationAction(String message) {
+		
+		/*String message = "test";
+		
+		flash("success", "Le message a bien été publié sur twitter.");
+		return this.detailPropContAction(idProposal);*/
+		return ok(message);
+	}
+	
+	public Result manageVersionAction(Long idProposal) {
+		String idVersion = this.formFactory.form().bindFromRequest().get("idVersion"); 
+		
+		ProposalContentVM pcVM = this.contentManager.getProposalContentVMFromIdPropCont(Long.valueOf(idVersion));
+		Proposal proposal = this.proposalDAO.getProposalById(idProposal);
+		ProposalContent pc = this.getProposalContentByIdProposal(idProposal);
+		Form<ProposalContentVM> proposalContentForm = formFactory.form(ProposalContentVM.class);
+			
+		return ok(proposalContent.render(proposalContentForm.fill(pcVM), proposal, pc));	
+	}
+	
+	
+	
+	/**************************************** Helpers Methods **********************************/
+	/*******************************************************************************************/
+	public boolean isFormSubmitted() {
+		return request().method().equals("POST");
+	}
+	
+	public boolean isAuthorized(Long idProposal) {
+		User writer = this.writingContentDAO.getByIdProposal(idProposal).getWriter();
+		
+		boolean isResponsibleForCommission = (session("role") == RoleType.RESP_COMMUNICATION.name() 
+				|| session("role") == RoleType.PRESIDENT.name());
+				
+		return (writer.getIdUser() == Long.valueOf(session("idUser")) || isResponsibleForCommission);
+	}
+	
+	private ProposalContent getProposalContentByIdProposal(Long idProposal) {
+		WritingContent wc = this.writingContentDAO.getByIdProposal(idProposal);
+		ProposalContent pc = wc.getContent();
+		
+		return pc;
+	}
+	
+	private boolean isVersionButtonClicked() {
+		
+		return this.formFactory.form().bindFromRequest().get("versionButton") != null;
+	}
+	
+	private void setAttributesOfPublicationManager(PublicationManager publicationManager) {
+		//TODO
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,7 +6,10 @@ public class Test {
 		//String[] credentials = s.split("   <<");
 		
 		//System.out.println(credentials[0] + "\n" + credentials[1].replaceAll(">>", ""));
-		System.out.println(s.trim());
+		
+		String m = "Published_On_Facebook";
+		
+		System.out.println(m.contains("Published"));
 
 	}
 
